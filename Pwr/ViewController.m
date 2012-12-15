@@ -10,8 +10,13 @@
 #import "HTMLParser.h"
 #import "BookListFetcher.h"
 #import "Book.h"
+#import "GUIUtils.h"
+
 @interface ViewController ()
 
+@property (nonatomic, assign) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, assign) IBOutlet UITextField *textField;
+@property (nonatomic, assign) IBOutlet UIButton *scanButton;
 @end
 
 @implementation ViewController
@@ -19,12 +24,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSArray *books = [BookListFetcher fetchBooksForQuery:@"analiza matematyczna"];
+    [GUIUtils setupTextField:_textField];
+    [GUIUtils setupButton:_scanButton];
+    _textField.delegate = self;
+    
+    NSArray *books = [BookListFetcher fetchBooksForQuery:@"dupa smoka"];
     for (Book *book in books) {
         NSLog(@"%@",book);
     }
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    //Animate background
+    [UIView animateWithDuration:10.0
+                          delay:0.0
+                        options: UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse
+                     animations:^{
+                         _backgroundImageView.center = CGPointMake(_backgroundImageView.center.x + 50,_backgroundImageView.center.y+50);
+                     }
+                     completion:NULL];
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [_textField resignFirstResponder];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

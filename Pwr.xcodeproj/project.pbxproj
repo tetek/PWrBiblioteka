@@ -23,6 +23,11 @@
 		7DCF6437167C7E9B00B22C57 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF6436167C7E9B00B22C57 /* libxml2.dylib */; };
 		7DCF643B167C876E00B22C57 /* BookListFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF643A167C876E00B22C57 /* BookListFetcher.m */; };
 		7DCF643E167C87B700B22C57 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF643D167C87B700B22C57 /* Book.m */; };
+		7DCF6447167C9CEC00B22C57 /* thelibrary.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF6446167C9CEC00B22C57 /* thelibrary.jpg */; };
+		7DCF6449167CA03F00B22C57 /* lib.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF6448167CA03F00B22C57 /* lib.jpg */; };
+		7DCF644B167CA3AC00B22C57 /* logo in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF644A167CA3AC00B22C57 /* logo */; };
+		7DCF644F167CA4BA00B22C57 /* GUIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF644E167CA4BA00B22C57 /* GUIUtils.m */; };
+		7DCF6452167CAA8400B22C57 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF6451167CAA8400B22C57 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +56,13 @@
 		7DCF643A167C876E00B22C57 /* BookListFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookListFetcher.m; path = ../BookListFetcher.m; sourceTree = "<group>"; };
 		7DCF643C167C87B700B22C57 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		7DCF643D167C87B700B22C57 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		7DCF6446167C9CEC00B22C57 /* thelibrary.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thelibrary.jpg; sourceTree = "<group>"; };
+		7DCF6448167CA03F00B22C57 /* lib.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lib.jpg; sourceTree = "<group>"; };
+		7DCF644A167CA3AC00B22C57 /* logo */ = {isa = PBXFileReference; lastKnownFileType = file; path = logo; sourceTree = "<group>"; };
+		7DCF644D167CA4BA00B22C57 /* GUIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIUtils.h; sourceTree = "<group>"; };
+		7DCF644E167CA4BA00B22C57 /* GUIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIUtils.m; sourceTree = "<group>"; };
+		7DCF6450167CAA7A00B22C57 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		7DCF6451167CAA8400B22C57 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +111,8 @@
 		7DCF640E167C7DCC00B22C57 /* Pwr */ = {
 			isa = PBXGroup;
 			children = (
+				7DCF644C167CA4AF00B22C57 /* Utils */,
+				7DCF6445167C9CE000B22C57 /* Images */,
 				7DCF643F167C947B00B22C57 /* Model */,
 				7DCF6438167C82B700B22C57 /* HTMLParser */,
 				7DCF6417167C7DCC00B22C57 /* AppDelegate.h */,
@@ -145,6 +159,27 @@
 				7DCF643D167C87B700B22C57 /* Book.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		7DCF6445167C9CE000B22C57 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7DCF6448167CA03F00B22C57 /* lib.jpg */,
+				7DCF644A167CA3AC00B22C57 /* logo */,
+				7DCF6446167C9CEC00B22C57 /* thelibrary.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		7DCF644C167CA4AF00B22C57 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7DCF6450167CAA7A00B22C57 /* MBProgressHUD.h */,
+				7DCF6451167CAA8400B22C57 /* MBProgressHUD.m */,
+				7DCF644D167CA4BA00B22C57 /* GUIUtils.h */,
+				7DCF644E167CA4BA00B22C57 /* GUIUtils.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +238,9 @@
 				7DCF641D167C7DCC00B22C57 /* Default@2x.png in Resources */,
 				7DCF641F167C7DCC00B22C57 /* Default-568h@2x.png in Resources */,
 				7DCF6425167C7DCC00B22C57 /* ViewController.xib in Resources */,
+				7DCF6447167C9CEC00B22C57 /* thelibrary.jpg in Resources */,
+				7DCF6449167CA03F00B22C57 /* lib.jpg in Resources */,
+				7DCF644B167CA3AC00B22C57 /* logo in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +258,8 @@
 				7DCF6430167C7DE000B22C57 /* HTMLParser.m in Sources */,
 				7DCF643B167C876E00B22C57 /* BookListFetcher.m in Sources */,
 				7DCF643E167C87B700B22C57 /* Book.m in Sources */,
+				7DCF644F167CA4BA00B22C57 /* GUIUtils.m in Sources */,
+				7DCF6452167CAA8400B22C57 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

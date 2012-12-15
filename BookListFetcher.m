@@ -38,7 +38,11 @@
     
     HTMLNode *bodyNode = [parser body];
     HTMLNode *tableNode = [bodyNode findChildWithAttribute:@"id" matchingName:@"short_table" allowPartial:YES];
-
+    
+    if (!tableNode) {
+        //Brak wyników
+        return nil;
+    }
     NSMutableArray *books = [NSMutableArray array];
     
     NSArray *trs = [tableNode findChildTags:@"tr"];
