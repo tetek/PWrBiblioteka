@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBarImageScanner.h"
+#import "ZBarReaderViewController.h"
 
-@interface ViewController : UIViewController <UITextFieldDelegate>
+@interface ViewController : UIViewController <UITextFieldDelegate, ZBarReaderDelegate>
 
 @end

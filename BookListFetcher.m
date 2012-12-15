@@ -19,7 +19,7 @@
     [safeQuery replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, safeQuery.length)];
     query = safeQuery;
     
-    NSString *baseURL = @"http://aleph.bg.pwr.wroc.pl/F/BJU6EDE67CYTAKMUDD6KT7RDMCXS3UKN1IXCFHI6MPSKRCR2KF-28962?func=find-b&REQUEST=";
+    NSString *baseURL = @"http://aleph.bg.pwr.wroc.pl/F?func=find-b&REQUEST=";
     NSString *url = [NSString stringWithFormat:@"%@%@",baseURL,query];
     NSLog(@"%@",url);
     
