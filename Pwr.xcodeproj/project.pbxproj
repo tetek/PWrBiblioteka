@@ -18,6 +18,10 @@
 		7DCF641F167C7DCC00B22C57 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF641E167C7DCC00B22C57 /* Default-568h@2x.png */; };
 		7DCF6422167C7DCC00B22C57 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF6421167C7DCC00B22C57 /* ViewController.m */; };
 		7DCF6425167C7DCC00B22C57 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF6423167C7DCC00B22C57 /* ViewController.xib */; };
+		7DCF642F167C7DE000B22C57 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF642C167C7DE000B22C57 /* HTMLNode.m */; };
+		7DCF6430167C7DE000B22C57 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF642E167C7DE000B22C57 /* HTMLParser.m */; };
+		7DCF6433167C7E2700B22C57 /* NSString+POST.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF6432167C7E2700B22C57 /* NSString+POST.m */; };
+		7DCF6437167C7E9B00B22C57 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF6436167C7E9B00B22C57 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,13 @@
 		7DCF6420167C7DCC00B22C57 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7DCF6421167C7DCC00B22C57 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7DCF6424167C7DCC00B22C57 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		7DCF642B167C7DE000B22C57 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		7DCF642C167C7DE000B22C57 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		7DCF642D167C7DE000B22C57 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		7DCF642E167C7DE000B22C57 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		7DCF6431167C7E2700B22C57 /* NSString+POST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+POST.h"; sourceTree = "<group>"; };
+		7DCF6432167C7E2700B22C57 /* NSString+POST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+POST.m"; sourceTree = "<group>"; };
+		7DCF6436167C7E9B00B22C57 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DCF6437167C7E9B00B22C57 /* libxml2.dylib in Frameworks */,
 				7DCF6409167C7DCC00B22C57 /* UIKit.framework in Frameworks */,
 				7DCF640B167C7DCC00B22C57 /* Foundation.framework in Frameworks */,
 				7DCF640D167C7DCC00B22C57 /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +68,7 @@
 		7DCF63F9167C7DCC00B22C57 = {
 			isa = PBXGroup;
 			children = (
+				7DCF6436167C7E9B00B22C57 /* libxml2.dylib */,
 				7DCF640E167C7DCC00B22C57 /* Pwr */,
 				7DCF6407167C7DCC00B22C57 /* Frameworks */,
 				7DCF6405167C7DCC00B22C57 /* Products */,
@@ -96,6 +109,12 @@
 		7DCF640F167C7DCC00B22C57 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7DCF6431167C7E2700B22C57 /* NSString+POST.h */,
+				7DCF6432167C7E2700B22C57 /* NSString+POST.m */,
+				7DCF642B167C7DE000B22C57 /* HTMLNode.h */,
+				7DCF642C167C7DE000B22C57 /* HTMLNode.m */,
+				7DCF642D167C7DE000B22C57 /* HTMLParser.h */,
+				7DCF642E167C7DE000B22C57 /* HTMLParser.m */,
 				7DCF6410167C7DCC00B22C57 /* Pwr-Info.plist */,
 				7DCF6411167C7DCC00B22C57 /* InfoPlist.strings */,
 				7DCF6414167C7DCC00B22C57 /* main.m */,
@@ -176,6 +195,9 @@
 				7DCF6415167C7DCC00B22C57 /* main.m in Sources */,
 				7DCF6419167C7DCC00B22C57 /* AppDelegate.m in Sources */,
 				7DCF6422167C7DCC00B22C57 /* ViewController.m in Sources */,
+				7DCF642F167C7DE000B22C57 /* HTMLNode.m in Sources */,
+				7DCF6430167C7DE000B22C57 /* HTMLParser.m in Sources */,
+				7DCF6433167C7E2700B22C57 /* NSString+POST.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,8 +276,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pwr/Pwr-Prefix.pch";
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "Pwr/Pwr-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -265,8 +289,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pwr/Pwr-Prefix.pch";
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "Pwr/Pwr-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
