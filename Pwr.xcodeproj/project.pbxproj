@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DBADDF8167DFBF3000B3EC3 /* splash-new.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBADDF7167DFBF3000B3EC3 /* splash-new.png */; };
 		7DCF6409167C7DCC00B22C57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF6408167C7DCC00B22C57 /* UIKit.framework */; };
 		7DCF640B167C7DCC00B22C57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF640A167C7DCC00B22C57 /* Foundation.framework */; };
 		7DCF640D167C7DCC00B22C57 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF640C167C7DCC00B22C57 /* CoreGraphics.framework */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7DBADDF7167DFBF3000B3EC3 /* splash-new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-new.png"; sourceTree = "<group>"; };
 		7DCF6404167C7DCC00B22C57 /* Pwr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pwr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCF6408167C7DCC00B22C57 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7DCF640A167C7DCC00B22C57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -262,6 +264,7 @@
 				7DCF64BD167CE32F00B22C57 /* 75-phone@2x.png */,
 				7DCF64BB167CE28700B22C57 /* icon-small.png */,
 				7DCF64B9167CE00100B22C57 /* icon.png */,
+				7DBADDF7167DFBF3000B3EC3 /* splash-new.png */,
 				7DCF64B7167CDEF100B22C57 /* Default.png */,
 				7DCF64B5167CDEEB00B22C57 /* Default@2x.png */,
 				7DCF64B3167CDD7A00B22C57 /* mapa.png */,
@@ -457,6 +460,7 @@
 				7DCF64BC167CE28700B22C57 /* icon-small.png in Resources */,
 				7DCF64BE167CE32F00B22C57 /* 75-phone@2x.png in Resources */,
 				7DCF64C2167CE3E700B22C57 /* 18-envelope@2x.png in Resources */,
+				7DBADDF8167DFBF3000B3EC3 /* splash-new.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +622,7 @@
 				7DCF642A167C7DCC00B22C57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

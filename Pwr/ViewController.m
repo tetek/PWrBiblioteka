@@ -17,9 +17,11 @@
 @interface ViewController ()
 
 @property (nonatomic, assign) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, assign) IBOutlet UIImageView *logo;
 @property (nonatomic, assign) IBOutlet UITextField *textField;
 @property (nonatomic, assign) IBOutlet UIButton *scanButton;
-@property (nonatomic, assign) IBOutlet UIButton *infoButton;
+@property (nonatomic, assign) IBOutlet UIButton *callButton;
+@property (nonatomic, assign) IBOutlet UIButton *mailButton;
 
 @property (nonatomic, retain) MBProgressHUD *HUD;
 @end
@@ -41,6 +43,34 @@
     //Animate background
     [self.navigationController setNavigationBarHidden:YES];
 
+    
+}
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [UIView animateWithDuration:2.0 animations:^{
+        CGRect frame = _logo.frame;
+        frame.origin.y = 30;
+        _logo.frame = frame;
+                    
+    }];
+    [UIView animateWithDuration:4.0 animations:^{
+        
+        _textField.alpha = 1.0;
+        _scanButton.alpha = 1.0;
+        
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:1.0 animations:^{
+            
+            _callButton.alpha = 1.0;
+            _mailButton.alpha = 1.0;
+            
+        } completion:^(BOOL finished) {
+            [self backgroundAnimation];
+        }];
+    }];
+    
+}
+- (void) backgroundAnimation{
     [UIView animateWithDuration:10.0
                           delay:0.0
                         options: UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse
@@ -50,9 +80,8 @@
                      completion:^(BOOL finished){
                          _backgroundImageView.center = self.view.center;
                      }];
-    
-}
 
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [_textField resignFirstResponder];
     [self searchForBookWithQuery:textField.text];
@@ -112,6 +141,7 @@
     }
     
     @catch (NSException *exception) {
+        [_HUD hide:YES];
         [[[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
         return;
     }
