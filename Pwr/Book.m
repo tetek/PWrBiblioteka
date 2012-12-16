@@ -17,6 +17,13 @@
 - (NSString*)description{
     return [NSString stringWithFormat:@"%@  : %@  : %@",_author, _title, _availablePlaces];
 }
+- (int)countAvailability{
+    int sum = 0;
+    for (NSNumber *number in _availablePlaces.allValues) {
+        sum += [number intValue];
+    }
+    return sum;
+}
 - (void)dealloc
 {
     self.title = nil;

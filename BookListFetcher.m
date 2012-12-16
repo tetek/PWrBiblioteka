@@ -14,7 +14,7 @@
 
 + (NSArray*)fetchBooksForQuery:(NSString*)query{
     
-    //remove spaces from query
+    //replace spaces with +
     NSMutableString *safeQuery = [query mutableCopy];
     [safeQuery replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, safeQuery.length)];
     query = safeQuery;
@@ -23,16 +23,19 @@
     NSString *url = [NSString stringWithFormat:@"%@%@",baseURL,query];
     NSLog(@"%@",url);
     
-    
-    NSString *html = [NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:nil];
+    NSError *downloadError = nil;
+    NSString *html = [NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:&downloadError];
    
+    if (downloadError) {
+        @throw [NSException exceptionWithName:@"Connection error" reason:@"Couldn't load results" userInfo:nil];
+    }
     
     NSError *error = nil;
     
     HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
     
     if (error) {
-        NSLog(@"Error: %@", error);
+        @throw [NSException exceptionWithName:@"Parsing error" reason:@"Couldn't parse results" userInfo:nil];
         return nil;
     }
     

@@ -12,5 +12,5 @@
 
 + (void)setupTextField:(UITextField*)textField;
 + (void)setupButton:(UIButton*)button;
-
++ (UIBarButtonItem*)makeBackButtonforNavigationController:(UINavigationController *)navigationController;
 @end

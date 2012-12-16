@@ -40,6 +40,23 @@
 		7DCF648E167CB5F800B22C57 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF648D167CB5F800B22C57 /* MBProgressHUD.m */; };
 		7DCF6496167CB9E300B22C57 /* BookListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF6494167CB9E300B22C57 /* BookListViewController.m */; };
 		7DCF6497167CB9E300B22C57 /* BookListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF6495167CB9E300B22C57 /* BookListViewController.xib */; };
+		7DCF649B167CBAC800B22C57 /* BookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF649A167CBAC800B22C57 /* BookCell.m */; };
+		7DCF649D167CBAD600B22C57 /* BookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF649C167CBAD600B22C57 /* BookCell.xib */; };
+		7DCF64A4167CC86A00B22C57 /* back-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64A3167CC86A00B22C57 /* back-arrow@2x.png */; };
+		7DCF64A6167CCB8200B22C57 /* white-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64A5167CCB8200B22C57 /* white-circle.png */; };
+		7DCF64AA167CCD0B00B22C57 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF64A8167CCD0A00B22C57 /* LocationsViewController.m */; };
+		7DCF64AB167CCD0B00B22C57 /* LocationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64A9167CCD0A00B22C57 /* LocationsViewController.xib */; };
+		7DCF64AD167CCFC400B22C57 /* mapa_campus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64AC167CCFC400B22C57 /* mapa_campus.jpg */; };
+		7DCF64B0167CD4F400B22C57 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF64AF167CD4F300B22C57 /* LocationCell.m */; };
+		7DCF64B2167CD50900B22C57 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64B1167CD50800B22C57 /* LocationCell.xib */; };
+		7DCF64B4167CDD7A00B22C57 /* mapa.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64B3167CDD7A00B22C57 /* mapa.png */; };
+		7DCF64B6167CDEEB00B22C57 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64B5167CDEEB00B22C57 /* Default@2x.png */; };
+		7DCF64B8167CDEF100B22C57 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64B7167CDEF100B22C57 /* Default.png */; };
+		7DCF64BA167CE00100B22C57 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64B9167CE00100B22C57 /* icon.png */; };
+		7DCF64BC167CE28700B22C57 /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64BB167CE28700B22C57 /* icon-small.png */; };
+		7DCF64BE167CE32F00B22C57 /* 75-phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64BD167CE32F00B22C57 /* 75-phone@2x.png */; };
+		7DCF64C2167CE3E700B22C57 /* 18-envelope@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64C1167CE3E700B22C57 /* 18-envelope@2x.png */; };
+		7DCF64C4167CE56100B22C57 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF64C3167CE56100B22C57 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +125,26 @@
 		7DCF6493167CB9E300B22C57 /* BookListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookListViewController.h; sourceTree = "<group>"; };
 		7DCF6494167CB9E300B22C57 /* BookListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListViewController.m; sourceTree = "<group>"; };
 		7DCF6495167CB9E300B22C57 /* BookListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookListViewController.xib; sourceTree = "<group>"; };
+		7DCF6499167CBAC800B22C57 /* BookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCell.h; sourceTree = "<group>"; };
+		7DCF649A167CBAC800B22C57 /* BookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCell.m; sourceTree = "<group>"; };
+		7DCF649C167CBAD600B22C57 /* BookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookCell.xib; sourceTree = "<group>"; };
+		7DCF64A3167CC86A00B22C57 /* back-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow@2x.png"; sourceTree = "<group>"; };
+		7DCF64A5167CCB8200B22C57 /* white-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-circle.png"; sourceTree = "<group>"; };
+		7DCF64A7167CCD0A00B22C57 /* LocationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
+		7DCF64A8167CCD0A00B22C57 /* LocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
+		7DCF64A9167CCD0A00B22C57 /* LocationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationsViewController.xib; sourceTree = "<group>"; };
+		7DCF64AC167CCFC400B22C57 /* mapa_campus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mapa_campus.jpg; sourceTree = "<group>"; };
+		7DCF64AE167CD4F300B22C57 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		7DCF64AF167CD4F300B22C57 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
+		7DCF64B1167CD50800B22C57 /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
+		7DCF64B3167CDD7A00B22C57 /* mapa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapa.png; sourceTree = "<group>"; };
+		7DCF64B5167CDEEB00B22C57 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		7DCF64B7167CDEF100B22C57 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		7DCF64B9167CE00100B22C57 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		7DCF64BB167CE28700B22C57 /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small.png"; path = "../icon-small.png"; sourceTree = "<group>"; };
+		7DCF64BD167CE32F00B22C57 /* 75-phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "75-phone@2x.png"; sourceTree = "<group>"; };
+		7DCF64C1167CE3E700B22C57 /* 18-envelope@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "18-envelope@2x.png"; sourceTree = "<group>"; };
+		7DCF64C3167CE56100B22C57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DCF64C4167CE56100B22C57 /* MessageUI.framework in Frameworks */,
 				7DCF648B167CB59F00B22C57 /* CoreVideo.framework in Frameworks */,
 				7DCF6489167CB59B00B22C57 /* CoreMedia.framework in Frameworks */,
 				7DCF6487167CB59000B22C57 /* QuartzCore.framework in Frameworks */,
@@ -151,6 +189,7 @@
 		7DCF6407167C7DCC00B22C57 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7DCF64C3167CE56100B22C57 /* MessageUI.framework */,
 				7DCF6482167CB4B600B22C57 /* libiconv.dylib */,
 				7DCF6480167CB47900B22C57 /* libzbar.a */,
 				7DCF648A167CB59F00B22C57 /* CoreVideo.framework */,
@@ -168,6 +207,7 @@
 		7DCF640E167C7DCC00B22C57 /* Pwr */ = {
 			isa = PBXGroup;
 			children = (
+				7DCF6498167CBAAB00B22C57 /* View */,
 				7DCF6492167CB9C900B22C57 /* Controllers */,
 				7DCF644C167CA4AF00B22C57 /* Utils */,
 				7DCF643F167C947B00B22C57 /* Model */,
@@ -218,6 +258,16 @@
 		7DCF6445167C9CE000B22C57 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7DCF64C1167CE3E700B22C57 /* 18-envelope@2x.png */,
+				7DCF64BD167CE32F00B22C57 /* 75-phone@2x.png */,
+				7DCF64BB167CE28700B22C57 /* icon-small.png */,
+				7DCF64B9167CE00100B22C57 /* icon.png */,
+				7DCF64B7167CDEF100B22C57 /* Default.png */,
+				7DCF64B5167CDEEB00B22C57 /* Default@2x.png */,
+				7DCF64B3167CDD7A00B22C57 /* mapa.png */,
+				7DCF64AC167CCFC400B22C57 /* mapa_campus.jpg */,
+				7DCF64A5167CCB8200B22C57 /* white-circle.png */,
+				7DCF64A3167CC86A00B22C57 /* back-arrow@2x.png */,
 				7DCF6448167CA03F00B22C57 /* lib.jpg */,
 				7DCF644A167CA3AC00B22C57 /* logo */,
 				7DCF6446167C9CEC00B22C57 /* thelibrary.jpg */,
@@ -307,11 +357,27 @@
 				7DCF6420167C7DCC00B22C57 /* ViewController.h */,
 				7DCF6421167C7DCC00B22C57 /* ViewController.m */,
 				7DCF6423167C7DCC00B22C57 /* ViewController.xib */,
+				7DCF64A7167CCD0A00B22C57 /* LocationsViewController.h */,
+				7DCF64A8167CCD0A00B22C57 /* LocationsViewController.m */,
+				7DCF64A9167CCD0A00B22C57 /* LocationsViewController.xib */,
 				7DCF6493167CB9E300B22C57 /* BookListViewController.h */,
 				7DCF6494167CB9E300B22C57 /* BookListViewController.m */,
 				7DCF6495167CB9E300B22C57 /* BookListViewController.xib */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7DCF6498167CBAAB00B22C57 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7DCF64AE167CD4F300B22C57 /* LocationCell.h */,
+				7DCF64AF167CD4F300B22C57 /* LocationCell.m */,
+				7DCF64B1167CD50800B22C57 /* LocationCell.xib */,
+				7DCF6499167CBAC800B22C57 /* BookCell.h */,
+				7DCF649A167CBAC800B22C57 /* BookCell.m */,
+				7DCF649C167CBAD600B22C57 /* BookCell.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,6 +444,19 @@
 				7DCF6474167CB26500B22C57 /* zbar-helpicons.png in Resources */,
 				7DCF6475167CB26500B22C57 /* zbar-samples.png in Resources */,
 				7DCF6497167CB9E300B22C57 /* BookListViewController.xib in Resources */,
+				7DCF649D167CBAD600B22C57 /* BookCell.xib in Resources */,
+				7DCF64A4167CC86A00B22C57 /* back-arrow@2x.png in Resources */,
+				7DCF64A6167CCB8200B22C57 /* white-circle.png in Resources */,
+				7DCF64AB167CCD0B00B22C57 /* LocationsViewController.xib in Resources */,
+				7DCF64AD167CCFC400B22C57 /* mapa_campus.jpg in Resources */,
+				7DCF64B2167CD50900B22C57 /* LocationCell.xib in Resources */,
+				7DCF64B4167CDD7A00B22C57 /* mapa.png in Resources */,
+				7DCF64B6167CDEEB00B22C57 /* Default@2x.png in Resources */,
+				7DCF64B8167CDEF100B22C57 /* Default.png in Resources */,
+				7DCF64BA167CE00100B22C57 /* icon.png in Resources */,
+				7DCF64BC167CE28700B22C57 /* icon-small.png in Resources */,
+				7DCF64BE167CE32F00B22C57 /* 75-phone@2x.png in Resources */,
+				7DCF64C2167CE3E700B22C57 /* 18-envelope@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +477,9 @@
 				7DCF644F167CA4BA00B22C57 /* GUIUtils.m in Sources */,
 				7DCF648E167CB5F800B22C57 /* MBProgressHUD.m in Sources */,
 				7DCF6496167CB9E300B22C57 /* BookListViewController.m in Sources */,
+				7DCF649B167CBAC800B22C57 /* BookCell.m in Sources */,
+				7DCF64AA167CCD0B00B22C57 /* LocationsViewController.m in Sources */,
+				7DCF64B0167CD4F400B22C57 /* LocationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

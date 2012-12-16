@@ -12,6 +12,8 @@
 
 +book;
 
+- (int)countAvailability;
+
 @property(nonatomic, retain) NSString *title;
 @property(nonatomic, retain) NSString *author;
 @property(nonatomic, retain) NSDictionary *availablePlaces;

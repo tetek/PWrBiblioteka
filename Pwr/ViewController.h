@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ZBarImageScanner.h"
 #import "ZBarReaderViewController.h"
-
-@interface ViewController : UIViewController <UITextFieldDelegate, ZBarReaderDelegate>
+#import <MessageUI/MFMailComposeViewController.h>
+@interface ViewController : UIViewController <UITextFieldDelegate, ZBarReaderDelegate, MFMailComposeViewControllerDelegate>
 
 @end

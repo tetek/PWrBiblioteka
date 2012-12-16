@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "BookListFetcher.h"
 #import "ViewController.h"
 
 @implementation AppDelegate
@@ -21,10 +21,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSArray *results = [BookListFetcher fetchBooksForQuery:@"analiza"];
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
-    self.window.rootViewController = self.viewController;
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:_viewController] autorelease];
+    self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     return YES;
 }

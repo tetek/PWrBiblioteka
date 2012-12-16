@@ -12,6 +12,7 @@
 #import "Book.h"
 #import "GUIUtils.h"
 #import "MBProgressHUD.h"
+#import "BookListViewController.h"
 
 @interface ViewController ()
 
@@ -38,13 +39,17 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     //Animate background
+    [self.navigationController setNavigationBarHidden:YES];
+
     [UIView animateWithDuration:10.0
                           delay:0.0
                         options: UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse
                      animations:^{
                          _backgroundImageView.center = CGPointMake(_backgroundImageView.center.x + 50,_backgroundImageView.center.y+50);
                      }
-                     completion:NULL];
+                     completion:^(BOOL finished){
+                         _backgroundImageView.center = self.view.center;
+                     }];
     
 }
 
@@ -100,10 +105,68 @@
 }
 - (void) searchForBookWithQuery:(NSString*)query{
     [_HUD show:YES];
-    NSArray *books = [BookListFetcher fetchBooksForQuery:query];
+    NSArray *books;
+    @try {
+        
+        books = [BookListFetcher fetchBooksForQuery:query];
+    }
+    
+    @catch (NSException *exception) {
+        [[[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+        return;
+    }
+    
     for (Book *book in books) {
         NSLog(@"%@",book);
     }
+    
     [_HUD hide:YES];
+    if (books.count > 0) {
+        BookListViewController *bookList = [[[BookListViewController alloc] initWithBooks:books] autorelease];
+        [self.navigationController pushViewController:bookList animated:YES];
+    }
+    else{
+        [[[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+    }
 }
+
+
+- (IBAction)sendMail:(id)sender{
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+        controller.mailComposeDelegate = self;
+        [controller setToRecipients:[NSArray arrayWithObject:@"sekrbg@pwr.wroc.pl"]];
+        [self presentViewController:controller animated:YES completion:Nil];
+        [controller release];
+    }
+    else {
+        UIAlertView *Notpermitted=[[UIAlertView alloc] initWithTitle:@"Uwaga" message:@"Prawdopodobnie nie masz skonfigurowanej żadnej skrzynki. Przytrzymaj aby skopiować adres email." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [Notpermitted show];
+        [Notpermitted release];
+    }
+
+}
+- (IBAction)call:(id)sender{
+    UIDevice *device = [UIDevice currentDevice];
+    if ([[device model] isEqualToString:@"iPhone"] ) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:713202331"]]];
+    }
+    else {
+        UIAlertView *Notpermitted=[[UIAlertView alloc] initWithTitle:@"Uwaga" message:@"Twoje urządzenie nie nie potrafi wykonywać połączeń." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [Notpermitted show];
+        [Notpermitted release];
+    }
+
+}
+#pragma mark Mail Compose delegate
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error;
+{
+    if (result == MFMailComposeResultSent) {
+        NSLog(@"It's away!");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
