@@ -77,14 +77,14 @@
 		7DC96C4D167E056F006E9EA7 /* BookListFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookListFetcher.h; sourceTree = "<group>"; };
 		7DC96C4E167E056F006E9EA7 /* BookListFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListFetcher.m; sourceTree = "<group>"; };
 		7DC96C50167E0585006E9EA7 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
-		7DCF6404167C7DCC00B22C57 /* Pwr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pwr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DCF6404167C7DCC00B22C57 /* PWrBiblioteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PWrBiblioteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCF6408167C7DCC00B22C57 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7DCF640A167C7DCC00B22C57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7DCF640C167C7DCC00B22C57 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		7DCF6410167C7DCC00B22C57 /* Pwr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pwr-Info.plist"; sourceTree = "<group>"; };
+		7DCF6410167C7DCC00B22C57 /* PWrBiblioteka-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PWrBiblioteka-Info.plist"; sourceTree = "<group>"; };
 		7DCF6412167C7DCC00B22C57 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7DCF6414167C7DCC00B22C57 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7DCF6416167C7DCC00B22C57 /* Pwr-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pwr-Prefix.pch"; sourceTree = "<group>"; };
+		7DCF6416167C7DCC00B22C57 /* PWrBiblioteka-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWrBiblioteka-Prefix.pch"; sourceTree = "<group>"; };
 		7DCF6417167C7DCC00B22C57 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7DCF6418167C7DCC00B22C57 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7DCF6420167C7DCC00B22C57 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 		7DCF6405167C7DCC00B22C57 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7DCF6404167C7DCC00B22C57 /* Pwr.app */,
+				7DCF6404167C7DCC00B22C57 /* PWrBiblioteka.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,10 +241,10 @@
 		7DCF640F167C7DCC00B22C57 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7DCF6410167C7DCC00B22C57 /* Pwr-Info.plist */,
+				7DCF6410167C7DCC00B22C57 /* PWrBiblioteka-Info.plist */,
 				7DCF6411167C7DCC00B22C57 /* InfoPlist.strings */,
 				7DCF6414167C7DCC00B22C57 /* main.m */,
-				7DCF6416167C7DCC00B22C57 /* Pwr-Prefix.pch */,
+				7DCF6416167C7DCC00B22C57 /* PWrBiblioteka-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -380,9 +380,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7DCF6403167C7DCC00B22C57 /* Pwr */ = {
+		7DCF6403167C7DCC00B22C57 /* PWrBiblioteka */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7DCF6428167C7DCC00B22C57 /* Build configuration list for PBXNativeTarget "Pwr" */;
+			buildConfigurationList = 7DCF6428167C7DCC00B22C57 /* Build configuration list for PBXNativeTarget "PWrBiblioteka" */;
 			buildPhases = (
 				7DCF6400167C7DCC00B22C57 /* Sources */,
 				7DCF6401167C7DCC00B22C57 /* Frameworks */,
@@ -392,9 +392,9 @@
 			);
 			dependencies = (
 			);
-			name = Pwr;
+			name = PWrBiblioteka;
 			productName = Pwr;
-			productReference = 7DCF6404167C7DCC00B22C57 /* Pwr.app */;
+			productReference = 7DCF6404167C7DCC00B22C57 /* PWrBiblioteka.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -406,7 +406,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = tetek;
 			};
-			buildConfigurationList = 7DCF63FE167C7DCC00B22C57 /* Build configuration list for PBXProject "Pwr" */;
+			buildConfigurationList = 7DCF63FE167C7DCC00B22C57 /* Build configuration list for PBXProject "PWrBiblioteka" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -418,7 +418,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7DCF6403167C7DCC00B22C57 /* Pwr */,
+				7DCF6403167C7DCC00B22C57 /* PWrBiblioteka */,
 			);
 		};
 /* End PBXProject section */
@@ -557,15 +557,15 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pwr/Pwr-Prefix.pch";
+				GCC_PREFIX_HEADER = "Pwr/PWrBiblioteka-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
-				INFOPLIST_FILE = "Pwr/Pwr-Info.plist";
+				INFOPLIST_FILE = "Pwr/PWrBiblioteka-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Pwr/ZBarSDK\"",
 					"\"$(SRCROOT)\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PWrBiblioteka;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -580,15 +580,15 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pwr/Pwr-Prefix.pch";
+				GCC_PREFIX_HEADER = "Pwr/PWrBiblioteka-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
-				INFOPLIST_FILE = "Pwr/Pwr-Info.plist";
+				INFOPLIST_FILE = "Pwr/PWrBiblioteka-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Pwr/ZBarSDK\"",
 					"\"$(SRCROOT)\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PWrBiblioteka;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -598,7 +598,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7DCF63FE167C7DCC00B22C57 /* Build configuration list for PBXProject "Pwr" */ = {
+		7DCF63FE167C7DCC00B22C57 /* Build configuration list for PBXProject "PWrBiblioteka" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7DCF6426167C7DCC00B22C57 /* Debug */,
@@ -607,7 +607,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7DCF6428167C7DCC00B22C57 /* Build configuration list for PBXNativeTarget "Pwr" */ = {
+		7DCF6428167C7DCC00B22C57 /* Build configuration list for PBXNativeTarget "PWrBiblioteka" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7DCF6429167C7DCC00B22C57 /* Debug */,
