@@ -56,6 +56,7 @@
 		7DCF64B0167CD4F400B22C57 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF64AF167CD4F300B22C57 /* LocationCell.m */; };
 		7DCF64B2167CD50900B22C57 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64B1167CD50800B22C57 /* LocationCell.xib */; };
 		7DCF64C4167CE56100B22C57 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF64C3167CE56100B22C57 /* MessageUI.framework */; };
+		AC6EE56D169B3AA000F40C08 /* red-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6EE56C169B3AA000F40C08 /* red-circle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +144,7 @@
 		7DCF64AF167CD4F300B22C57 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		7DCF64B1167CD50800B22C57 /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
 		7DCF64C3167CE56100B22C57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		AC6EE56C169B3AA000F40C08 /* red-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-circle.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				7DC96C3A167E0557006E9EA7 /* mapa_campus.jpg */,
 				7DC96C3B167E0557006E9EA7 /* splash-new.png */,
 				7DC96C3C167E0557006E9EA7 /* thelibrary.jpg */,
+				AC6EE56C169B3AA000F40C08 /* red-circle.png */,
 				7DC96C3D167E0557006E9EA7 /* white-circle.png */,
 			);
 			path = Graphics;
@@ -453,6 +456,7 @@
 				7DC96C4A167E0557006E9EA7 /* splash-new.png in Resources */,
 				7DC96C4B167E0557006E9EA7 /* thelibrary.jpg in Resources */,
 				7DC96C4C167E0557006E9EA7 /* white-circle.png in Resources */,
+				AC6EE56D169B3AA000F40C08 /* red-circle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
