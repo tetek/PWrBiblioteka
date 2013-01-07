@@ -64,6 +64,7 @@
     cell.availability.text = [NSString stringWithFormat:@"%d",number.intValue];
     cell.ending.text = number.intValue > 1 ? @"sztuki" : number.intValue == 1 ? @"sztuka" : @"sztuk";
     cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
 }

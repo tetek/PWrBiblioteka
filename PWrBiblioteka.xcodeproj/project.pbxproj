@@ -558,7 +558,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pwr/PWrBiblioteka-Prefix.pch";
-				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				HEADER_SEARCH_PATHS = (
+					"$SDK_DIR/usr/include/libxml2/**",
+					"/usr/include/libxml2/**",
+				);
 				INFOPLIST_FILE = "Pwr/PWrBiblioteka-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -581,7 +584,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pwr/PWrBiblioteka-Prefix.pch";
-				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				HEADER_SEARCH_PATHS = (
+					"$SDK_DIR/usr/include/libxml2/**",
+					"/usr/include/libxml2/**",
+				);
 				INFOPLIST_FILE = "Pwr/PWrBiblioteka-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
