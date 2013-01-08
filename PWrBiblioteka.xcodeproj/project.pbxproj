@@ -57,6 +57,13 @@
 		7DCF64B2167CD50900B22C57 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64B1167CD50800B22C57 /* LocationCell.xib */; };
 		7DCF64C4167CE56100B22C57 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF64C3167CE56100B22C57 /* MessageUI.framework */; };
 		AC6EE56D169B3AA000F40C08 /* red-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6EE56C169B3AA000F40C08 /* red-circle.png */; };
+		AC912203169B72F900F06E6B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC912202169B72F900F06E6B /* CoreLocation.framework */; };
+		AC912205169B72FF00F06E6B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC912204169B72FF00F06E6B /* MapKit.framework */; };
+		AC912208169B73AC00F06E6B /* Library.m in Sources */ = {isa = PBXBuildFile; fileRef = AC912207169B73AC00F06E6B /* Library.m */; };
+		AC91220C169B947D00F06E6B /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AC91220B169B947D00F06E6B /* NSString+URLEncoding.m */; };
+		AC912212169C4A9700F06E6B /* LibraryInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC912211169C4A9700F06E6B /* LibraryInfoViewController.xib */; };
+		AC912215169C4B0700F06E6B /* LibraryInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC912214169C4B0700F06E6B /* LibraryInfoViewController.m */; };
+		AC912218169C878200F06E6B /* LibrariesFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AC912217169C878200F06E6B /* LibrariesFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +152,17 @@
 		7DCF64B1167CD50800B22C57 /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
 		7DCF64C3167CE56100B22C57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		AC6EE56C169B3AA000F40C08 /* red-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-circle.png"; sourceTree = "<group>"; };
+		AC912202169B72F900F06E6B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AC912204169B72FF00F06E6B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AC912206169B73AC00F06E6B /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
+		AC912207169B73AC00F06E6B /* Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Library.m; sourceTree = "<group>"; };
+		AC91220A169B947D00F06E6B /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		AC91220B169B947D00F06E6B /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		AC912211169C4A9700F06E6B /* LibraryInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryInfoViewController.xib; sourceTree = "<group>"; };
+		AC912213169C4B0700F06E6B /* LibraryInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryInfoViewController.h; sourceTree = "<group>"; };
+		AC912214169C4B0700F06E6B /* LibraryInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryInfoViewController.m; sourceTree = "<group>"; };
+		AC912216169C878100F06E6B /* LibrariesFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibrariesFetcher.h; sourceTree = "<group>"; };
+		AC912217169C878200F06E6B /* LibrariesFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibrariesFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +180,8 @@
 				7DCF6409167C7DCC00B22C57 /* UIKit.framework in Frameworks */,
 				7DCF640B167C7DCC00B22C57 /* Foundation.framework in Frameworks */,
 				7DCF640D167C7DCC00B22C57 /* CoreGraphics.framework in Frameworks */,
+				AC912205169B72FF00F06E6B /* MapKit.framework in Frameworks */,
+				AC912203169B72F900F06E6B /* CoreLocation.framework in Frameworks */,
 				7DC96C51167E0585006E9EA7 /* libzbar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +232,8 @@
 		7DCF6407167C7DCC00B22C57 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC912204169B72FF00F06E6B /* MapKit.framework */,
+				AC912202169B72F900F06E6B /* CoreLocation.framework */,
 				7DCF64C3167CE56100B22C57 /* MessageUI.framework */,
 				7DCF6482167CB4B600B22C57 /* libiconv.dylib */,
 				7DCF648A167CB59F00B22C57 /* CoreVideo.framework */,
@@ -266,10 +288,14 @@
 		7DCF643F167C947B00B22C57 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7DC96C4D167E056F006E9EA7 /* BookListFetcher.h */,
-				7DC96C4E167E056F006E9EA7 /* BookListFetcher.m */,
 				7DCF643C167C87B700B22C57 /* Book.h */,
 				7DCF643D167C87B700B22C57 /* Book.m */,
+				7DC96C4D167E056F006E9EA7 /* BookListFetcher.h */,
+				7DC96C4E167E056F006E9EA7 /* BookListFetcher.m */,
+				AC912216169C878100F06E6B /* LibrariesFetcher.h */,
+				AC912217169C878200F06E6B /* LibrariesFetcher.m */,
+				AC912206169B73AC00F06E6B /* Library.h */,
+				AC912207169B73AC00F06E6B /* Library.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -277,6 +303,8 @@
 		7DCF644C167CA4AF00B22C57 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AC91220A169B947D00F06E6B /* NSString+URLEncoding.h */,
+				AC91220B169B947D00F06E6B /* NSString+URLEncoding.m */,
 				7DCF6438167C82B700B22C57 /* HTMLParser */,
 				7DCF6453167CB26500B22C57 /* ZBarSDK */,
 				7DCF644D167CA4BA00B22C57 /* GUIUtils.h */,
@@ -363,6 +391,9 @@
 				7DCF6493167CB9E300B22C57 /* BookListViewController.h */,
 				7DCF6494167CB9E300B22C57 /* BookListViewController.m */,
 				7DCF6495167CB9E300B22C57 /* BookListViewController.xib */,
+				AC912211169C4A9700F06E6B /* LibraryInfoViewController.xib */,
+				AC912213169C4B0700F06E6B /* LibraryInfoViewController.h */,
+				AC912214169C4B0700F06E6B /* LibraryInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -457,6 +488,7 @@
 				7DC96C4B167E0557006E9EA7 /* thelibrary.jpg in Resources */,
 				7DC96C4C167E0557006E9EA7 /* white-circle.png in Resources */,
 				AC6EE56D169B3AA000F40C08 /* red-circle.png in Resources */,
+				AC912212169C4A9700F06E6B /* LibraryInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +512,10 @@
 				7DCF64AA167CCD0B00B22C57 /* LocationsViewController.m in Sources */,
 				7DCF64B0167CD4F400B22C57 /* LocationCell.m in Sources */,
 				7DC96C4F167E056F006E9EA7 /* BookListFetcher.m in Sources */,
+				AC912208169B73AC00F06E6B /* Library.m in Sources */,
+				AC91220C169B947D00F06E6B /* NSString+URLEncoding.m in Sources */,
+				AC912215169C4B0700F06E6B /* LibraryInfoViewController.m in Sources */,
+				AC912218169C878200F06E6B /* LibrariesFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +562,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -546,7 +582,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

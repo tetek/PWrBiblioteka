@@ -10,11 +10,15 @@
 #import "BookCell.h"
 #import "GUIUtils.h"
 #import "LocationsViewController.h"
+#import "BookListFetcher.h"
+#import "LibrariesFetcher.h"
+#import "MBProgressHUD.h"
 @interface BookListViewController ()
 
 
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSArray *books;
+@property (nonatomic, retain) MBProgressHUD *HUD;
 @end
 
 @implementation BookListViewController
@@ -39,6 +43,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.HUD = [[[MBProgressHUD alloc] initWithView:self.view] autorelease];
+    [self.view addSubview:_HUD];
+    
     self.title = @"Wyniki wyszukiwania";
     [_tableView registerNib:[UINib nibWithNibName:@"BookCell" bundle:nil] forCellReuseIdentifier:@"BookCellIdentifier"];
 //    _tableView.backgroundColor = [UIColor clearColor];
@@ -63,8 +71,49 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     Book *book = _books[indexPath.row];
-    LocationsViewController *locations = [[[LocationsViewController alloc] initWithPlaces:book.availablePlaces] autorelease];
-    [self.navigationController pushViewController:locations animated:YES];
+    [self searchForLibraryWithName:book];
+}
+
+
+- (void) searchForLibraryWithName:(Book*)book{
+    [self.HUD showWhileExecuting:@selector(searchForLibraryWithNameNoThread:) onTarget:self withObject:book animated:YES];
+}
+- (void) searchForLibraryWithNameNoThread:(Book *)book{
+    
+    
+    NSMutableArray *places = [NSMutableArray array];
+    NSMutableDictionary * placesFetched = [NSMutableDictionary dictionary];
+    @try {
+        for(NSArray * placeName in [book.availablePlaces allKeys])
+        {
+            NSString * uniq = [placeName objectAtIndex:0];
+            if([placesFetched objectForKey:uniq]==nil)
+            {
+                Library * lib = [LibrariesFetcher fetchLibraryForName:uniq];
+                NSString * count = [book.availablePlaces objectForKey:placeName];
+                lib.uniq = [placeName objectAtIndex:0];
+                lib.available = [NSNumber numberWithInt:[count integerValue]];
+                lib.shorttitle = [placeName objectAtIndex:1];
+                [placesFetched setObject:lib forKey:uniq];
+            }
+            [places addObject:uniq];
+        }
+    }
+    
+    @catch (NSException *exception) {
+        [_HUD hide:YES];
+        [[[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+        return;
+    }
+    dispatch_sync(dispatch_get_main_queue(), [[^{
+        if (places) {
+            LocationsViewController *locations = [[[LocationsViewController alloc] initWithPlaces:placesFetched AndTableData:places] autorelease];
+            [self.navigationController pushViewController:locations animated:YES];
+        }
+        else{
+            [[[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+        }
+    } copy]  autorelease]);
 }
 - (void)dealloc
 {
