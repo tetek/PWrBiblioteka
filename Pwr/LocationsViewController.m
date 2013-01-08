@@ -19,7 +19,8 @@
 
 @property (nonatomic, assign) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
-@property (retain, nonatomic) IBOutlet MKMapView *mapView;
+@property (retain, nonatomic) IBOutlet MKMapView *mapView; // @bartek, czy ten retain jest ci potrzebny? skoro mapview jest cały czas dodany do widoku to nie ma potrzebny ręcznie go retainować. i pisz najpierw atomicznośc a potem trwałość
+
 @property (nonatomic, retain) NSDictionary *placesFetched;
 @property (nonatomic, retain) NSArray *tableData;
 @end
@@ -29,7 +30,7 @@
 - (id) initWithPlaces:(NSDictionary*)arr AndTableData:(NSArray *) data {
     self = [super initWithNibName:@"LocationsViewController" bundle:nil];
     if (self) {
-        self.placesFetched = [arr retain];
+        self.placesFetched = [arr retain]; //@bartek, retainy powodują wyciek pamięci
         self.tableData = [data retain];
     }
     return self;

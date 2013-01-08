@@ -156,6 +156,9 @@
     /*for (Book *book in books) {
         NSLog(@"%@",book);
      }*/
+    
+
+    //@bartek, co tu zrobiłeś to już w ogóle nie rozumiem
     dispatch_sync(dispatch_get_main_queue(), [[^{
         if (books.count > 0) {
             BookListViewController *bookList = [[[BookListViewController alloc] initWithBooks:books] autorelease];

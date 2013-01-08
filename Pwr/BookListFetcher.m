@@ -16,9 +16,10 @@
 + (NSArray*)fetchBooksForQuery:(NSString*)query{
     
     //replace spaces with +
-    NSMutableString *safeQuery = [query mutableCopy];
+    NSMutableString *safeQuery = [[query mutableCopy] autorelease]; // @bartek, brakowało autorelease, to chyba ja zapomniałem akurat;]
     [safeQuery replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, safeQuery.length)];
     query = safeQuery;
+    
     
     NSString *baseURL = @"http://aleph.bg.pwr.wroc.pl/F?func=find-b&REQUEST=";
     NSString *url = [NSString stringWithFormat:@"%@%@",baseURL,query];    
