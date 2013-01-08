@@ -53,7 +53,9 @@
         _logo.frame = frame;
                     
     }];
-    [UIView animateWithDuration:4.0 animations:^{
+    _textField.hidden = NO;
+    _textField.alpha = 0.01;
+    [UIView animateWithDuration:2.0 animations:^{
         
         _textField.alpha = 1.0;
         _scanButton.alpha = 1.0;
@@ -132,8 +134,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (void) searchForBookWithQuery:(NSString*)query{
-    [_HUD show:YES];
+    [self.HUD showWhileExecuting:@selector(searchForBookWithQueryNoThread:) onTarget:self withObject:query animated:YES];
+}
+- (void) searchForBookWithQueryNoThread:(NSString*)query{
+        
+        
     NSArray *books;
     @try {
         
@@ -146,18 +153,19 @@
         return;
     }
     
-    for (Book *book in books) {
+    /*for (Book *book in books) {
         NSLog(@"%@",book);
-    }
+     }*/
+    dispatch_sync(dispatch_get_main_queue(), [[^{
+        if (books.count > 0) {
+            BookListViewController *bookList = [[[BookListViewController alloc] initWithBooks:books] autorelease];
+            [self.navigationController pushViewController:bookList animated:YES];
+        }
+        else{
+            [[[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+        }
+    } copy]  autorelease]);
     
-    [_HUD hide:YES];
-    if (books.count > 0) {
-        BookListViewController *bookList = [[[BookListViewController alloc] initWithBooks:books] autorelease];
-        [self.navigationController pushViewController:bookList animated:YES];
-    }
-    else{
-        [[[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
-    }
 }
 
 

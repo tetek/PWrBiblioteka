@@ -10,6 +10,7 @@
 #import "HTMLParser.h"
 #import "Book.h"
 
+
 @implementation BookListFetcher
 
 + (NSArray*)fetchBooksForQuery:(NSString*)query{
@@ -20,9 +21,7 @@
     query = safeQuery;
     
     NSString *baseURL = @"http://aleph.bg.pwr.wroc.pl/F?func=find-b&REQUEST=";
-    NSString *url = [NSString stringWithFormat:@"%@%@",baseURL,query];
-    NSLog(@"%@",url);
-    
+    NSString *url = [NSString stringWithFormat:@"%@%@",baseURL,query];    
     NSError *downloadError = nil;
     NSString *html = [NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:&downloadError];
    
@@ -41,7 +40,7 @@
     
     HTMLNode *bodyNode = [parser body];
     HTMLNode *tableNode = [bodyNode findChildWithAttribute:@"id" matchingName:@"short_table" allowPartial:YES];
-    
+    NSLog(@"url: %@", url);
     if (!tableNode) {
         //Brak wyników
         return nil;
@@ -60,7 +59,6 @@
         
         [titleMut replaceOccurrencesOfString:@"/" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, titleMut.length)];
         title = titleMut;
-
         
         book.author = author ? author : @"Gal, Anonim.";
         book.title = title;
@@ -73,24 +71,30 @@
         for (HTMLNode *place in [available findChildTags:@"a"]) {
             NSString *placeString = place.contents;
             
+            NSString * placeHref = [place getAttributeNamed:@"href"];
+            NSArray* urlForPlaceSep = [placeHref componentsSeparatedByString:@"sub_library="];
+            NSString * libraryIndentifier = urlForPlaceSep[1];
+            
             NSArray *leftRight = [placeString componentsSeparatedByString:@"("];
             if (leftRight.count == 2) {                
                 NSString *placeName = leftRight[0];
+                
+                
+                NSArray *placeNames = [NSArray arrayWithObjects:libraryIndentifier, placeName, nil];
+                
                 NSArray *right = [((NSString*)leftRight[1]) componentsSeparatedByString:@"/ "];
                 if (right.count == 2) {                    
                     int all = [right[0] intValue];
                     int rented = [right[1] intValue];
 //                    NSLog(@"%@ %d",placeName, all-rented);
                     
-                    [places setObject:[NSNumber numberWithInt:(all-rented)] forKey:placeName];
+                    [places setObject:[NSNumber numberWithInt:(all-rented)] forKey:placeNames];
                 }
             }
             
         }
         book.availablePlaces = places;
         [books addObject:book];
-        NSLog(@"--------- ");
-
     }
     return books;
 }
