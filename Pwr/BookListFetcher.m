@@ -32,7 +32,7 @@
     
     NSError *error = nil;
     
-    HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
+    HTMLParser *parser = [[[HTMLParser alloc] initWithString:html error:&error] autorelease];
     
     if (error) {
         @throw [NSException exceptionWithName:@"Parsing error" reason:@"Couldn't parse results" userInfo:nil];

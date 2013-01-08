@@ -10,6 +10,7 @@
 #import "LocationCell.h"
 #import "GUIUtils.h"
 @interface LocationsViewController ()
+
 @property (nonatomic, assign) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, assign) IBOutlet UIImageView *mapImageView;
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
