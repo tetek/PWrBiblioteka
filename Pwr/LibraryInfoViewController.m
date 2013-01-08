@@ -29,7 +29,7 @@
 - (id) initWithLibrary:(Library *)library {
     self = [super initWithNibName:@"LibraryInfoViewController" bundle:nil];
     if (self) {
-        self.library = [library retain];
+        self.library = library;
     }
     return self;
 }

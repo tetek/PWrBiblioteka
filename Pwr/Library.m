@@ -18,7 +18,7 @@
     self = [super init];
     if(self)
     {
-        self.title = [title copy];
+        self.title = title;
         self.cord = coordinate;
     }
     return self;

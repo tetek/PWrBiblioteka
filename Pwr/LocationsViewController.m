@@ -16,9 +16,9 @@
 #define METERS_PER_MILE 1609.344
 
 @interface LocationsViewController ()
-@property (nonatomic, assign) IBOutlet UIScrollView *scrollView;
+
 @property (nonatomic, assign) IBOutlet UITableView *tableView;
-@property (retain, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, assign) IBOutlet MKMapView *mapView; 
 @property (nonatomic, retain) NSDictionary *placesFetched;
 @property (nonatomic, retain) NSArray *tableData;
 @end
@@ -28,8 +28,8 @@
 - (id) initWithPlaces:(NSDictionary*)arr AndTableData:(NSArray *) data {
     self = [super initWithNibName:@"LocationsViewController" bundle:nil];
     if (self) {
-        self.placesFetched = [arr retain];
-        self.tableData = [data retain];
+        self.placesFetched = arr;
+        self.tableData = data;
     }
     return self;
 }
@@ -104,15 +104,16 @@
     NSString * uniq = self.tableData[indexPath.row];
     [self showLibraryInfoWithName:uniq];
 }
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+/*
+ - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     
     static NSString *identifier = @"LibraryAnnotation";
         annotation = (Library *) annotation;
-        MKPinAnnotationView *annotationView = [(MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier] retain];
+        MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier]; 
         if (annotationView == nil) {
             annotationView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
-            UIButton* rightButton = [[UIButton buttonWithType:
-                                     UIButtonTypeDetailDisclosure] retain];
+            UIButton* rightButton = [UIButton buttonWithType:
+                                     UIButtonTypeDetailDisclosure];
             
             annotationView.rightCalloutAccessoryView = rightButton;
             annotationView.annotation = annotation;
@@ -122,16 +123,38 @@
         annotationView.canShowCallout = YES;
         return annotationView;
 }
+*/
+- (MKAnnotationView *) mapView:(MKMapView *)thisMapView
+              viewForAnnotation:(Library *)annotation
+{
+	
+	static NSString *identifier = @"LibraryAnnotation";
+    
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[_mapView
+                                                                  dequeueReusableAnnotationViewWithIdentifier:identifier];
+	if(annotationView == nil)
+	{
+		annotationView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
+	}
+	   
+    //pin drops when it first appears
+    annotationView.animatesDrop=TRUE;
+    
+    //tapping the pin produces a gray box which shows title and subtitle
+    annotationView.canShowCallout = YES;
+    
+    return annotationView;
+}
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)aView
 {
-    Library * annotation = [aView.annotation retain];
+    Library * annotation = aView.annotation;
     int index = [self.tableData indexOfObject:annotation.uniq];
     
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 }
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    Library * annotation = [view.annotation retain];
+    Library * annotation = view.annotation;
     [self showLibraryInfoWithName:annotation.uniq];
 }
 
@@ -144,7 +167,9 @@
 - (void)dealloc
 {
     self.placesFetched = nil;
-    [_mapView release];
+    self.tableData = nil;
+    self.mapView = nil;
+    self.tableView = nil;
     [super dealloc];
 }
 @end

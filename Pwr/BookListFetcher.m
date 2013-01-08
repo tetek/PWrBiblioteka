@@ -16,9 +16,10 @@
 + (NSArray*)fetchBooksForQuery:(NSString*)query{
     
     //replace spaces with +
-    NSMutableString *safeQuery = [query mutableCopy];
+    NSMutableString *safeQuery = [[query mutableCopy] autorelease];
     [safeQuery replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, safeQuery.length)];
     query = safeQuery;
+    
     
     NSString *baseURL = @"http://aleph.bg.pwr.wroc.pl/F?func=find-b&REQUEST=";
     NSString *url = [NSString stringWithFormat:@"%@%@",baseURL,query];    
@@ -31,7 +32,7 @@
     
     NSError *error = nil;
     
-    HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
+    HTMLParser *parser = [[[HTMLParser alloc] initWithString:html error:&error] autorelease];
     
     if (error) {
         @throw [NSException exceptionWithName:@"Parsing error" reason:@"Couldn't parse results" userInfo:nil];
@@ -55,7 +56,7 @@
         if (!title) {
             continue;
         }
-        NSMutableString *titleMut = [title mutableCopy];
+        NSMutableString *titleMut = [[title mutableCopy] autorelease];
         
         [titleMut replaceOccurrencesOfString:@"/" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, titleMut.length)];
         title = titleMut;
@@ -96,6 +97,7 @@
         book.availablePlaces = places;
         [books addObject:book];
     }
+    
     return books;
 }
 

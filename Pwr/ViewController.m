@@ -153,10 +153,7 @@
         return;
     }
     
-    /*for (Book *book in books) {
-        NSLog(@"%@",book);
-     }*/
-    dispatch_sync(dispatch_get_main_queue(), [[^{
+    dispatch_sync(dispatch_get_main_queue(), ^{
         if (books.count > 0) {
             BookListViewController *bookList = [[[BookListViewController alloc] initWithBooks:books] autorelease];
             [self.navigationController pushViewController:bookList animated:YES];
@@ -164,7 +161,7 @@
         else{
             [[[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
         }
-    } copy]  autorelease]);
+    });
     
 }
 
