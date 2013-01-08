@@ -10,14 +10,14 @@
 #import "GUIUtils.h"
 
 @interface LibraryInfoViewController ()
-@property (retain, nonatomic) IBOutlet UILabel *titleLabel;
-@property (retain, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (retain, nonatomic) IBOutlet UILabel *emailLabel;
-@property (retain, nonatomic) IBOutlet UILabel *adressLabel;
-@property (retain, nonatomic) IBOutlet UILabel *openHoursLabel;
-@property (retain, nonatomic) IBOutlet UILabel *notesLabel;
-@property (retain, nonatomic) IBOutlet UIView *bgAdres;
-@property (retain, nonatomic) IBOutlet UIView *bgNotes;
+@property (nonatomic, assign) IBOutlet UILabel *titleLabel;
+@property (nonatomic, assign) IBOutlet UILabel *phoneLabel;
+@property (nonatomic, assign) IBOutlet UILabel *emailLabel;
+@property (nonatomic, assign) IBOutlet UILabel *adressLabel;
+@property (nonatomic, assign) IBOutlet UILabel *openHoursLabel;
+@property (nonatomic, assign) IBOutlet UILabel *notesLabel;
+@property (nonatomic, assign) IBOutlet UIView *bgAdres;
+@property (nonatomic, assign) IBOutlet UIView *bgNotes;
 
 @property (nonatomic, retain) Library * library;
 @end 
@@ -62,6 +62,7 @@
     [_notesLabel release];
     [_bgAdres release];
     [_bgNotes release];
+    [_library release];
     [super dealloc];
 }
 - (void)viewDidUnload {
@@ -73,6 +74,7 @@
     [self setNotesLabel:nil];
     [self setBgAdres:nil];
     [self setBgNotes:nil];
+    self.library = nil;
     [super viewDidUnload];
 }
 @end
