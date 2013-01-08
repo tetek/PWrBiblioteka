@@ -53,6 +53,8 @@
         _logo.frame = frame;
                     
     }];
+    _textField.hidden = NO;
+    _textField.alpha = 0.01;
     [UIView animateWithDuration:2.0 animations:^{
         
         _textField.alpha = 1.0;
@@ -151,17 +153,19 @@
         return;
     }
     
-    for (Book *book in books) {
+    /*for (Book *book in books) {
         NSLog(@"%@",book);
-    }
+     }*/
+    dispatch_sync(dispatch_get_main_queue(), [[^{
+        if (books.count > 0) {
+            BookListViewController *bookList = [[[BookListViewController alloc] initWithBooks:books] autorelease];
+            [self.navigationController pushViewController:bookList animated:YES];
+        }
+        else{
+            [[[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+        }
+    } copy]  autorelease]);
     
-    if (books.count > 0) {
-        BookListViewController *bookList = [[[BookListViewController alloc] initWithBooks:books] autorelease];
-        [self.navigationController pushViewController:bookList animated:YES];
-    }
-    else{
-        [[[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
-    }
 }
 
 

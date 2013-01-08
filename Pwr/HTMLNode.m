@@ -202,7 +202,7 @@ NSString * getAttributeNamed(xmlNode * node, const char * nameStr)
 	return array;
 }
 
-/*
+
 -(NSString*)description
 {
 	NSString * string = [NSString stringWithFormat:@"<%s>%@\n", _node->name, [self contents]];
@@ -215,7 +215,7 @@ NSString * getAttributeNamed(xmlNode * node, const char * nameStr)
 	string = [string stringByAppendingString:[NSString stringWithFormat:@"<%s>\n", _node->name]];
 
 	return string;
-}*/
+}
 
 -(HTMLNode*)findChildWithAttribute:(const char*)attribute matchingName:(const char*)name inXMLNode:(xmlNode *)node allowPartial:(BOOL)partial
 {
