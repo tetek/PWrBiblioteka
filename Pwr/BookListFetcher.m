@@ -16,7 +16,7 @@
 + (NSArray*)fetchBooksForQuery:(NSString*)query{
     
     //replace spaces with +
-    NSMutableString *safeQuery = [[query mutableCopy] autorelease]; // @bartek, brakowało autorelease, to chyba ja zapomniałem akurat;]
+    NSMutableString *safeQuery = [[query mutableCopy] autorelease];
     [safeQuery replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, safeQuery.length)];
     query = safeQuery;
     
@@ -56,7 +56,7 @@
         if (!title) {
             continue;
         }
-        NSMutableString *titleMut = [title mutableCopy];
+        NSMutableString *titleMut = [[title mutableCopy] autorelease];
         
         [titleMut replaceOccurrencesOfString:@"/" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, titleMut.length)];
         title = titleMut;
@@ -97,6 +97,7 @@
         book.availablePlaces = places;
         [books addObject:book];
     }
+    
     return books;
 }
 

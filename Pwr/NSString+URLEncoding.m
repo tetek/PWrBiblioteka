@@ -9,10 +9,10 @@
 #import "NSString+URLEncoding.h"
 @implementation NSString (URLEncoding)
 -(NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding {
-	return (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
+	return [(NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
                                                                (CFStringRef)self,
                                                                NULL,
                                                                (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
-                                                               CFStringConvertNSStringEncodingToEncoding(encoding));
+                                                               CFStringConvertNSStringEncodingToEncoding(encoding)) autorelease];
 }
 @end

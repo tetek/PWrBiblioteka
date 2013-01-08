@@ -105,7 +105,7 @@
         [[[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
         return;
     }
-    dispatch_sync(dispatch_get_main_queue(), [[^{
+    dispatch_sync(dispatch_get_main_queue(), ^{
         if (places) {
             LocationsViewController *locations = [[[LocationsViewController alloc] initWithPlaces:placesFetched AndTableData:places] autorelease];
             [self.navigationController pushViewController:locations animated:YES];
@@ -113,11 +113,12 @@
         else{
             [[[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
         }
-    } copy]  autorelease]);
+    });
 }
 - (void)dealloc
 {
     self.books = nil;
+    self.HUD = nil;
     [super dealloc];
 }
 @end
