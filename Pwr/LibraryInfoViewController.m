@@ -9,7 +9,11 @@
 #import "LibraryInfoViewController.h"
 #import "GUIUtils.h"
 
+#define METERS_PER_MILE 1609.344
+
 @interface LibraryInfoViewController ()
+@property (retain, nonatomic) IBOutlet UIView *masterView;
+@property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, assign) IBOutlet UILabel *titleLabel;
 @property (nonatomic, assign) IBOutlet UILabel *phoneLabel;
 @property (nonatomic, assign) IBOutlet UILabel *emailLabel;
@@ -18,6 +22,7 @@
 @property (nonatomic, assign) IBOutlet UILabel *notesLabel;
 @property (nonatomic, assign) IBOutlet UIView *bgAdres;
 @property (nonatomic, assign) IBOutlet UIView *bgNotes;
+@property (retain, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (nonatomic, retain) Library * library;
 @end 
@@ -37,6 +42,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.view sizeToFit];
+    [self.masterView sizeToFit];
+    
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"lib.jpg"]];
+    self.view.backgroundColor = background;
+    [background release];
+    
+    self.scrollView.contentSize = [self.masterView sizeThatFits:CGSizeZero];
+    [self.scrollView sizeToFit];
+    
     self.title = self.library.uniq;
     self.bgAdres.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     self.bgNotes.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
@@ -46,24 +62,19 @@
     self.adressLabel.text = self.library.adress;
     //self.openHoursLabel.text = self.library.openHours;
     self.notesLabel.text = self.library.notes;
+    
+    [self.mapView addAnnotation:self.library];
+    self.mapView.centerCoordinate = self.library.coordinate;
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.library.coordinate, 0.25*METERS_PER_MILE, 0.25*METERS_PER_MILE);
+    MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
+    [self.mapView setRegion:adjustedRegion animated:YES];
+    self.mapView.showsUserLocation = YES;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationItem.hidesBackButton = YES;
     [self.navigationItem setLeftBarButtonItem:[GUIUtils makeBackButtonforNavigationController:self.navigationController]];
-}
-
-- (void)dealloc {
-    [_titleLabel release];
-    [_phoneLabel release];
-    [_emailLabel release];
-    [_adressLabel release];
-    [_openHoursLabel release];
-    [_notesLabel release];
-    [_bgAdres release];
-    [_bgNotes release];
-    [_library release];
-    [super dealloc];
 }
 - (void)viewDidUnload {
     [self setTitleLabel:nil];
@@ -75,6 +86,13 @@
     [self setBgAdres:nil];
     [self setBgNotes:nil];
     self.library = nil;
+    [self setScrollView:nil];
+    [self setMasterView:nil];
+    [self setMapView:nil];
     [super viewDidUnload];
+}
+- (void)dealloc {
+    [_mapView release];
+    [super dealloc];
 }
 @end

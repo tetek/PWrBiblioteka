@@ -24,4 +24,6 @@
 @property (nonatomic) CLLocationCoordinate2D cord;
 
 - (Library *) initWithTitle: (NSString *) title coordinate: (CLLocationCoordinate2D)coordinate;
+- (Library *) initWithDictionaryData: (NSDictionary *) data;
+- (NSDictionary *) asDictionary;
 @end

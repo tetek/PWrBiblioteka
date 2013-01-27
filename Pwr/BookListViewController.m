@@ -13,6 +13,8 @@
 #import "BookListFetcher.h"
 #import "LibrariesFetcher.h"
 #import "MBProgressHUD.h"
+#import "LibraryCache.h"
+
 @interface BookListViewController ()
 
 
@@ -80,9 +82,10 @@
 }
 - (void) searchForLibraryWithNameNoThread:(Book *)book{
     
+    LibraryCache * libraryCache = [[LibraryCache alloc] init];
     
     NSMutableArray *places = [NSMutableArray array];
-    NSMutableDictionary * placesFetched = [NSMutableDictionary dictionary];
+    NSMutableDictionary * placesFetched = [[[libraryCache getLibraries] mutableCopy] autorelease];
     @try {
         for(NSArray * placeName in [book.availablePlaces allKeys])
         {
@@ -95,11 +98,13 @@
                 lib.available = [NSNumber numberWithInt:[count integerValue]];
                 lib.shorttitle = [placeName objectAtIndex:1];
                 [placesFetched setObject:lib forKey:uniq];
+                NSLog(@"fetched new library (%@)", uniq);
             }
             [places addObject:uniq];
         }
+        [libraryCache saveLibraries:placesFetched];
+        [libraryCache release];
     }
-    
     @catch (NSException *exception) {
         [_HUD hide:YES];
         [[[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];

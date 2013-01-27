@@ -56,6 +56,7 @@
 		7DCF64B0167CD4F400B22C57 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF64AF167CD4F300B22C57 /* LocationCell.m */; };
 		7DCF64B2167CD50900B22C57 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64B1167CD50800B22C57 /* LocationCell.xib */; };
 		7DCF64C4167CE56100B22C57 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF64C3167CE56100B22C57 /* MessageUI.framework */; };
+		AC16111716B46D8A00340D0E /* LibraryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AC16111616B46D8A00340D0E /* LibraryCache.m */; };
 		AC6EE56D169B3AA000F40C08 /* red-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6EE56C169B3AA000F40C08 /* red-circle.png */; };
 		AC912203169B72F900F06E6B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC912202169B72F900F06E6B /* CoreLocation.framework */; };
 		AC912205169B72FF00F06E6B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC912204169B72FF00F06E6B /* MapKit.framework */; };
@@ -151,6 +152,8 @@
 		7DCF64AF167CD4F300B22C57 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		7DCF64B1167CD50800B22C57 /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
 		7DCF64C3167CE56100B22C57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		AC16111516B46D8A00340D0E /* LibraryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryCache.h; sourceTree = "<group>"; };
+		AC16111616B46D8A00340D0E /* LibraryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryCache.m; sourceTree = "<group>"; };
 		AC6EE56C169B3AA000F40C08 /* red-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-circle.png"; sourceTree = "<group>"; };
 		AC912202169B72F900F06E6B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AC912204169B72FF00F06E6B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -296,6 +299,8 @@
 				AC912217169C878200F06E6B /* LibrariesFetcher.m */,
 				AC912206169B73AC00F06E6B /* Library.h */,
 				AC912207169B73AC00F06E6B /* Library.m */,
+				AC16111516B46D8A00340D0E /* LibraryCache.h */,
+				AC16111616B46D8A00340D0E /* LibraryCache.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				AC91220C169B947D00F06E6B /* NSString+URLEncoding.m in Sources */,
 				AC912215169C4B0700F06E6B /* LibraryInfoViewController.m in Sources */,
 				AC912218169C878200F06E6B /* LibrariesFetcher.m in Sources */,
+				AC16111716B46D8A00340D0E /* LibraryCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

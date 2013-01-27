@@ -24,6 +24,7 @@
     NSString *html = [NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:&downloadError];
     
     
+    NSLog(@"librUrl: %@", url);
     if (downloadError) {
         @throw [NSException exceptionWithName:@"Connection error" reason:@"Couldn't load results" userInfo:nil];
     }
@@ -52,7 +53,6 @@
     }
     
     
-    NSLog(@"%@", url);
     NSMutableDictionary * godzinyOtwarcia = [NSMutableDictionary dictionary];
     NSArray *trs = [tableNode findChildTags:@"tr"];
     for (HTMLNode *info in trs) {

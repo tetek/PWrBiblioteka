@@ -25,7 +25,8 @@
     NSString *url = [NSString stringWithFormat:@"%@%@",baseURL,query];    
     NSError *downloadError = nil;
     NSString *html = [NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:&downloadError];
-   
+    
+    NSLog(@"url: %@", url);
     if (downloadError) {
         @throw [NSException exceptionWithName:@"Connection error" reason:@"Couldn't load results" userInfo:nil];
     }
@@ -41,7 +42,6 @@
     
     HTMLNode *bodyNode = [parser body];
     HTMLNode *tableNode = [bodyNode findChildWithAttribute:@"id" matchingName:@"short_table" allowPartial:YES];
-    NSLog(@"url: %@", url);
     if (!tableNode) {
         //Brak wyników
         return nil;
