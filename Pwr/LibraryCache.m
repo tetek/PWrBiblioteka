@@ -36,7 +36,6 @@
                                                          errorDescription:&error];
     if(plistData) {
         [plistData writeToFile:plistPath atomically:YES];
-        NSLog(@"Libraries Saved");
     } else {
         NSLog(@"Error : %@",error);
     }
@@ -56,7 +55,6 @@
         Library * library = [[[Library alloc] initWithDictionaryData:[dictLibraries objectForKey:uniq]] autorelease];
         [libraries setObject:library forKey:uniq];
     }
-    NSLog(@"Libraries Readed");
     return libraries;
 }
 @end

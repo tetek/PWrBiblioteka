@@ -7,6 +7,7 @@
 //
 
 #import "GUIUtils.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation GUIUtils
 
@@ -21,6 +22,15 @@
 + (void)setupButton:(UIButton*)button{
     button.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
++ (void)addShadowAndCornersToView:(UIView*)view{
+    view.layer.masksToBounds = NO;
+    view.layer.cornerRadius = 0; // if you like rounded corners
+    view.layer.shadowOffset = CGSizeMake(-5, 5);
+    view.layer.shadowRadius = 2;
+    view.layer.shadowOpacity = 0.2;
+    view.layer.shadowPath = [UIBezierPath bezierPathWithRect:view.bounds].CGPath;
+    
 }
 + (UIBarButtonItem*)makeBackButtonforNavigationController:(UINavigationController *)navigationController{
     UIImage *image = [UIImage imageNamed:@"back-arrow"];

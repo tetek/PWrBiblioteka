@@ -18,11 +18,23 @@
 @property (nonatomic, assign) IBOutlet UILabel *phoneLabel;
 @property (nonatomic, assign) IBOutlet UILabel *emailLabel;
 @property (nonatomic, assign) IBOutlet UILabel *adressLabel;
-@property (nonatomic, assign) IBOutlet UILabel *openHoursLabel;
 @property (nonatomic, assign) IBOutlet UILabel *notesLabel;
-@property (nonatomic, assign) IBOutlet UIView *bgAdres;
-@property (nonatomic, assign) IBOutlet UIView *bgNotes;
+@property (retain, nonatomic) IBOutlet UILabel *notesText;
 @property (retain, nonatomic) IBOutlet MKMapView *mapView;
+@property (retain, nonatomic) IBOutlet UIView *mapViewBackgroundView;
+@property (retain, nonatomic) IBOutlet UIView *contactBackgroundView;
+@property (retain, nonatomic) IBOutlet UIView *hoursBackgroundView;
+@property (retain, nonatomic) IBOutlet UIView *notesBackgroundView;
+
+
+@property (retain, nonatomic) IBOutlet UILabel *poniedzialekInfoLabel;
+@property (retain, nonatomic) IBOutlet UILabel *wtorekInfoLabel;
+@property (retain, nonatomic) IBOutlet UILabel *srodaInfoLabel;
+@property (retain, nonatomic) IBOutlet UILabel *czwartekInfoLabel;
+@property (retain, nonatomic) IBOutlet UILabel *piatekInfoLabel;
+@property (retain, nonatomic) IBOutlet UILabel *sobotaInfoLabel;
+@property (retain, nonatomic) IBOutlet UILabel *niedzielaInfoLabel;
+
 
 @property (nonatomic, retain) Library * library;
 @end 
@@ -43,26 +55,54 @@
 {
     [super viewDidLoad];
     
-    [self.view sizeToFit];
-    [self.masterView sizeToFit];
-    
-    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"lib.jpg"]];
+    //Gradient dla widoku
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"tlowidokubiblioteki.png"]];
     self.view.backgroundColor = background;
     [background release];
     
+    //Cienie do teł z tekstami
+    [GUIUtils addShadowAndCornersToView:self.mapViewBackgroundView];
+    [GUIUtils addShadowAndCornersToView:self.contactBackgroundView];
+    [GUIUtils addShadowAndCornersToView:self.hoursBackgroundView];
+    [GUIUtils addShadowAndCornersToView:self.notesBackgroundView];
+    
+    //Wyświetl godziny otwarcia
+    self.poniedzialekInfoLabel.text = [self.library.openHours objectForKey:@"poniedziałek"];
+    self.wtorekInfoLabel.text = [self.library.openHours objectForKey:@"wtorek"];
+    self.srodaInfoLabel.text = [self.library.openHours objectForKey:@"środa"];
+    self.czwartekInfoLabel.text = [self.library.openHours objectForKey:@"czwartek"];
+    self.piatekInfoLabel.text = [self.library.openHours objectForKey:@"piątek"];
+    self.sobotaInfoLabel.text = [self.library.openHours objectForKey:@"sobota"];
+    self.niedzielaInfoLabel.text = [self.library.openHours objectForKey:@"niedziela"];
+    
+    //Pokaż odpowiednie dane
+    self.title = self.library.uniq;
+    self.titleLabel.text = self.library.title;
+    self.phoneLabel.text = self.library.phone;
+    if(!self.emailLabel.text || ![self.emailLabel.text isEqualToString:@" "])
+    {
+        self.emailLabel.text = @"brak informacji";
+    }
+    self.adressLabel.text = self.library.adress;
+    self.notesLabel.text = self.library.notes;
+    
+    if(!self.library.notes || [self.library.notes isEqualToString:@" "])
+    {
+        self.notesLabel.text = @"brak informacji";
+        self.notesLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    
+    
+    
+    //Ściskamy ściskamy
     self.scrollView.contentSize = [self.masterView sizeThatFits:CGSizeZero];
     [self.scrollView sizeToFit];
     
-    self.title = self.library.uniq;
-    self.bgAdres.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
-    self.bgNotes.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
-    self.titleLabel.text = self.library.title;
-    self.phoneLabel.text = self.library.phone;
-    self.emailLabel.text = self.library.email;
-    self.adressLabel.text = self.library.adress;
-    //self.openHoursLabel.text = self.library.openHours;
-    self.notesLabel.text = self.library.notes;
+    [self.view sizeToFit];
+    [self.masterView sizeToFit];
     
+    
+    //Wycentruj mape na bibliotece
     [self.mapView addAnnotation:self.library];
     self.mapView.centerCoordinate = self.library.coordinate;
     
@@ -81,18 +121,23 @@
     [self setPhoneLabel:nil];
     [self setEmailLabel:nil];
     [self setAdressLabel:nil];
-    [self setOpenHoursLabel:nil];
     [self setNotesLabel:nil];
-    [self setBgAdres:nil];
-    [self setBgNotes:nil];
     self.library = nil;
     [self setScrollView:nil];
     [self setMasterView:nil];
     [self setMapView:nil];
+    [self setMapViewBackgroundView:nil];
+    [self setContactBackgroundView:nil];
+    [self setHoursBackgroundView:nil];
+    [self setNotesBackgroundView:nil];
+    [self setPoniedzialekInfoLabel:nil];
+    [self setWtorekInfoLabel:nil];
+    [self setSrodaInfoLabel:nil];
+    [self setCzwartekInfoLabel:nil];
+    [self setPiatekInfoLabel:nil];
+    [self setSobotaInfoLabel:nil];
+    [self setNiedzielaInfoLabel:nil];
+    [self setNotesText:nil];
     [super viewDidUnload];
-}
-- (void)dealloc {
-    [_mapView release];
-    [super dealloc];
 }
 @end

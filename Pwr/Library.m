@@ -65,6 +65,7 @@
         self.email = [data objectForKey:@"email"];
         self.adress = [data objectForKey:@"adress"];
         self.openHours = [data objectForKey:@"openHours"];
+        self.notes = [data objectForKey:@"notes"];
         self.cord = cords;
     }
     return self;

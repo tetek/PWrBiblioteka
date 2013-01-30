@@ -77,19 +77,21 @@
             
             
             if([key isEqualToString:@"adres:"]) {
-                
-                // The NSRegularExpression class is currently only available in the Foundation framework of iOS 4
                 NSError *error = NULL;
                 
-                NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([\\n\\t\\r]+)|([\\ ]{2,2})" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionAnchorsMatchLines error:&error];
+                //Tylko dla adresu potrzebujemy czystego HTMLa a nie sam tekst po to aby spacje można było w odpowiednich miejscach porobić
+                NSString * value = [((HTMLNode *)[values objectAtIndex:i]) rawContents];
+                NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\<(.+?)\\>" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionAnchorsMatchLines error:&error];
+                value = [regex stringByReplacingMatchesInString:value options:0 range:NSMakeRange(0, [value length]) withTemplate:@" "];
                 
-                NSString *adres = [regex stringByReplacingMatchesInString:value options:0 range:NSMakeRange(0, [value length]) withTemplate:@""];
+                //A teraz wywalamy podwójne białe znaki itd
+                regex = [NSRegularExpression regularExpressionWithPattern:@"([\\n\\t\\r\\ ]+)" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionAnchorsMatchLines error:&error];
+                value = [regex stringByReplacingMatchesInString:value options:0 range:NSMakeRange(0, [value length]) withTemplate:@" "];
                 
-                value = adres;
                 
+                //Potrzebujemy adresu, więc wszystko aż do frazy "Bud"
                 regex = [NSRegularExpression regularExpressionWithPattern:@"Bud(.*?)$" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionAnchorsMatchLines error:&error];
-                adres = [regex stringByReplacingMatchesInString:adres options:0 range:NSMakeRange(0, [adres length]) withTemplate:@""];
-                
+                NSString * adres = [regex stringByReplacingMatchesInString:value options:0 range:NSMakeRange(0, [value length]) withTemplate:@""];
                 adres = [@"Wrocław, " stringByAppendingString:adres];
                 
                 NSString *strGeoCode = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv",
@@ -105,8 +107,6 @@
                     NSString * lng = locationInfo[3];
                     
                     library.cord = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
-                    
-                    
                 }
                 library.adress = value;
             } else if([key isEqualToString:@"telefon:"]) {
@@ -114,10 +114,14 @@
             } else if([key isEqualToString:@"e-mail:"]) {
                 library.email = value;
             } else if([key isEqualToString:@"uwagi:"]) {
-                library.notes = value;
+                NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([\\n\\t\\r\\ ]+)" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionAnchorsMatchLines error:&error];
+                
+                NSString *notes = [regex stringByReplacingMatchesInString:value options:0 range:NSMakeRange(0, [value length]) withTemplate:@" "];
+
+                library.notes = notes;
             } else {
                 NSSet * allowedKeys = [NSSet setWithObjects:@"poniedziałek", @"wtorek", @"środa", @"czwartek", @"piątek", @"sobota", @"niedziela", nil];
-                if([allowedKeys containsObject:value])
+                if([allowedKeys containsObject:value] && godzina)
                 {
                     [godzinyOtwarcia setObject:godzina forKey:value];
                 }
