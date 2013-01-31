@@ -55,11 +55,6 @@
 {
     [super viewDidLoad];
     
-    //Gradient dla widoku
-    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"tlowidokubiblioteki.png"]];
-    self.view.backgroundColor = background;
-    [background release];
-    
     //Cienie do teł z tekstami
     [GUIUtils addShadowAndCornersToView:self.mapViewBackgroundView];
     [GUIUtils addShadowAndCornersToView:self.contactBackgroundView];
