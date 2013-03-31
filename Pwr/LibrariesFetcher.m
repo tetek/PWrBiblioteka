@@ -9,6 +9,7 @@
 #import "LibrariesFetcher.h"
 #import "HTMLParser.h"
 #import "NSString+URLEncoding.h"
+#import "JSONKit.h"
 
 @implementation LibrariesFetcher
 
@@ -92,19 +93,20 @@
                 //Potrzebujemy adresu, więc wszystko aż do frazy "Bud"
                 regex = [NSRegularExpression regularExpressionWithPattern:@"Bud(.*?)$" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionAnchorsMatchLines error:&error];
                 NSString * adres = [regex stringByReplacingMatchesInString:value options:0 range:NSMakeRange(0, [value length]) withTemplate:@""];
+                
                 adres = [@"Wrocław, " stringByAppendingString:adres];
                 
-                NSString *strGeoCode = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv",
+                NSString *strGeoCode = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?address=%@&sensor=false",
                                         [adres urlEncodeUsingEncoding:NSUTF8StringEncoding]];
-                
                 
                 NSString *locationStr = [NSString stringWithContentsOfURL:[NSURL URLWithString:strGeoCode] encoding:NSUTF8StringEncoding error:&downloadError];
                 
-                NSArray * locationInfo = [locationStr componentsSeparatedByString:@","];
-                if([locationInfo count]>=2)
-                {
-                    NSString * lat = locationInfo[2];
-                    NSString * lng = locationInfo[3];
+                //NSLog(@"google response JSON: %@", locationStr);
+                NSDictionary *decoded = [locationStr objectFromJSONString];
+                if([[decoded objectForKey:@"results"] count]>0) {
+                NSDictionary *results = [[((NSArray *)[decoded objectForKey:@"results"])[0] objectForKey:@"geometry"] objectForKey:@"location"];
+                    NSString * lat = [results objectForKey:@"lat"];
+                    NSString * lng = [results objectForKey:@"lng"];
                     
                     library.cord = CLLocationCoordinate2DMake([lat doubleValue], [lng doubleValue]);
                 }
@@ -112,7 +114,12 @@
             } else if([key isEqualToString:@"telefon:"]) {
                 library.phone = value;
             } else if([key isEqualToString:@"e-mail:"]) {
-                library.email = value;
+                NSError *error = NULL;
+                NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[A-Za-z]" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionAllowCommentsAndWhitespace error:&error];
+                NSUInteger numberOfMatches = [regex numberOfMatchesInString:value options:0 range:NSMakeRange(0, [value length])];
+                if(numberOfMatches!=0) {
+                    library.email = value;
+                }
             } else if([key isEqualToString:@"uwagi:"]) {
                 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([\\n\\t\\r\\ ]+)" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionAnchorsMatchLines error:&error];
                 

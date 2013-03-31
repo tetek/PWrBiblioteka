@@ -33,13 +33,13 @@
 }
 - (NSDictionary*)asDictionary{
     //Nie może być nic nil bo nam się dictionary nie stworzy :(
-    if(!self.title) { self.title = @" "; }
-    if(!self.shorttitle) { self.shorttitle = @" "; }
-    if(!self.phone) { self.phone = @" "; }
-    if(!self.email) { self.email = @" "; }
-    if(!self.adress) { self.adress = @" "; }
+    if(!self.title) { self.title = @""; }
+    if(!self.shorttitle) { self.shorttitle = @""; }
+    if(!self.phone) { self.phone = @""; }
+    if(!self.email) { self.email = @""; }
+    if(!self.adress) { self.adress = @""; }
     if(!self.openHours) { self.openHours = [NSDictionary dictionary]; }
-    if(!self.notes) { self.notes = @" "; }
+    if(!self.notes) { self.notes = @""; }
     
     
     NSNumber * cord1 = [NSNumber numberWithDouble:self.cord.latitude];
