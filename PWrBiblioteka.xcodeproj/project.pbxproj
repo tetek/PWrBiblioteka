@@ -23,7 +23,6 @@
 		7DC96C4B167E0557006E9EA7 /* thelibrary.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DC96C3C167E0557006E9EA7 /* thelibrary.jpg */; };
 		7DC96C4C167E0557006E9EA7 /* white-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC96C3D167E0557006E9EA7 /* white-circle.png */; };
 		7DC96C4F167E056F006E9EA7 /* BookListFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC96C4E167E056F006E9EA7 /* BookListFetcher.m */; };
-		7DC96C51167E0585006E9EA7 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC96C50167E0585006E9EA7 /* libzbar.a */; };
 		7DCF6409167C7DCC00B22C57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF6408167C7DCC00B22C57 /* UIKit.framework */; };
 		7DCF640B167C7DCC00B22C57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF640A167C7DCC00B22C57 /* Foundation.framework */; };
 		7DCF640D167C7DCC00B22C57 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF640C167C7DCC00B22C57 /* CoreGraphics.framework */; };
@@ -56,6 +55,7 @@
 		7DCF64B0167CD4F400B22C57 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF64AF167CD4F300B22C57 /* LocationCell.m */; };
 		7DCF64B2167CD50900B22C57 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DCF64B1167CD50800B22C57 /* LocationCell.xib */; };
 		7DCF64C4167CE56100B22C57 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF64C3167CE56100B22C57 /* MessageUI.framework */; };
+		AC00693F1711C58E00C51CE4 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC00693E1711C58E00C51CE4 /* libzbar.a */; };
 		AC16111716B46D8A00340D0E /* LibraryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AC16111616B46D8A00340D0E /* LibraryCache.m */; };
 		AC4B5A0A16B915C200187828 /* tlowidokubiblioteki@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4B5A0916B915C200187828 /* tlowidokubiblioteki@2x.png */; };
 		AC4B5A0D16B91D3F00187828 /* 18-envelopeBLACK@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4B5A0B16B91D3F00187828 /* 18-envelopeBLACK@2x.png */; };
@@ -97,7 +97,6 @@
 		7DC96C3D167E0557006E9EA7 /* white-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-circle.png"; sourceTree = "<group>"; };
 		7DC96C4D167E056F006E9EA7 /* BookListFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookListFetcher.h; sourceTree = "<group>"; };
 		7DC96C4E167E056F006E9EA7 /* BookListFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListFetcher.m; sourceTree = "<group>"; };
-		7DC96C50167E0585006E9EA7 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		7DCF6404167C7DCC00B22C57 /* PWrBiblioteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PWrBiblioteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCF6408167C7DCC00B22C57 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7DCF640A167C7DCC00B22C57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -164,6 +163,7 @@
 		7DCF64AF167CD4F300B22C57 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		7DCF64B1167CD50800B22C57 /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
 		7DCF64C3167CE56100B22C57 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		AC00693E1711C58E00C51CE4 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		AC16111516B46D8A00340D0E /* LibraryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryCache.h; sourceTree = "<group>"; };
 		AC16111616B46D8A00340D0E /* LibraryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryCache.m; sourceTree = "<group>"; };
 		AC4B5A0916B915C200187828 /* tlowidokubiblioteki@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tlowidokubiblioteki@2x.png"; path = "../tlowidokubiblioteki@2x.png"; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 				7DCF640D167C7DCC00B22C57 /* CoreGraphics.framework in Frameworks */,
 				AC912205169B72FF00F06E6B /* MapKit.framework in Frameworks */,
 				AC912203169B72F900F06E6B /* CoreLocation.framework in Frameworks */,
-				7DC96C51167E0585006E9EA7 /* libzbar.a in Frameworks */,
+				AC00693F1711C58E00C51CE4 /* libzbar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +357,7 @@
 		7DCF6453167CB26500B22C57 /* ZBarSDK */ = {
 			isa = PBXGroup;
 			children = (
-				7DC96C50167E0585006E9EA7 /* libzbar.a */,
+				AC00693E1711C58E00C51CE4 /* libzbar.a */,
 				7DCF6454167CB26500B22C57 /* Headers */,
 				7DCF646C167CB26500B22C57 /* Resources */,
 			);
@@ -674,7 +674,7 @@
 				);
 				PRODUCT_NAME = PWrBiblioteka;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -700,7 +700,7 @@
 				);
 				PRODUCT_NAME = PWrBiblioteka;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
