@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Library.h"
-@interface LibraryInfoViewController : UIViewController
+@interface LibraryInfoViewController : UITableViewController
 - (id) initWithLibrary:(Library *)library;
 @end
