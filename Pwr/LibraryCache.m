@@ -19,6 +19,8 @@
     }
     return self;
 }
+
+
 -(void)saveLibraries:(NSDictionary *)libraries
 {
     NSMutableDictionary* librariesAsArrays = [NSMutableDictionary dictionary];
@@ -40,6 +42,8 @@
         NSLog(@"Error : %@",error);
     }
 }
+
+
 -(NSDictionary *)getLibraries
 {
     
@@ -52,7 +56,7 @@
     NSMutableDictionary* libraries = [NSMutableDictionary dictionary];
     for(NSString * uniq in [dictLibraries allKeys])
     {
-        Library * library = [[[Library alloc] initWithDictionaryData:[dictLibraries objectForKey:uniq]] autorelease];
+        Library * library = [[Library alloc] initWithDictionaryData:[dictLibraries objectForKey:uniq]];
         [libraries setObject:library forKey:uniq];
     }
     return libraries;

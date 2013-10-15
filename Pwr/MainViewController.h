@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 tetek. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AbstractViewController.h"
+
 #import "ZBarImageScanner.h"
 #import "ZBarReaderViewController.h"
-#import <MessageUI/MFMailComposeViewController.h>
-@interface ViewController : UIViewController <UITextFieldDelegate, ZBarReaderDelegate, MFMailComposeViewControllerDelegate>
+@interface MainViewController : AbstractViewController <UITextFieldDelegate, ZBarReaderDelegate, MFMailComposeViewControllerDelegate>
 
 @end

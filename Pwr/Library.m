@@ -11,7 +11,7 @@
 @implementation Library
 
 +(Library*)library{
-    return [[[Library alloc] init] autorelease];
+    return [[Library alloc] init];
 }
 - (Library *) initWithTitle: (NSString *) title coordinate: (CLLocationCoordinate2D)coordinate
 {
@@ -69,16 +69,5 @@
         self.cord = cords;
     }
     return self;
-}
-- (void)dealloc
-{
-    self.title = nil;
-    self.uniq = nil;
-    self.adress = nil;
-    self.phone = nil;
-    self.email = nil;
-    self.notes = nil;
-    self.openHours = nil;
-    [super dealloc];
 }
 @end

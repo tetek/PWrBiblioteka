@@ -16,7 +16,7 @@
 + (Library*)fetchLibraryForName:(NSString*)name{
     
     //replace spaces with +
-    NSMutableString *safeQuery = [[name mutableCopy] autorelease];
+    NSMutableString *safeQuery = [name mutableCopy];
     [safeQuery replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, safeQuery.length)];
     name = safeQuery;
     NSString *baseURL = @"http://aleph.bg.pwr.wroc.pl/F?func=library&sub_library=";
@@ -32,7 +32,7 @@
     
     NSError *error = nil;
     
-    HTMLParser *parser = [[[HTMLParser alloc] initWithString:html error:&error] autorelease];
+    HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
     
     if (error) {
         @throw [NSException exceptionWithName:@"Parsing error" reason:@"Couldn't parse results" userInfo:nil];

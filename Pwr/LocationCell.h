@@ -10,8 +10,8 @@
 
 @interface LocationCell : UITableViewCell
 
-@property (nonatomic, assign) IBOutlet UILabel *availability;
-@property (nonatomic, assign) IBOutlet UILabel *placeName;
-@property (nonatomic, assign) IBOutlet UILabel *ending;
-@property (nonatomic, retain) NSString *shortName;
+@property (nonatomic, unsafe_unretained) IBOutlet UILabel *availability;
+@property (nonatomic, unsafe_unretained) IBOutlet UILabel *placeName;
+@property (nonatomic, unsafe_unretained) IBOutlet UILabel *ending;
+@property (nonatomic, strong) NSString *shortName;
 @end

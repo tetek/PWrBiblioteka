@@ -18,9 +18,9 @@
 @interface BookListViewController ()
 
 
-@property (nonatomic, assign) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) NSArray *books;
-@property (nonatomic, retain) MBProgressHUD *HUD;
+@property (nonatomic, unsafe_unretained) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *books;
+@property (nonatomic, strong) MBProgressHUD *HUD;
 @end
 
 @implementation BookListViewController
@@ -36,7 +36,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationController.navigationBar setBackgroundImage:[[[UIImage alloc] init] autorelease] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:92./255 green:10./255 blue:13./255 alpha:1]];
     [self.navigationController setNavigationBarHidden:NO];
     self.navigationItem.hidesBackButton = YES;
@@ -46,7 +46,7 @@
 {
     [super viewDidLoad];
     
-    self.HUD = [[[MBProgressHUD alloc] initWithView:self.view] autorelease];
+    self.HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:_HUD];
     
     self.title = @"Wyniki wyszukiwania";
@@ -85,7 +85,7 @@
     LibraryCache * libraryCache = [[LibraryCache alloc] init];
     
     NSMutableArray *places = [NSMutableArray array];
-    NSMutableDictionary * placesFetched = [[[libraryCache getLibraries] mutableCopy] autorelease];
+    NSMutableDictionary * placesFetched = [[libraryCache getLibraries] mutableCopy];
     @try {
         for(NSArray * placeName in [book.availablePlaces allKeys])
         {
@@ -93,9 +93,9 @@
             if([placesFetched objectForKey:uniq]==nil)
             {
                 Library * lib = [LibrariesFetcher fetchLibraryForName:uniq];
-                NSString * count = [book.availablePlaces objectForKey:placeName];
+//                NSString * count = [book.availablePlaces objectForKey:placeName];
                 lib.uniq = [placeName objectAtIndex:0];
-                lib.available = [NSNumber numberWithInt:[count integerValue]];
+                lib.available = [NSNumber numberWithInt:book.countAvailability];
                 lib.shorttitle = [placeName objectAtIndex:1];
                 [placesFetched setObject:lib forKey:uniq];
                 NSLog(@"fetched new library (%@)", uniq);
@@ -103,27 +103,20 @@
             [places addObject:uniq];
         }
         [libraryCache saveLibraries:placesFetched];
-        [libraryCache release];
     }
     @catch (NSException *exception) {
         [_HUD hide:YES];
-        [[[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+        [[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
     dispatch_sync(dispatch_get_main_queue(), ^{
         if (places) {
-            LocationsViewController *locations = [[[LocationsViewController alloc] initWithPlaces:placesFetched AndTableData:places] autorelease];
+            LocationsViewController *locations = [[LocationsViewController alloc] initWithPlaces:placesFetched AndTableData:places];
             [self.navigationController pushViewController:locations animated:YES];
         }
         else{
-            [[[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+            [[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     });
-}
-- (void)dealloc
-{
-    self.books = nil;
-    self.HUD = nil;
-    [super dealloc];
 }
 @end

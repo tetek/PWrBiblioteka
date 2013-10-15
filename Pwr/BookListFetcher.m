@@ -16,7 +16,7 @@
 + (NSArray*)fetchBooksForQuery:(NSString*)query{
     
     //replace spaces with +
-    NSMutableString *safeQuery = [[query mutableCopy] autorelease];
+    NSMutableString *safeQuery = [query mutableCopy];
     [safeQuery replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, safeQuery.length)];
     query = safeQuery;
     
@@ -33,7 +33,7 @@
     
     NSError *error = nil;
     
-    HTMLParser *parser = [[[HTMLParser alloc] initWithString:html error:&error] autorelease];
+    HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
     
     if (error) {
         @throw [NSException exceptionWithName:@"Parsing error" reason:@"Couldn't parse results" userInfo:nil];
@@ -56,7 +56,7 @@
         if (!title) {
             continue;
         }
-        NSMutableString *titleMut = [[title mutableCopy] autorelease];
+        NSMutableString *titleMut = [title mutableCopy];
         
         [titleMut replaceOccurrencesOfString:@"/" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, titleMut.length)];
         title = titleMut;

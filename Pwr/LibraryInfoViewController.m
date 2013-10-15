@@ -20,8 +20,8 @@
 #define MapCellIndentifier @"MapCell"
 
 @interface LibraryInfoViewController ()
-@property(retain, nonatomic) NSArray *infosToDisplay;
-@property (nonatomic, retain) Library * library;
+@property(strong, nonatomic) NSArray *infosToDisplay;
+@property (nonatomic, strong) Library * library;
 @end 
 /*
  "uniq: %@ \n title: %@ \n shorttitle: %@ \n phone: %@ \n email: %@ \n adress: %@ \n open: %@ \n notes: %@ \n  --------- \n ", self.uniq, self.title, self.shorttitle, self.phone, self.email, self.adress, self.openHours, self.notes];
@@ -90,7 +90,6 @@
     }
     self.infosToDisplay = infos;
     [self.tableView reloadData];
-    [infos release];
     
 }
 - (NSNumber *) calculateTextHeight: (NSString *)string forWidth:(float)width

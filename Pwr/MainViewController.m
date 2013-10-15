@@ -6,27 +6,26 @@
 //  Copyright (c) 2012 tetek. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "HTMLParser.h"
 #import "BookListFetcher.h"
 #import "Book.h"
 #import "GUIUtils.h"
-#import "MBProgressHUD.h"
 #import "BookListViewController.h"
 
-@interface ViewController ()
+@interface MainViewController ()
 
-@property (nonatomic, assign) IBOutlet UIImageView *backgroundImageView;
-@property (nonatomic, assign) IBOutlet UIImageView *logo;
-@property (nonatomic, assign) IBOutlet UITextField *textField;
-@property (nonatomic, assign) IBOutlet UIButton *scanButton;
-@property (nonatomic, assign) IBOutlet UIButton *callButton;
-@property (nonatomic, assign) IBOutlet UIButton *mailButton;
+@property (nonatomic, unsafe_unretained) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, unsafe_unretained) IBOutlet UIImageView *logo;
+@property (nonatomic, unsafe_unretained) IBOutlet UITextField *textField;
+@property (nonatomic, unsafe_unretained) IBOutlet UIButton *scanButton;
+@property (nonatomic, unsafe_unretained) IBOutlet UIButton *callButton;
+@property (nonatomic, unsafe_unretained) IBOutlet UIButton *mailButton;
 
-@property (nonatomic, retain) MBProgressHUD *HUD;
+
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad
 {
@@ -35,15 +34,13 @@
     [GUIUtils setupButton:_scanButton];
     _textField.delegate = self;
     
-    self.HUD = [[[MBProgressHUD alloc] initWithView:self.view] autorelease];
-    [self.view addSubview:_HUD];
+    self.HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:self.HUD];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
     //Animate background
-    [self.navigationController setNavigationBarHidden:YES];
-
-    
+    [self.navigationController setNavigationBarHidden:YES];    
 }
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -53,8 +50,7 @@
         _logo.frame = frame;
                     
     }];
-    _textField.hidden = NO;
-    _textField.alpha = 0.01;
+
     [UIView animateWithDuration:2.0 animations:^{
         
         _textField.alpha = 1.0;
@@ -106,7 +102,6 @@
     
     // present and release the controller
     [self presentViewController:reader animated:YES completion:nil];
-    [reader release];
 }
 
 - (void) imagePickerController: (UIImagePickerController*) reader
@@ -129,11 +124,7 @@
     
     [reader dismissViewControllerAnimated:YES completion:nil];
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 - (void) searchForBookWithQuery:(NSString*)query{
     [self.HUD showWhileExecuting:@selector(searchForBookWithQueryNoThread:) onTarget:self withObject:query animated:YES];
@@ -148,18 +139,18 @@
     }
     
     @catch (NSException *exception) {
-        [_HUD hide:YES];
-        [[[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+        [self.HUD hide:YES];
+        [[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         if (books.count > 0) {
-            BookListViewController *bookList = [[[BookListViewController alloc] initWithBooks:books] autorelease];
+            BookListViewController *bookList = [[BookListViewController alloc] initWithBooks:books];
             [self.navigationController pushViewController:bookList animated:YES];
         }
         else{
-            [[[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+            [[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     });
     
@@ -172,12 +163,10 @@
         controller.mailComposeDelegate = self;
         [controller setToRecipients:[NSArray arrayWithObject:@"sekrbg@pwr.wroc.pl"]];
         [self presentViewController:controller animated:YES completion:Nil];
-        [controller release];
     }
     else {
         UIAlertView *Notpermitted=[[UIAlertView alloc] initWithTitle:@"Uwaga" message:@"Prawdopodobnie nie masz skonfigurowanej żadnej skrzynki. Przytrzymaj aby skopiować adres email." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [Notpermitted show];
-        [Notpermitted release];
     }
 
 }
@@ -189,7 +178,6 @@
     else {
         UIAlertView *Notpermitted=[[UIAlertView alloc] initWithTitle:@"Uwaga" message:@"Twoje urządzenie nie nie potrafi wykonywać połączeń." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [Notpermitted show];
-        [Notpermitted release];
     }
 
 }

@@ -17,10 +17,10 @@
 
 @interface LocationsViewController ()
 
-@property (nonatomic, assign) IBOutlet UITableView *tableView;
-@property (nonatomic, assign) IBOutlet MKMapView *mapView; 
-@property (nonatomic, retain) NSDictionary *placesFetched;
-@property (nonatomic, retain) NSArray *tableData;
+@property (nonatomic, unsafe_unretained) IBOutlet UITableView *tableView;
+@property (nonatomic, unsafe_unretained) IBOutlet MKMapView *mapView; 
+@property (nonatomic, strong) NSDictionary *placesFetched;
+@property (nonatomic, strong) NSArray *tableData;
 @end
 
 @implementation LocationsViewController
@@ -134,7 +134,7 @@
                                                                   dequeueReusableAnnotationViewWithIdentifier:identifier];
 	if(annotationView == nil)
 	{
-		annotationView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
+		annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
 	}
 	   
     //pin drops when it first appears
@@ -161,15 +161,12 @@
 - (void) showLibraryInfoWithName: (NSString *) uniq
 {
     Library * lib = [self.placesFetched objectForKey:uniq];
-    LibraryInfoViewController *libraryInfo = [[[LibraryInfoViewController alloc] initWithLibrary:lib] autorelease];
+    LibraryInfoViewController *libraryInfo = [[LibraryInfoViewController alloc] initWithLibrary:lib];
     [self.navigationController pushViewController:libraryInfo animated:YES];
 }
 - (void)dealloc
 {
-    self.placesFetched = nil;
-    self.tableData = nil;
     self.mapView = nil;
     self.tableView = nil;
-    [super dealloc];
 }
 @end

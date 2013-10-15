@@ -39,7 +39,7 @@
     [but setImage:image forState:UIControlStateNormal];
     [but setFrame:CGRectMake(0, 0, image.size.width*1.5, image.size.height)];
     
-    UIBarButtonItem *backButton = [[[UIBarButtonItem alloc] initWithCustomView:but] autorelease];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithCustomView:but];
     
     return backButton;
 }

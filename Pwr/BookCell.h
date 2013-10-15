@@ -10,8 +10,8 @@
 #import "Book.h"
 @interface BookCell : UITableViewCell
 
-@property (nonatomic, assign) IBOutlet UILabel *author;
-@property (nonatomic, assign) IBOutlet UILabel *title;
-@property (nonatomic, assign) IBOutlet UILabel *availability;
+@property (nonatomic, unsafe_unretained) IBOutlet UILabel *author;
+@property (nonatomic, unsafe_unretained) IBOutlet UILabel *title;
+@property (nonatomic, unsafe_unretained) IBOutlet UILabel *availability;
 
 @end

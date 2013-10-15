@@ -14,8 +14,8 @@
 
 - (int)countAvailability;
 
-@property(nonatomic, retain) NSString *title;
-@property(nonatomic, retain) NSString *author;
-@property(nonatomic, retain) NSDictionary *availablePlaces;
-@property(nonatomic, retain) NSMutableDictionary *availablePlacesFetched;
+@property(nonatomic, strong) NSString *title;
+@property(nonatomic, strong) NSString *author;
+@property(nonatomic, strong) NSDictionary *availablePlaces;
+@property(nonatomic, strong) NSMutableDictionary *availablePlacesFetched;
 @end

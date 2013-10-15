@@ -10,6 +10,6 @@
 
 @interface LongInfoCell : UITableViewCell
 
-@property (retain, nonatomic) IBOutlet UILabel *valueLabel;
-@property (retain, nonatomic) IBOutlet UILabel *keyLabel;
+@property (strong, nonatomic) IBOutlet UILabel *valueLabel;
+@property (strong, nonatomic) IBOutlet UILabel *keyLabel;
 @end

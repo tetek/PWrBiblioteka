@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface InformationCell : UITableViewCell
-@property (retain, nonatomic) IBOutlet UILabel *keyLabel;
-@property (retain, nonatomic) IBOutlet UIView *separator;
-@property (retain, nonatomic) IBOutlet UILabel *valueLabel;
+@property (strong, nonatomic) IBOutlet UILabel *keyLabel;
+@property (strong, nonatomic) IBOutlet UIView *separator;
+@property (strong, nonatomic) IBOutlet UILabel *valueLabel;
 
 @end

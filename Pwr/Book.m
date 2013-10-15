@@ -11,7 +11,7 @@
 @implementation Book
 
 +(Book*)book{
-    return [[[Book alloc] init] autorelease];
+    return [[Book alloc] init];
 }
 
 - (NSString*)description{
@@ -23,12 +23,5 @@
         sum += [number intValue];
     }
     return sum;
-}
-- (void)dealloc
-{
-    self.title = nil;
-    self.author = nil;
-    self.availablePlaces = nil;
-    [super dealloc];
 }
 @end
