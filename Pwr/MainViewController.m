@@ -17,7 +17,8 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *backgroundImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *logo;
-@property (nonatomic, weak) IBOutlet UITextField *textField;
+@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, weak) IBOutlet UIButton *scanButton;
 @property (nonatomic, weak) IBOutlet UIButton *callButton;
@@ -31,10 +32,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [GUIUtils setupTextField:_textField];
-    [GUIUtils setupButton:_scanButton];
-    _textField.delegate = self;
+//    [GUIUtils setupTextField:_textField];
+//    [GUIUtils setupButton:_scanButton];
+//    _textField.delegate = self;
+    [self addParallex:25];
     
+}
+- (void) addParallex:(int)value{
+    // Set vertical effect
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(value);
+    verticalMotionEffect.maximumRelativeValue = @(-value);
+    
+    // Set horizontal effect
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-value);
+    horizontalMotionEffect.maximumRelativeValue = @(value);
+    
+    // Create group to combine both
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    // Add both effects to your view
+    [_backgroundImageView addMotionEffect:group];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -45,7 +71,7 @@
     [super viewDidAppear:animated];
     [UIView animateWithDuration:2.0 animations:^{
         CGRect frame = _logo.frame;
-        frame.origin.y = 30;
+        frame.origin.y = 50;
         _logo.frame = frame;
                     
     }];
@@ -68,15 +94,15 @@
     
 }
 - (void) backgroundAnimation{
-    [UIView animateWithDuration:10.0
-                          delay:0.0
-                        options: UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse
-                     animations:^{
-                         _backgroundImageView.center = CGPointMake(_backgroundImageView.center.x + 50,_backgroundImageView.center.y+50);
-                     }
-                     completion:^(BOOL finished){
-                         _backgroundImageView.center = self.view.center;
-                     }];
+//    [UIView animateWithDuration:10.0
+//                          delay:0.0
+//                        options: UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse
+//                     animations:^{
+//                         _backgroundImageView.center = CGPointMake(_backgroundImageView.center.x + 50,_backgroundImageView.center.y+50);
+//                     }
+//                     completion:^(BOOL finished){
+//                         _backgroundImageView.center = self.view.center;
+//                     }];
 
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -199,7 +225,50 @@
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 2;
+}
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"Szukaj";
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 250.;
+}
 
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell =  [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ALA"];
+    cell.backgroundColor = [UIColor colorWithWhite:1 alpha:0.7];
+    if ([indexPath row] == 0) {
+        if (!self.textField) {
+            
+            self.textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 10, 300, 30)];
+            self.textField.delegate = self;
+            self.textField.textColor = [GUIUtils redColor];
+            self.textField.textAlignment = NSTextAlignmentRight;
+            self.textField.placeholder = @"słowo kluczowe";
+            self.textField.returnKeyType = UIReturnKeySearch;
+            
+            [cell.contentView addSubview:self.textField];
+        }
+    }
+    else{
+        cell.textLabel.text = @"Zeskanuj kod kreskowy";
+        cell.textLabel.textAlignment = NSTextAlignmentRight;
+        cell.textLabel.textColor = [GUIUtils redColor];
+    }
+    return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([indexPath row] == 0) {
+        [self.textField becomeFirstResponder];
+    }
+    else{
+        [self scanButtonTapped];
+    }
+}
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }

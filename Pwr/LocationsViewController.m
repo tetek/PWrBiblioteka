@@ -17,10 +17,12 @@
 
 @interface LocationsViewController ()
 
-@property (nonatomic, unsafe_unretained) IBOutlet UITableView *tableView;
-@property (nonatomic, unsafe_unretained) IBOutlet MKMapView *mapView; 
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet MKMapView *mapView;
+
 @property (nonatomic, strong) NSDictionary *placesFetched;
 @property (nonatomic, strong) NSArray *tableData;
+
 @end
 
 @implementation LocationsViewController

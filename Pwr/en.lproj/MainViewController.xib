@@ -12,7 +12,7 @@
                 <outlet property="logo" destination="10" id="23"/>
                 <outlet property="mailButton" destination="16" id="25"/>
                 <outlet property="scanButton" destination="13" id="14"/>
-                <outlet property="textField" destination="12" id="15"/>
+                <outlet property="tableView" destination="H2o-Mu-TAx" id="H2n-Df-MKA"/>
                 <outlet property="view" destination="6" id="7"/>
             </connections>
         </placeholder>
@@ -22,20 +22,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleAspectFit" image="lib.jpg" id="8">
-                    <rect key="frame" x="-300" y="-300" width="1200" height="908"/>
+                    <rect key="frame" x="-30" y="-150" width="1000" height="908"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo" id="10">
                     <rect key="frame" x="47" y="243" width="226" height="81"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Wpisz tytuł lub autora" textAlignment="center" minimumFontSize="17" id="12">
-                    <rect key="frame" x="20" y="234" width="280" height="40"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="13">
+                <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="13">
                     <rect key="frame" x="20" y="294" width="280" height="40"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -80,6 +74,16 @@
                         <action selector="call:" destination="-1" eventType="touchUpInside" id="20"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="H2o-Mu-TAx">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="d5e-KA-r4O"/>
+                        <outlet property="delegate" destination="-1" id="FcJ-8v-oZp"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
