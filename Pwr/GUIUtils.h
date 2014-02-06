@@ -13,5 +13,9 @@
 + (void)setupTextField:(UITextField*)textField;
 + (void)setupButton:(UIButton*)button;
 + (UIBarButtonItem*)makeBackButtonforNavigationController:(UINavigationController *)navigationController;
+
+
 + (void)addShadowAndCornersToView:(UIView*)view;
+
++ (UIColor*)redColor;
 @end

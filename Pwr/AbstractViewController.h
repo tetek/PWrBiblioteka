@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
+//#import "MBProgressHUD.h"
+#import "M13ProgressHUD.h"
 
 @interface AbstractViewController : UIViewController
-@property (nonatomic, strong) MBProgressHUD *HUD;
+@property (nonatomic, strong) M13ProgressHUD *HUD;
 @end

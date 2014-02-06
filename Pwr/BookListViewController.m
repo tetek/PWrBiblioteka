@@ -20,7 +20,7 @@
 
 @property (nonatomic, unsafe_unretained) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *books;
-@property (nonatomic, strong) MBProgressHUD *HUD;
+
 @end
 
 @implementation BookListViewController
@@ -35,20 +35,13 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:92./255 green:10./255 blue:13./255 alpha:1]];
+
     [self.navigationController setNavigationBarHidden:NO];
-    self.navigationItem.hidesBackButton = YES;
-    [self.navigationItem setLeftBarButtonItem:[GUIUtils makeBackButtonforNavigationController:self.navigationController]];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:_HUD];
-    
+
     self.title = @"Wyniki wyszukiwania";
     [_tableView registerNib:[UINib nibWithNibName:@"BookCell" bundle:nil] forCellReuseIdentifier:@"BookCellIdentifier"];
 //    _tableView.backgroundColor = [UIColor clearColor];
@@ -61,7 +54,7 @@
     return 100.;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    BookCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BookCellIdentifier"];
+    BookCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BookCellIdentifier" forIndexPath:indexPath];
     if (!cell) {
         //we are fucked
     }
@@ -78,7 +71,12 @@
 
 
 - (void) searchForLibraryWithName:(Book*)book{
-    [self.HUD showWhileExecuting:@selector(searchForLibraryWithNameNoThread:) onTarget:self withObject:book animated:YES];
+    [self.HUD show:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        [self searchForLibraryWithNameNoThread:book];
+    });
+
 }
 - (void) searchForLibraryWithNameNoThread:(Book *)book{
     
@@ -90,26 +88,29 @@
         for(NSArray * placeName in [book.availablePlaces allKeys])
         {
             NSString * uniq = [placeName objectAtIndex:0];
-            if([placesFetched objectForKey:uniq]==nil)
+            Library *lib = [placesFetched objectForKey:uniq];
+            if(!lib)
             {
-                Library * lib = [LibrariesFetcher fetchLibraryForName:uniq];
-//                NSString * count = [book.availablePlaces objectForKey:placeName];
+                lib = [LibrariesFetcher fetchLibraryForName:uniq];
                 lib.uniq = [placeName objectAtIndex:0];
-                lib.available = [NSNumber numberWithInt:book.countAvailability];
+                
                 lib.shorttitle = [placeName objectAtIndex:1];
                 [placesFetched setObject:lib forKey:uniq];
                 NSLog(@"fetched new library (%@)", uniq);
             }
+            NSNumber *count = [book.availablePlaces objectForKey:placeName];
+            lib.available = count;
             [places addObject:uniq];
         }
         [libraryCache saveLibraries:placesFetched];
     }
     @catch (NSException *exception) {
-        [_HUD hide:YES];
+        [self.HUD hide:YES];
         [[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
     dispatch_sync(dispatch_get_main_queue(), ^{
+        [self.HUD hide:YES];
         if (places) {
             LocationsViewController *locations = [[LocationsViewController alloc] initWithPlaces:placesFetched AndTableData:places];
             [self.navigationController pushViewController:locations animated:YES];

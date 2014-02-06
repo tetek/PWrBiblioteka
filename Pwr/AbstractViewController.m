@@ -7,7 +7,7 @@
 //
 
 #import "AbstractViewController.h"
-
+#import "M13ProgressViewRing.h"
 @interface AbstractViewController ()
 
 @end
@@ -26,7 +26,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    self.HUD = [[M13ProgressHUD alloc] initWithProgressView:[[M13ProgressViewRing alloc] init]];
+    [self.HUD setIndeterminate:YES];
+    self.HUD.progressViewSize = CGSizeMake(60.0, 60.0);
+    [self.view addSubview:self.HUD];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +40,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleDefault;
+}
 @end

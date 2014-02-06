@@ -15,12 +15,13 @@
 
 @interface MainViewController ()
 
-@property (nonatomic, unsafe_unretained) IBOutlet UIImageView *backgroundImageView;
-@property (nonatomic, unsafe_unretained) IBOutlet UIImageView *logo;
-@property (nonatomic, unsafe_unretained) IBOutlet UITextField *textField;
-@property (nonatomic, unsafe_unretained) IBOutlet UIButton *scanButton;
-@property (nonatomic, unsafe_unretained) IBOutlet UIButton *callButton;
-@property (nonatomic, unsafe_unretained) IBOutlet UIButton *mailButton;
+@property (nonatomic, weak) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *logo;
+@property (nonatomic, weak) IBOutlet UITextField *textField;
+
+@property (nonatomic, weak) IBOutlet UIButton *scanButton;
+@property (nonatomic, weak) IBOutlet UIButton *callButton;
+@property (nonatomic, weak) IBOutlet UIButton *mailButton;
 
 
 @end
@@ -34,8 +35,6 @@
     [GUIUtils setupButton:_scanButton];
     _textField.delegate = self;
     
-    self.HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:self.HUD];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -85,6 +84,7 @@
     [self searchForBookWithQuery:textField.text];
     return YES;
 }
+
 - (IBAction) scanButtonTapped
 {
     // ADD: present a barcode reader that scans from the camera feed
@@ -127,11 +127,16 @@
 
 
 - (void) searchForBookWithQuery:(NSString*)query{
-    [self.HUD showWhileExecuting:@selector(searchForBookWithQueryNoThread:) onTarget:self withObject:query animated:YES];
+//    [self.HUD showWhileExecuting:@selector(searchForBookWithQueryNoThread:) onTarget:self withObject:query animated:YES];
+    [self.HUD show:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        [self searchForBookWithQueryNoThread:query];
+    });
 }
+
 - (void) searchForBookWithQueryNoThread:(NSString*)query{
-        
-        
+    
     NSArray *books;
     @try {
         
@@ -145,9 +150,11 @@
     }
     
     dispatch_sync(dispatch_get_main_queue(), ^{
+        [self.HUD dismiss:YES];
         if (books.count > 0) {
             BookListViewController *bookList = [[BookListViewController alloc] initWithBooks:books];
             [self.navigationController pushViewController:bookList animated:YES];
+            
         }
         else{
             [[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
@@ -181,6 +188,7 @@
     }
 
 }
+
 #pragma mark Mail Compose delegate
 - (void)mailComposeController:(MFMailComposeViewController*)controller
           didFinishWithResult:(MFMailComposeResult)result
@@ -190,6 +198,10 @@
         NSLog(@"It's away!");
     }
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

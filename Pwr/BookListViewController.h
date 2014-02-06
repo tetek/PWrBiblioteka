@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface BookListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+#import "AbstractViewController.h"
+@interface BookListViewController : AbstractViewController <UITableViewDataSource, UITableViewDelegate>
 - (id)initWithBooks:(NSArray*)books;
 @end

@@ -51,8 +51,8 @@
     NSArray *trs = [tableNode findChildTags:@"tr"];
     for (HTMLNode *bookInfo in trs) {
         Book *book = [Book book];
-        NSString *author = ((HTMLNode*)bookInfo.children[4]).contents;
-        NSString *title = ((HTMLNode*)bookInfo.children[6]).contents;
+        NSString *author = ((HTMLNode*)bookInfo.children[5]).contents;
+        NSString *title = ((HTMLNode*)bookInfo.children[7]).contents;
         if (!title) {
             continue;
         }
@@ -68,7 +68,7 @@
 //        NSLog(@"Tytul %@",title);
         NSMutableDictionary *places = [NSMutableDictionary dictionary];
         
-        HTMLNode *available = (HTMLNode*)bookInfo.children[10];
+        HTMLNode *available = (HTMLNode*)bookInfo.children[11];
         for (HTMLNode *place in [available findChildTags:@"a"]) {
             NSString *placeString = place.contents;
             

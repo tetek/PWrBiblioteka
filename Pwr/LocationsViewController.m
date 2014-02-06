@@ -40,7 +40,7 @@
     [_tableView registerNib:[UINib nibWithNibName:@"LocationCell" bundle:nil] forCellReuseIdentifier:@"LocationCell"];
     self.title = @"Znaleziono w";
     
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.mapView.delegate = self;
     
@@ -64,18 +64,19 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationItem.hidesBackButton = YES;
-    [self.navigationItem setLeftBarButtonItem:[GUIUtils makeBackButtonforNavigationController:self.navigationController]];
+
 }
+
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.tableData.count;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 71;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell"];
+    LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
     if (!cell) {
         //we are fucked
     }
@@ -92,6 +93,7 @@
 
     return cell;
 }
+
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString * uniq = self.tableData[indexPath.row];

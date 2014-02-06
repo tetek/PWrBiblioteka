@@ -10,6 +10,7 @@
 
 #import "ZBarImageScanner.h"
 #import "ZBarReaderViewController.h"
+
 @interface MainViewController : AbstractViewController <UITextFieldDelegate, ZBarReaderDelegate, MFMailComposeViewControllerDelegate>
 
 @end

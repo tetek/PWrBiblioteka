@@ -11,6 +11,9 @@
 
 @implementation GUIUtils
 
++ (UIColor*)redColor{
+    return [UIColor colorWithRed:156./255 green:50./255 blue:28./255 alpha:1];
+}
 + (void)setupTextField:(UITextField *)textField{
     textField.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y, 280, 50);
     textField.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
