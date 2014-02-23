@@ -147,8 +147,8 @@
 
 - (NSDictionary *)dataForOpenHoursSectionForRow:(NSInteger)row {
     NSDictionary *data;
-    NSString *openHourKey = [self.openHours allKeys][row];
-    NSString *openHourValue = [self.openHours allValues][row];
+    NSString *openHourKey = self.openHours[row][@"key"];
+    NSString *openHourValue = self.openHours[row][@"value"];
     
     data = @{
              @"cellType": @"info",
@@ -174,8 +174,8 @@
 
 - (NSDictionary *)dataForEmailsSectionForRow:(NSInteger)row {
     NSDictionary *data;
-    NSString *emailKey = [self.emails allKeys][row];
-    NSString *emailValue = [self.emails allValues][row];
+    NSString *emailKey = self.emails[row][@"key"];
+    NSString *emailValue = self.emails[row][@"value"];
     
     data = @{
              @"cellType": @"info",
@@ -188,8 +188,8 @@
 
 - (NSDictionary *)dataForPhonesSectionForRow:(NSInteger)row {
     NSDictionary *data;
-    NSString *phoneKey = [self.phones allKeys][row];
-    NSString *phoneValue = [self.phones allValues][row];
+    NSString *phoneKey = self.phones[row][@"key"];
+    NSString *phoneValue = self.phones[row][@"value"];
     
     data = @{
              @"cellType": @"info",

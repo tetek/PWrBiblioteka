@@ -15,11 +15,11 @@
 @property (nonatomic, strong) NSString * uniq;
 @property (nonatomic, strong) NSString * title;
 @property (nonatomic, strong) NSString * shorttitle;
-@property (nonatomic, strong) NSDictionary * phones;
-@property (nonatomic, strong) NSDictionary *emails;
+@property (nonatomic, strong) NSArray * phones;
+@property (nonatomic, strong) NSArray *emails;
 @property (nonatomic, strong) NSString * adress;
 @property (nonatomic, strong) NSString * notes;
-@property (nonatomic, strong) NSDictionary * openHours;
+@property (nonatomic, strong) NSArray * openHours;
 @property (nonatomic, strong) NSNumber * available;
 @property (nonatomic) CLLocationCoordinate2D cord;
 

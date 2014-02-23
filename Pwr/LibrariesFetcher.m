@@ -54,7 +54,7 @@
     }
     
     
-    NSMutableDictionary * godzinyOtwarcia = [NSMutableDictionary dictionary];
+    NSMutableArray * godzinyOtwarcia = [NSMutableArray array];
     NSArray *trs = [tableNode findChildTags:@"tr"];
     for (HTMLNode *info in trs) {
         NSArray * keys = [info findChildrenWithAttribute:@"class" matchingName:@"td1" allowPartial:YES];
@@ -112,8 +112,7 @@
                 }
                 library.adress = value;
             } else if([key isEqualToString:@"telefon:"]) {
-                NSDictionary *phones = [self parsePhones:value];
-                library.phones = phones;
+                library.phones = [self parsePhones:value];
             } else if([key isEqualToString:@"e-mail:"]) {
                 NSError *error = NULL;
                 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[A-Za-z]" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionAllowCommentsAndWhitespace error:&error];
@@ -131,7 +130,7 @@
                 NSSet * allowedKeys = [NSSet setWithObjects:@"poniedziałek", @"wtorek", @"środa", @"czwartek", @"piątek", @"sobota", @"niedziela", nil];
                 if([allowedKeys containsObject:value] && godzina)
                 {
-                    [godzinyOtwarcia setObject:godzina forKey:value];
+                    [godzinyOtwarcia addObject:@{@"key": value, @"value": godzina}];
                 }
             }
         }
@@ -141,10 +140,10 @@
     return library;
 }
 
-+ (NSDictionary *)parsePhones:(NSString *)value {
-    return @{@"toBeImpl": @"123456789", @"sadsad": @"999999999"};
++ (NSArray *)parsePhones:(NSString *)value {
+    return @[@{@"key": @"Prezes", @"value": @"123456789"}, @{@"key": @"Sekretarait", @"value": @"78126380"}];
 }
-+ (NSDictionary *)parseEmails:(NSString *)value {
-    return @{@"toBeImpl": @"123456789", @"sadsad": @"999999999"};
++ (NSArray *)parseEmails:(NSString *)value {
+    return @[@{@"key": @"Biuro", @"value": @"bla@bla.pl"}, @{@"key": @"Spam", @"value": @"sopam@bibl.pl"}];
 }
 @end
