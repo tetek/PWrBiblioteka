@@ -106,6 +106,9 @@
     if(indexPath.section==3) {
         data = [self dataForOpenHoursSectionForRow:indexPath.row];
     }
+    if(indexPath.section==4) {
+        data = [self dataForNoteSectionForRow:indexPath.row];
+    }
     
     return data;
 }
@@ -113,7 +116,7 @@
 - (NSInteger)heightForHeaderInSection:(NSUInteger)section {
     NSInteger height = 0;
     if([self numberOfItemsInSection:section]>0 && section>0) {
-        height = 20;
+        height = 40;
     }
     return height;
 }
@@ -152,6 +155,17 @@
              @"key": openHourKey,
              @"value": openHourValue,
              @"height": [self calculateTextHeight:openHourValue forWidth:180.0]
+             };
+    return data;
+}
+
+- (NSDictionary *)dataForNoteSectionForRow:(NSInteger)row {
+    NSDictionary *data;
+    
+    data = @{
+             @"cellType": @"longinfo",
+             @"value": self.notes,
+             @"height": [self calculateTextHeight:self.notes forWidth:280.0]
              };
     return data;
 }

@@ -11,5 +11,4 @@
 @interface LongInfoCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *valueLabel;
-@property (strong, nonatomic) IBOutlet UILabel *keyLabel;
 @end
