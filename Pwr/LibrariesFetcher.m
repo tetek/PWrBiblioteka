@@ -112,13 +112,14 @@
                 }
                 library.adress = value;
             } else if([key isEqualToString:@"telefon:"]) {
-                library.phone = value;
+                NSDictionary *phones = [self parsePhones:value];
+                library.phones = phones;
             } else if([key isEqualToString:@"e-mail:"]) {
                 NSError *error = NULL;
                 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[A-Za-z]" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionAllowCommentsAndWhitespace error:&error];
                 NSUInteger numberOfMatches = [regex numberOfMatchesInString:value options:0 range:NSMakeRange(0, [value length])];
                 if(numberOfMatches!=0) {
-                    library.email = value;
+                    library.emails = [self parseEmails:value];
                 }
             } else if([key isEqualToString:@"uwagi:"]) {
                 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([\\n\\t\\r\\ ]+)" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionAnchorsMatchLines error:&error];
@@ -138,5 +139,12 @@
     library.openHours = godzinyOtwarcia;
     
     return library;
+}
+
++ (NSDictionary *)parsePhones:(NSString *)value {
+    return @{@"toBeImpl": @"123456789", @"sadsad": @"999999999"};
+}
++ (NSDictionary *)parseEmails:(NSString *)value {
+    return @{@"toBeImpl": @"123456789", @"sadsad": @"999999999"};
 }
 @end

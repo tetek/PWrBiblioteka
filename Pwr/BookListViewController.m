@@ -96,7 +96,7 @@
                 
                 lib.shorttitle = [placeName objectAtIndex:1];
                 [placesFetched setObject:lib forKey:uniq];
-                NSLog(@"fetched new library (%@)", uniq);
+                NSLog(@"fetched new library \n\n %@", lib);
             }
             NSNumber *count = [book.availablePlaces objectForKey:placeName];
             lib.available = count;
