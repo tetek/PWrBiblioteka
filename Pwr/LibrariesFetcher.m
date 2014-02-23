@@ -140,10 +140,52 @@
     return library;
 }
 
-+ (NSArray *)parsePhones:(NSString *)value {
-    return @[@{@"key": @"Prezes", @"value": @"123456789"}, @{@"key": @"Sekretarait", @"value": @"78126380"}];
+
++ (NSArray *)parsePhones:(NSString *)valueToParse {
+    // The NSRegularExpression class is currently only available in the Foundation framework of iOS 4
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([0-9\\s]+)(\\((.*)\\)|)" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionAnchorsMatchLines error:&error];
+    
+    
+    NSMutableArray *results = [NSMutableArray array];
+    [regex enumerateMatchesInString:valueToParse options:NULL range:NSMakeRange(0, valueToParse.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSString *key = @"";
+        NSString *value = @"";
+        if(result.numberOfRanges>3) {
+            NSRange keyRange = [result rangeAtIndex:3];
+            if(keyRange.location != NSNotFound) {
+                key = [valueToParse substringWithRange:[result rangeAtIndex:3]];
+                value = [valueToParse substringWithRange:[result rangeAtIndex:1]];
+                [results addObject:@{@"key": key, @"value": [self cleanPhoneNumber:value]}];
+            } else {
+                value = [valueToParse substringWithRange:[result rangeAtIndex:1]];
+                [results addObject:@{@"key": key, @"value": [self cleanPhoneNumber:value]}];
+            }
+        }
+    }];
+    return results;
 }
-+ (NSArray *)parseEmails:(NSString *)value {
-    return @[@{@"key": @"Biuro", @"value": @"bla@bla.pl"}, @{@"key": @"Spam", @"value": @"sopam@bibl.pl"}];
++ (NSString *)cleanPhoneNumber:(NSString *)phone {
+    NSString *cleaned = [phone stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    cleaned = [cleaned stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return cleaned;
+}
+
++ (NSArray *)parseEmails:(NSString *)valueToParse {
+    // The NSRegularExpression class is currently only available in the Foundation framework of iOS 4
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\\.[a-zA-Z]{2,4})" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionAnchorsMatchLines error:&error];
+    
+    
+    NSMutableArray *results = [NSMutableArray array];
+    [regex enumerateMatchesInString:valueToParse options:NULL range:NSMakeRange(0, valueToParse.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSString *key = @"";
+        NSString *value = @"";
+        if(result.numberOfRanges>1) {
+            value = [valueToParse substringWithRange:[result rangeAtIndex:1]];
+            [results addObject:@{@"key": key, @"value": [self cleanPhoneNumber:value]}];
+        }
+    }];
+    return results;
 }
 @end
