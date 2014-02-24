@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>197C7905-038D-4409-9582-2DD95E6072EA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PWrBiblioteka</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C759633F-D516-4FF0-A505-A1C635194B5C</key>
+		<string>https://github.com/tetek/PWrBiblioteka.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PWrBiblioteka.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C759633F-D516-4FF0-A505-A1C635194B5C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/tetek/PWrBiblioteka.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C759633F-D516-4FF0-A505-A1C635194B5C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C759633F-D516-4FF0-A505-A1C635194B5C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PWrBiblioteka</string>
+		</dict>
+	</array>
+</dict>
+</plist>

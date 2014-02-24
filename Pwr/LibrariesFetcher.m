@@ -54,7 +54,7 @@
     }
     
     
-    NSMutableDictionary * godzinyOtwarcia = [NSMutableDictionary dictionary];
+    NSMutableArray * godzinyOtwarcia = [NSMutableArray array];
     NSArray *trs = [tableNode findChildTags:@"tr"];
     for (HTMLNode *info in trs) {
         NSArray * keys = [info findChildrenWithAttribute:@"class" matchingName:@"td1" allowPartial:YES];
@@ -112,13 +112,13 @@
                 }
                 library.adress = value;
             } else if([key isEqualToString:@"telefon:"]) {
-                library.phone = value;
+                library.phones = [self parsePhones:value];
             } else if([key isEqualToString:@"e-mail:"]) {
                 NSError *error = NULL;
                 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[A-Za-z]" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionAllowCommentsAndWhitespace error:&error];
                 NSUInteger numberOfMatches = [regex numberOfMatchesInString:value options:0 range:NSMakeRange(0, [value length])];
                 if(numberOfMatches!=0) {
-                    library.email = value;
+                    library.emails = [self parseEmails:value];
                 }
             } else if([key isEqualToString:@"uwagi:"]) {
                 NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([\\n\\t\\r\\ ]+)" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionAnchorsMatchLines error:&error];
@@ -130,7 +130,7 @@
                 NSSet * allowedKeys = [NSSet setWithObjects:@"poniedziałek", @"wtorek", @"środa", @"czwartek", @"piątek", @"sobota", @"niedziela", nil];
                 if([allowedKeys containsObject:value] && godzina)
                 {
-                    [godzinyOtwarcia setObject:godzina forKey:value];
+                    [godzinyOtwarcia addObject:@{@"key": value, @"value": godzina}];
                 }
             }
         }
@@ -138,5 +138,54 @@
     library.openHours = godzinyOtwarcia;
     
     return library;
+}
+
+
++ (NSArray *)parsePhones:(NSString *)valueToParse {
+    // The NSRegularExpression class is currently only available in the Foundation framework of iOS 4
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([0-9\\s]+)(\\((.*)\\)|)" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionAnchorsMatchLines error:&error];
+    
+    
+    NSMutableArray *results = [NSMutableArray array];
+    [regex enumerateMatchesInString:valueToParse options:NULL range:NSMakeRange(0, valueToParse.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSString *key = @"";
+        NSString *value = @"";
+        if(result.numberOfRanges>3) {
+            NSRange keyRange = [result rangeAtIndex:3];
+            if(keyRange.location != NSNotFound) {
+                key = [valueToParse substringWithRange:[result rangeAtIndex:3]];
+                value = [valueToParse substringWithRange:[result rangeAtIndex:1]];
+                [results addObject:@{@"key": key, @"value": [self cleanPhoneNumber:value]}];
+            } else {
+                value = [valueToParse substringWithRange:[result rangeAtIndex:1]];
+                [results addObject:@{@"key": key, @"value": [self cleanPhoneNumber:value]}];
+            }
+        }
+    }];
+    return results;
+}
++ (NSString *)cleanPhoneNumber:(NSString *)phone {
+    NSString *cleaned = [phone stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    cleaned = [cleaned stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return cleaned;
+}
+
++ (NSArray *)parseEmails:(NSString *)valueToParse {
+    // The NSRegularExpression class is currently only available in the Foundation framework of iOS 4
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\\.[a-zA-Z]{2,4})" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionAnchorsMatchLines error:&error];
+    
+    
+    NSMutableArray *results = [NSMutableArray array];
+    [regex enumerateMatchesInString:valueToParse options:NULL range:NSMakeRange(0, valueToParse.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSString *key = @"";
+        NSString *value = @"";
+        if(result.numberOfRanges>1) {
+            value = [valueToParse substringWithRange:[result rangeAtIndex:1]];
+            [results addObject:@{@"key": key, @"value": [self cleanPhoneNumber:value]}];
+        }
+    }];
+    return results;
 }
 @end
