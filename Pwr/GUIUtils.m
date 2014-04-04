@@ -8,11 +8,24 @@
 
 #import "GUIUtils.h"
 #import <QuartzCore/QuartzCore.h>
+#import "WMMacros.h"
 
 @implementation GUIUtils
 
++(UIFont*)fontWithSize:(int)size{
+    return [UIFont fontWithName:@"FuturaLT" size:size];
+}
 + (UIColor*)redColor{
     return [UIColor colorWithRed:156./255 green:50./255 blue:28./255 alpha:1];
+}
++(UIColor *)brightColor{
+    return WMUIColorFromRGB(0xe6e6cc);
+}
++(UIColor *)blueColor{
+    return WMUIColorFromRGB(0x0c3051);
+}
++(UIColor*)orangeColor{
+    return WMUIColorFromRGB(0xf26353);
 }
 + (void)setupTextField:(UITextField *)textField{
     textField.frame = CGRectMake(textField.frame.origin.x, textField.frame.origin.y, 280, 50);

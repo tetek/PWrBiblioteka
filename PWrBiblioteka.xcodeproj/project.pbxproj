@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7D494B85180D567E0028E017 /* AbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D494B84180D567D0028E017 /* AbstractViewController.m */; };
 		7D494B86180D5C460028E017 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AC78733517086DF400523B33 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7D7A6F2018EE15970057BC67 /* FuturaLT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D7A6F1F18EE15970057BC67 /* FuturaLT.ttf */; };
+		7D7A6F2318EE1B400057BC67 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D7A6F2218EE1B400057BC67 /* search@2x.png */; };
+		7D7A6F2518EE1C260057BC67 /* barcode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D7A6F2418EE1C260057BC67 /* barcode@2x.png */; };
+		7D7A6F2918EEC1ED0057BC67 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D7A6F2818EEC1ED0057BC67 /* arrow@2x.png */; };
 		7DAA810318A3A33A00BC0D65 /* M13ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA810018A3A33A00BC0D65 /* M13ProgressHUD.m */; };
 		7DAA810418A3A33A00BC0D65 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA810218A3A33A00BC0D65 /* UIImage+ImageEffects.m */; };
 		7DAA813918A3A35F00BC0D65 /* M13ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA812618A3A35F00BC0D65 /* M13ProgressView.m */; };
@@ -21,6 +25,9 @@
 		7DAA814018A3A35F00BC0D65 /* M13ProgressViewSegmentedBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA813418A3A35F00BC0D65 /* M13ProgressViewSegmentedBar.m */; };
 		7DAA814118A3A35F00BC0D65 /* M13ProgressViewSegmentedRing.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA813618A3A35F00BC0D65 /* M13ProgressViewSegmentedRing.m */; };
 		7DAA814218A3A35F00BC0D65 /* M13ProgressViewStripedBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA813818A3A35F00BC0D65 /* M13ProgressViewStripedBar.m */; };
+		7DC186BF18EECCCD001AA8C8 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC186BE18EECCCD001AA8C8 /* back@2x.png */; };
+		7DC186C318EECF43001AA8C8 /* PBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC186C218EECF43001AA8C8 /* PBWebViewController.m */; };
+		7DC186C518EED468001AA8C8 /* arrow-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC186C418EED468001AA8C8 /* arrow-down@2x.png */; };
 		7DC96C3E167E0557006E9EA7 /* 18-envelope@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC96C2F167E0557006E9EA7 /* 18-envelope@2x.png */; };
 		7DC96C3F167E0557006E9EA7 /* 75-phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC96C30167E0557006E9EA7 /* 75-phone@2x.png */; };
 		7DC96C40167E0557006E9EA7 /* back-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC96C31167E0557006E9EA7 /* back-arrow@2x.png */; };
@@ -95,6 +102,11 @@
 /* Begin PBXFileReference section */
 		7D494B83180D567D0028E017 /* AbstractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractViewController.h; sourceTree = "<group>"; };
 		7D494B84180D567D0028E017 /* AbstractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractViewController.m; sourceTree = "<group>"; };
+		7D7A6F1F18EE15970057BC67 /* FuturaLT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaLT.ttf; sourceTree = "<group>"; };
+		7D7A6F2118EE18C10057BC67 /* WMMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMacros.h; sourceTree = "<group>"; };
+		7D7A6F2218EE1B400057BC67 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
+		7D7A6F2418EE1C260057BC67 /* barcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barcode@2x.png"; sourceTree = "<group>"; };
+		7D7A6F2818EEC1ED0057BC67 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		7DAA80FF18A3A33A00BC0D65 /* M13ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressHUD.h; sourceTree = "<group>"; };
 		7DAA810018A3A33A00BC0D65 /* M13ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressHUD.m; sourceTree = "<group>"; };
 		7DAA810118A3A33A00BC0D65 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -119,6 +131,10 @@
 		7DAA813618A3A35F00BC0D65 /* M13ProgressViewSegmentedRing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewSegmentedRing.m; sourceTree = "<group>"; };
 		7DAA813718A3A35F00BC0D65 /* M13ProgressViewStripedBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressViewStripedBar.h; sourceTree = "<group>"; };
 		7DAA813818A3A35F00BC0D65 /* M13ProgressViewStripedBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewStripedBar.m; sourceTree = "<group>"; };
+		7DC186BE18EECCCD001AA8C8 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		7DC186C118EECF43001AA8C8 /* PBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBWebViewController.h; sourceTree = "<group>"; };
+		7DC186C218EECF43001AA8C8 /* PBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBWebViewController.m; sourceTree = "<group>"; };
+		7DC186C418EED468001AA8C8 /* arrow-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-down@2x.png"; sourceTree = "<group>"; };
 		7DC96C2F167E0557006E9EA7 /* 18-envelope@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "18-envelope@2x.png"; sourceTree = "<group>"; };
 		7DC96C30167E0557006E9EA7 /* 75-phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "75-phone@2x.png"; sourceTree = "<group>"; };
 		7DC96C31167E0557006E9EA7 /* back-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-arrow@2x.png"; sourceTree = "<group>"; };
@@ -298,9 +314,23 @@
 			path = ProgressViews;
 			sourceTree = "<group>";
 		};
+		7DC186C018EECF43001AA8C8 /* PBWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7DC186C118EECF43001AA8C8 /* PBWebViewController.h */,
+				7DC186C218EECF43001AA8C8 /* PBWebViewController.m */,
+			);
+			path = PBWebViewController;
+			sourceTree = "<group>";
+		};
 		7DC96C2E167E0557006E9EA7 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				7DC186C418EED468001AA8C8 /* arrow-down@2x.png */,
+				7DC186BE18EECCCD001AA8C8 /* back@2x.png */,
+				7D7A6F2818EEC1ED0057BC67 /* arrow@2x.png */,
+				7D7A6F2418EE1C260057BC67 /* barcode@2x.png */,
+				7D7A6F2218EE1B400057BC67 /* search@2x.png */,
 				7DC96C2F167E0557006E9EA7 /* 18-envelope@2x.png */,
 				7DC96C30167E0557006E9EA7 /* 75-phone@2x.png */,
 				AC4B5A0B16B91D3F00187828 /* 18-envelopeBLACK@2x.png */,
@@ -378,6 +408,7 @@
 		7DCF640F167C7DCC00B22C57 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7D7A6F1F18EE15970057BC67 /* FuturaLT.ttf */,
 				7DCF6410167C7DCC00B22C57 /* PWrBiblioteka-Info.plist */,
 				7DCF6411167C7DCC00B22C57 /* InfoPlist.strings */,
 				7DCF6414167C7DCC00B22C57 /* main.m */,
@@ -417,6 +448,8 @@
 		7DCF644C167CA4AF00B22C57 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7DC186C018EECF43001AA8C8 /* PBWebViewController */,
+				7D7A6F2118EE18C10057BC67 /* WMMacros.h */,
 				7DAA812418A3A35F00BC0D65 /* ProgressViews */,
 				7DAA80FE18A3A33A00BC0D65 /* HUD */,
 				AC78733417086DF400523B33 /* JSONKit.h */,
@@ -594,6 +627,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7A6F2318EE1B400057BC67 /* search@2x.png in Resources */,
 				7DCF6413167C7DCC00B22C57 /* InfoPlist.strings in Resources */,
 				7DCF6425167C7DCC00B22C57 /* MainViewController.xib in Resources */,
 				7DCF6472167CB26500B22C57 /* zbar-back.png in Resources */,
@@ -610,6 +644,7 @@
 				7DC96C41167E0557006E9EA7 /* Default-568h@2x.png in Resources */,
 				7DC96C42167E0557006E9EA7 /* Default.png in Resources */,
 				7DC96C43167E0557006E9EA7 /* Default@2x.png in Resources */,
+				7D7A6F2918EEC1ED0057BC67 /* arrow@2x.png in Resources */,
 				7DC96C44167E0557006E9EA7 /* icon-small.png in Resources */,
 				7DC96C45167E0557006E9EA7 /* icon.png in Resources */,
 				7DC96C46167E0557006E9EA7 /* lib.jpg in Resources */,
@@ -620,12 +655,16 @@
 				7DC96C4B167E0557006E9EA7 /* thelibrary.jpg in Resources */,
 				7DC96C4C167E0557006E9EA7 /* white-circle.png in Resources */,
 				AC6EE56D169B3AA000F40C08 /* red-circle.png in Resources */,
+				7D7A6F2018EE15970057BC67 /* FuturaLT.ttf in Resources */,
 				AC912212169C4A9700F06E6B /* LibraryInfoViewController.xib in Resources */,
+				7DC186C518EED468001AA8C8 /* arrow-down@2x.png in Resources */,
 				AC4B5A0A16B915C200187828 /* tlowidokubiblioteki@2x.png in Resources */,
+				7DC186BF18EECCCD001AA8C8 /* back@2x.png in Resources */,
 				AC4B5A0D16B91D3F00187828 /* 18-envelopeBLACK@2x.png in Resources */,
 				AC4B5A0E16B91D3F00187828 /* 75-phoneBLACK@2x.png in Resources */,
 				AC78732917084A4200523B33 /* InformationCell.xib in Resources */,
 				AC78732E1708509C00523B33 /* NameCell.xib in Resources */,
+				7D7A6F2518EE1C260057BC67 /* barcode@2x.png in Resources */,
 				AC7873301708529600523B33 /* MapCell.xib in Resources */,
 				AC78733B1708773A00523B33 /* LongInfoCell.xib in Resources */,
 			);
@@ -653,6 +692,7 @@
 				7DCF6496167CB9E300B22C57 /* BookListViewController.m in Sources */,
 				7DAA813B18A3A35F00BC0D65 /* M13ProgressViewBorderedBar.m in Sources */,
 				7DAA813D18A3A35F00BC0D65 /* M13ProgressViewImage.m in Sources */,
+				7DC186C318EECF43001AA8C8 /* PBWebViewController.m in Sources */,
 				7DAA813E18A3A35F00BC0D65 /* M13ProgressViewPie.m in Sources */,
 				7DCF649B167CBAC800B22C57 /* BookCell.m in Sources */,
 				7DAA813C18A3A35F00BC0D65 /* M13ProgressViewFilteredImage.m in Sources */,
@@ -769,6 +809,7 @@
 					"\"$(SRCROOT)/Pwr/ZBarSDK\"",
 					"\"$(SRCROOT)\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PWrBiblioteka;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv7s";

@@ -10,6 +10,8 @@
 //#import "MBProgressHUD.h"
 #import "M13ProgressHUD.h"
 
-@interface AbstractViewController : UIViewController
+@interface AbstractViewController : UIViewController <MFMailComposeViewControllerDelegate>
 @property (nonatomic, strong) M13ProgressHUD *HUD;
+
+- (void)openWebsiteForURL:(NSURL*)url;
 @end

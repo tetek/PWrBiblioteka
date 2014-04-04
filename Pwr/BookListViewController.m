@@ -42,6 +42,7 @@
 {
     [super viewDidLoad];
 
+
     self.title = @"Wyniki wyszukiwania";
     [_tableView registerNib:[UINib nibWithNibName:@"BookCell" bundle:nil] forCellReuseIdentifier:@"BookCellIdentifier"];
 //    _tableView.backgroundColor = [UIColor clearColor];

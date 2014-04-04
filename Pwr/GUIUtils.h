@@ -18,4 +18,9 @@
 + (void)addShadowAndCornersToView:(UIView*)view;
 
 + (UIColor*)redColor;
++ (UIColor *)brightColor;
++ (UIColor *)blueColor;
++(UIColor*)orangeColor;
++(UIFont*)fontWithSize:(int)size;
+
 @end

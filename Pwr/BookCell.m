@@ -18,7 +18,10 @@
     }
     return self;
 }
-
+-(void)awakeFromNib{
+    self.author.textColor = [GUIUtils orangeColor];
+    self.title.textColor = [GUIUtils blueColor];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

@@ -23,7 +23,7 @@
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
 //    [[UIView appearance] setTintColor:[GUIUtils redColor]];
-    self.window.tintColor = [GUIUtils redColor];
+    self.window.tintColor = [GUIUtils orangeColor];
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     return YES;
