@@ -68,9 +68,6 @@
     [self setupToolBarItems];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [GUIUtils blueColor],NSFontAttributeName:[GUIUtils fontWithSize:20]}];
     self.view.backgroundColor = [GUIUtils brightColor];
-    
-
-    
 
     self.navigationController.navigationBar.barTintColor = [GUIUtils brightColor];
     self.navigationController.toolbar.barTintColor = [GUIUtils brightColor];

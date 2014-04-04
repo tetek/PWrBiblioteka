@@ -73,7 +73,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="info:" destination="-1" eventType="touchUpInside" id="2iJ-V0-9Qe"/>
+                                <action selector="info:" destination="-1" eventType="touchDown" id="9Ck-xL-Ca9"/>
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KOD ŹRÓDŁOWY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cef-En-q5F">

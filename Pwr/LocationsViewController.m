@@ -40,8 +40,8 @@
 {
     [super viewDidLoad];
     [_tableView registerNib:[UINib nibWithNibName:@"LocationCell" bundle:nil] forCellReuseIdentifier:@"LocationCell"];
+
     self.title = @"Znaleziono w";
-    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.mapView.delegate = self;
@@ -79,14 +79,11 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
-    if (!cell) {
-        //we are fucked
-    }
+
     NSString * uniq = self.tableData[indexPath.row];
     Library * lib = ((Library *)[self.placesFetched valueForKey:uniq]);
     NSString *placeName = lib.shorttitle;
     cell.placeName.text = [NSString stringWithFormat:@"w %@",placeName];
-    cell.placeName.textColor = [UIColor blackColor];
     NSNumber *number = lib.available;
     cell.availability.text = [NSString stringWithFormat:@"%d",number.intValue];
     cell.ending.text = number.intValue > 1 ? @"sztuki" : number.intValue == 1 ? @"sztuka" : @"sztuk";

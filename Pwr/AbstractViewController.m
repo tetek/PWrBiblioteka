@@ -37,6 +37,8 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self.navigationController action:@selector(popViewControllerAnimated:)];
     self.navigationController.navigationBar.barTintColor = [GUIUtils brightColor];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [GUIUtils blueColor],NSFontAttributeName:[GUIUtils fontWithSize:20]}];
 }
 
 - (void)didReceiveMemoryWarning

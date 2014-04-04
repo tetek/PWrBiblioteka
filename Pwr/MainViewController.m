@@ -51,24 +51,29 @@
     
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+////////////////////////////////////////////////////////
+#pragma mark - TextField Setup
+////////////////////////////////////////////////////////
+
 - (BOOL)isTextFieldActive{
     return self.textField.userInteractionEnabled;
 }
+
 - (void)showTextField{
     CGPoint buttonCenter = self.searchButton.center;
     buttonCenter.x = self.searchButton.frame.size.width/2.;
     
-    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0.9 options:UIViewAnimationCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.4 animations:^{
+        
         self.searchButton.center = buttonCenter;
         self.textField.userInteractionEnabled = YES;
         [self.textField becomeFirstResponder];
         
-    } completion:^(BOOL finished) {
-        if (finished) {
-        }
-        
-    }];
-
+    } completion:nil];
 }
 - (void)hideTextField{
     
@@ -81,38 +86,63 @@
 
     [UIView animateWithDuration:0.4 animations:^{
         self.searchButton.center = buttonCenter;
-    } completion:^(BOOL finished) {
-        if (finished) {
-        }
-    }];
+    } completion:nil];
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [_textField resignFirstResponder];
+    [self searchForBookWithQuery:textField.text];
+    return YES;
+}
+
+////////////////////////////////////////////////////////
+#pragma mark - Info page
+////////////////////////////////////////////////////////
+
+
 - (BOOL)isInfoPresented{
     return self.infoView.frame.origin.y < 400;
 }
-- (IBAction)openGithub:(id)sender{
-    [self openWebsiteForURL:[NSURL URLWithString:@"http://github.com/tetek/PwrBiblioteka"]];
-}
+
 - (void)dismiss{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
--(IBAction)openAuthor:(id)sender{
-    [self openWebsiteForURL:[NSURL URLWithString:@"http://tetek.wordpress.com"]];    
-}
--(IBAction)openContributors:(id)sender{
-    [self openWebsiteForURL:[NSURL URLWithString:@"http://hern.as"]];
-}
 
--(IBAction)info:(id)sender{
+
+////////////////////////////////////////////////////////
+#pragma mark - Actions
+////////////////////////////////////////////////////////
+
+
+- (IBAction)info:(id)sender{
+    
     CGRect rect = self.infoView.frame;
     rect.origin.y = self.isInfoPresented ? self.view.frame.size.height - 60 : self.view.frame.size.height - rect.size.height;
+    
     [UIView animateWithDuration:0.5 animations:^{
         self.infoButton.transform = CGAffineTransformMakeRotation(self.isInfoPresented ? 0 : M_PI);
         self.infoView.frame = rect;
     }];
     
 }
--(IBAction)searchTapped:(id)sender{
-    if ([self isTextFieldActive]) {
+
+- (IBAction)openGithub:(id)sender{
+    [self openWebsiteForURL:[NSURL URLWithString:@"http://github.com/tetek/PwrBiblioteka"]];
+}
+
+- (IBAction)openAuthor:(id)sender{
+    [self openWebsiteForURL:[NSURL URLWithString:@"http://tetek.wordpress.com"]];    
+}
+
+- (IBAction)openContributors:(id)sender{
+    [self openWebsiteForURL:[NSURL URLWithString:@"http://hern.as"]];
+}
+
+
+- (IBAction)searchTapped:(id)sender{
+
+    if (self.isTextFieldActive) {
+    
         if (self.textField.text.length > 0) {
             [self.textField resignFirstResponder];
             [self searchForBookWithQuery:self.textField.text];
@@ -124,16 +154,6 @@
     else{
         [self showTextField];
     }
-}
-- (void) viewWillAppear:(BOOL)animated{
-    //Animate background
-    [self.navigationController setNavigationBarHidden:YES];    
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [_textField resignFirstResponder];
-    [self searchForBookWithQuery:textField.text];
-    return YES;
 }
 
 - (IBAction) scanButtonTapped
@@ -155,30 +175,22 @@
     [self presentViewController:reader animated:YES completion:nil];
 }
 
-- (void) imagePickerController: (UIImagePickerController*) reader
- didFinishPickingMediaWithInfo: (NSDictionary*) info
-{
+- (void) imagePickerController: (UIImagePickerController*) reader didFinishPickingMediaWithInfo: (NSDictionary*) info{
     // ADD: get the decode results
-    id<NSFastEnumeration> results =
-    [info objectForKey: ZBarReaderControllerResults];
+    id<NSFastEnumeration> results = [info objectForKey: ZBarReaderControllerResults];
+
     ZBarSymbol *symbol = nil;
     for(symbol in results)
-        // EXAMPLE: just grab the first barcode
         break;
     
-
     NSString *text  = symbol.data;
     [self searchForBookWithQuery:text];
 
-//    resultImage.image =
-//    [info objectForKey: UIImagePickerControllerOriginalImage];
-    
     [reader dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (void) searchForBookWithQuery:(NSString*)query{
-//    [self.HUD showWhileExecuting:@selector(searchForBookWithQueryNoThread:) onTarget:self withObject:query animated:YES];
     [self.HUD show:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
