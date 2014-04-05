@@ -39,7 +39,7 @@
     self = [super init];
     if(self)
     {
-        self.title = title;
+        self.name = title;
         self.cord = coordinate;
     }
     return self;
@@ -48,18 +48,21 @@
 {
     return self.cord;
 }
+-(NSString *)title{
+    return self.name;
+}
 - (NSString*)description{
     //return [NSString stringWithFormat:@"Library: %@", self.uniq];
-    return [NSString stringWithFormat:@"uniq: %@ \n title: %@ \n shorttitle: %@ \n phone: %@ \n email: %@ \n adress: %@ \n open: %@ \n notes: %@ \n  --------- \n ", self.uniq, self.title, self.shorttitle, self.phones, self.emails, self.adress, self.openHours, self.notes];
+    return [NSString stringWithFormat:@"uniq: %@ \n title: %@ \n shorttitle: %@ \n phone: %@ \n email: %@ \n adress: %@ \n open: %@ \n notes: %@ \n  --------- \n ", self.uniq, self.name, self.shorttitle, self.phones, self.emails, self.adress, self.openHours, self.notes];
 }
 - (NSDictionary*)asDictionary{
     //Nie może być nic nil bo nam się dictionary nie stworzy :(
-    if(!self.title) { self.title = @""; }
+    if(!self.name) { self.name = @""; }
     if(!self.shorttitle) { self.shorttitle = @""; }
-    if(!self.phones) { self.phones = @{}; }
-    if(!self.emails) { self.emails = @{}; }
+    if(!self.phones) { self.phones = @[]; }
+    if(!self.emails) { self.emails = @[]; }
     if(!self.adress) { self.adress = @""; }
-    if(!self.openHours) { self.openHours = [NSDictionary dictionary]; }
+    if(!self.openHours) { self.openHours = @[]; }
     if(!self.notes) { self.notes = @""; }
     
     
@@ -67,7 +70,7 @@
     NSNumber * cord2 = [NSNumber numberWithDouble:self.cord.longitude];
     
     NSArray * keys = [NSArray arrayWithObjects:@"uniq", @"title", @"shorttitle", @"phones", @"emails", @"adress", @"openHours", @"notes", @"cord1", @"cord2", nil];
-    NSArray * values = [NSArray arrayWithObjects:self.uniq, self.title, self.shorttitle, self.phones, self.emails, self.adress, self.openHours, self.notes, cord1, cord2, nil];
+    NSArray * values = [NSArray arrayWithObjects:self.uniq, self.name, self.shorttitle, self.phones, self.emails, self.adress, self.openHours, self.notes, cord1, cord2, nil];
     return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
 - (Library *) initWithDictionaryData: (NSDictionary *) data
@@ -80,7 +83,7 @@
         
         CLLocationCoordinate2D cords = CLLocationCoordinate2DMake(cord1, cord2);
         self.uniq = [data objectForKey:@"uniq"];
-        self.title = [data objectForKey:@"title"];
+        self.name = [data objectForKey:@"title"];
         self.shorttitle = [data objectForKey:@"shorttitle"];
         self.phones = [data objectForKey:@"phones"];
         self.emails = [data objectForKey:@"emails"];
@@ -204,13 +207,13 @@
     NSDictionary *data;
     if(row==0) {
         NSString *title = @"";
-        if(self.title) {
-            title = self.title;
+        if(self.name) {
+            title = self.name;
         }
         data = @{
                  @"cellType": @"name",
                  @"data": title,
-                 @"height": [self calculateTextHeight:self.title forWidth:280.0 forFont:[UIFont boldSystemFontOfSize:20.0]]
+                 @"height": [self calculateTextHeight:self.name forWidth:280.0 forFont:[GUIUtils fontWithSize:20.0]]
                  };
     } else if(row==1) {
         data = @{
@@ -224,15 +227,16 @@
 }
 
 
-- (NSNumber *) calculateTextHeight: (NSString *)string forWidth:(float)width
-{
+- (NSNumber *)calculateTextHeight: (NSString *)string forWidth:(float)width{
     
     return[self calculateTextHeight:string forWidth:width forFont:[UIFont systemFontOfSize:17.0]];
 }
-- (NSNumber *) calculateTextHeight: (NSString *)string forWidth:(float)width forFont:(UIFont *)font
-{
-    CGSize size = [string sizeWithFont:font constrainedToSize:CGSizeMake(width, 2000) lineBreakMode:NSLineBreakByWordWrapping];
-    return @(size.height+20);
+
+- (NSNumber *)calculateTextHeight: (NSString *)string forWidth:(float)width forFont:(UIFont *)font{
+    
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(width, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil];
+    return @(rect.size.height+20);
+    
 }
 
 @end

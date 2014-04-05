@@ -45,6 +45,11 @@
     [self.tableView registerNib:[UINib nibWithNibName:NameCellIndentifier bundle:nil] forCellReuseIdentifier:NameCellIndentifier];
     [self.tableView registerNib:[UINib nibWithNibName:MapCellIndentifier bundle:nil] forCellReuseIdentifier:MapCellIndentifier];
     [self.tableView registerNib:[UINib nibWithNibName:LongInfoCellIndentifier bundle:nil] forCellReuseIdentifier:LongInfoCellIndentifier];
+    
+    [[UITableViewHeaderFooterView appearance] setTintColor:[GUIUtils blueColor]];
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[GUIUtils fontWithSize:13]];
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setTextColor:[GUIUtils orangeColor]];
+
 }
 
 
@@ -98,16 +103,16 @@
         LongInfoCell *cell2 = (LongInfoCell *)cell;
         cell2.valueLabel.text = rowData[@"value"];
     }
-    
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return [self.library heightForHeaderInSection:section];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return [self.library heightForHeaderInSection:section];
+//}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.library titleForHeaderInSection:section];
+    return [self.library titleForHeaderInSection:section].uppercaseString;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

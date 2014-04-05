@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LibraryInfoViewController">
             <connections>
-                <outlet property="tableView" destination="JC5-6S-CDK" id="kkH-dc-dhc"/>
+                <outlet property="tableView" destination="WMi-4Q-oQq" id="8Jb-2b-fe0"/>
                 <outlet property="view" destination="9OS-Nh-X3Z" id="EgK-mk-AdG"/>
             </connections>
         </placeholder>
@@ -15,13 +15,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JC5-6S-CDK">
+                <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WMi-4Q-oQq">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="5E2-vy-aKh"/>
-                        <outlet property="delegate" destination="-1" id="Xjp-GF-GeW"/>
+                        <outlet property="dataSource" destination="-1" id="ZLQ-Nw-TFW"/>
+                        <outlet property="delegate" destination="-1" id="GO5-Sg-6aQ"/>
                     </connections>
                 </tableView>
             </subviews>

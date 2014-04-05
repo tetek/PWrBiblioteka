@@ -13,7 +13,7 @@
 +library;
 
 @property (nonatomic, strong) NSString * uniq;
-@property (nonatomic, strong) NSString * title;
+@property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSString * shorttitle;
 @property (nonatomic, strong) NSArray * phones;
 @property (nonatomic, strong) NSArray *emails;

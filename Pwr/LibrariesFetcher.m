@@ -45,7 +45,7 @@
     
     HTMLNode *nameNode = [bodyNode findChildTag:@"font"];
     NSString * title = [((HTMLNode *)[nameNode findChildTag:@"b"]) contents];
-    library.title = title;
+    library.name = title;
     
     HTMLNode *tableNode = [bodyNode findChildTag:@"table"];
     if (!tableNode) {

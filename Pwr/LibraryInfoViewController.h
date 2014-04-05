@@ -11,5 +11,7 @@
 #import "AbstractViewController.h"
 
 @interface LibraryInfoViewController : AbstractViewController
+
 - (id) initWithLibrary:(Library *)library;
+
 @end
