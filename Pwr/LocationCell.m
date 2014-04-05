@@ -7,23 +7,30 @@
 //
 
 #import "LocationCell.h"
+#import "Library.h"
 
+@interface LocationCell ()
+
+@property (weak) IBOutlet UILabel *availability;
+@property (weak) IBOutlet UILabel *placeName;
+@property (weak) IBOutlet UILabel *ending;
+
+@end
 @implementation LocationCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+-(void)awakeFromNib{
+    self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    self.selectionStyle = UITableViewCellSelectionStyleBlue;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
+-(void)setLibrary:(Library *)library{
+    _library = library;
 
-    // Configure the view for the selected state
+    self.placeName.text = [NSString stringWithFormat:@"w %@",_library.shorttitle];
+    
+    NSNumber *number = _library.available;
+    
+    self.availability.text = [NSString stringWithFormat:@"%d",number.intValue];
+    self.ending.text = number.intValue > 1 ? @"sztuki" : number.intValue == 1 ? @"sztuka" : @"sztuk";
 }
-
 @end

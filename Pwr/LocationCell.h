@@ -6,12 +6,10 @@
 //  Copyright (c) 2012 tetek. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@class Library;
 
 @interface LocationCell : UITableViewCell
 
-@property (nonatomic, unsafe_unretained) IBOutlet UILabel *availability;
-@property (nonatomic, unsafe_unretained) IBOutlet UILabel *placeName;
-@property (nonatomic, unsafe_unretained) IBOutlet UILabel *ending;
+@property (nonatomic, weak) Library *library;
 @property (nonatomic, strong) NSString *shortName;
 @end

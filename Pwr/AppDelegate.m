@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "BookListFetcher.h"
 #import "MainViewController.h"
 
 @implementation AppDelegate
@@ -17,14 +16,14 @@
 {
         
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.viewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:_viewController];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:[MainViewController newFromNib]];
     self.window.rootViewController = navController;
+
     [self.window makeKeyAndVisible];
-//    [[UIView appearance] setTintColor:[GUIUtils redColor]];
+
     self.window.tintColor = [GUIUtils orangeColor];
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
     
     return YES;
 }

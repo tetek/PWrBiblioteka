@@ -20,21 +20,23 @@
 #define MapCellIndentifier @"MapCell"
 
 @interface LibraryInfoViewController ()
-@property(strong, nonatomic) NSArray *infosToDisplay;
-@property (nonatomic, strong) Library * library;
-@end 
-/*
- "uniq: %@ \n title: %@ \n shorttitle: %@ \n phone: %@ \n email: %@ \n adress: %@ \n open: %@ \n notes: %@ \n  --------- \n ", self.uniq, self.title, self.shorttitle, self.phone, self.email, self.adress, self.openHours, self.notes];
- */
+
+@property NSArray *infosToDisplay;
+@property Library *library;
+@property (weak) IBOutlet UITableView *tableView;
+
+@end
+
 @implementation LibraryInfoViewController
-@synthesize  infosToDisplay = _infosToDisplay;
+
 - (id) initWithLibrary:(Library *)library {
-    self = [super initWithNibName:@"LibraryInfoViewController" bundle:nil];
+    self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
         self.library = library;
     }
     return self;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,12 +46,12 @@
     [self.tableView registerNib:[UINib nibWithNibName:MapCellIndentifier bundle:nil] forCellReuseIdentifier:MapCellIndentifier];
     [self.tableView registerNib:[UINib nibWithNibName:LongInfoCellIndentifier bundle:nil] forCellReuseIdentifier:LongInfoCellIndentifier];
 }
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
 
-}
 
+////////////////////////////////////////////////////////
 #pragma mark - TableView delegates
+////////////////////////////////////////////////////////
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -67,6 +69,7 @@
     
     NSDictionary *rowData = [self.library dataForRowAtIndexPath:indexPath];
     NSString *cellType = rowData[@"cellType"];
+
     if([cellType isEqualToString:@"name"]) {
         cell = [tableView dequeueReusableCellWithIdentifier:NameCellIndentifier];
         NameCell *nameCell = (NameCell *)cell;
@@ -113,9 +116,4 @@
     return [height floatValue];
 }
 
-- (void)viewDidUnload {
-    self.library = nil;
-    self.tableView = nil;
-    [super viewDidUnload];
-}
 @end

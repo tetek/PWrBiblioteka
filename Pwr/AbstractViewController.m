@@ -7,6 +7,7 @@
 //
 
 #import "AbstractViewController.h"
+#import "M13ProgressHUD.h"
 #import "M13ProgressViewRing.h"
 #import "PBWebViewController.h"
 
@@ -16,14 +17,13 @@
 
 @implementation AbstractViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
++(instancetype)newFromNib{
+    return [[[self class] alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
 }
+
+////////////////////////////////////////////////////////
+#pragma mark - View setup
+////////////////////////////////////////////////////////
 
 - (void)viewDidLoad
 {
@@ -35,42 +35,53 @@
     [self.view addSubview:self.HUD];
     self.view.backgroundColor = [GUIUtils brightColor];
     
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self.navigationController action:@selector(popViewControllerAnimated:)];
     self.navigationController.navigationBar.barTintColor = [GUIUtils brightColor];
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [GUIUtils blueColor],NSFontAttributeName:[GUIUtils fontWithSize:20]}];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO];
 }
-- (IBAction)sendMail:(id)sender{
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleDefault;
+}
+
+
+////////////////////////////////////////////////////////
+#pragma mark - Actions
+////////////////////////////////////////////////////////
+
+- (void)sendEmailTo:(NSString*)email{
+    
     if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
-        [controller setToRecipients:[NSArray arrayWithObject:@"sekrbg@pwr.wroc.pl"]];
+        [controller setToRecipients:[NSArray arrayWithObject:email]];
         [self presentViewController:controller animated:YES completion:Nil];
     }
     else {
-        UIAlertView *Notpermitted=[[UIAlertView alloc] initWithTitle:@"Uwaga" message:@"Prawdopodobnie nie masz skonfigurowanej żadnej skrzynki. Przytrzymaj aby skopiować adres email." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [Notpermitted show];
+        [[[UIAlertView alloc] initWithTitle:@"Uwaga" message:@"Prawdopodobnie nie masz skonfigurowanej żadnej skrzynki. Przytrzymaj aby skopiować adres email." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
     }
-    
 }
-- (IBAction)call:(id)sender{
+
+- (void)call:(NSString*)phoneNumber{
+    
     UIDevice *device = [UIDevice currentDevice];
     if ([[device model] isEqualToString:@"iPhone"] ) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:713202331"]]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",phoneNumber]]];
     }
     else {
-        UIAlertView *Notpermitted=[[UIAlertView alloc] initWithTitle:@"Uwaga" message:@"Twoje urządzenie nie nie potrafi wykonywać połączeń." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [Notpermitted show];
+        [[[UIAlertView alloc] initWithTitle:@"Uwaga" message:@"Twoje urządzenie nie nie potrafi wykonywać połączeń." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
-    
 }
+
 - (void)openWebsiteForURL:(NSURL*)url{
+    
     PBWebViewController *controller = [PBWebViewController new];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
     controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow-down"] style:UIBarButtonItemStylePlain target:self.navigationController action:@selector(popViewControllerAnimated:)];
@@ -79,7 +90,11 @@
     controller.URL = url;
     [self presentViewController:nav animated:YES completion:nil];
 }
+
+////////////////////////////////////////////////////////
 #pragma mark Mail Compose delegate
+////////////////////////////////////////////////////////
+
 - (void)mailComposeController:(MFMailComposeViewController*)controller
           didFinishWithResult:(MFMailComposeResult)result
                         error:(NSError*)error;
@@ -91,7 +106,4 @@
 }
 
 
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleDefault;
-}
 @end

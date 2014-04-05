@@ -13,4 +13,5 @@
     #import <Foundation/Foundation.h>
     #import <MessageUI/MFMailComposeViewController.h>
     #import "GUIUtils.h"
+    #import <MapKit/MapKit.h>
 #endif

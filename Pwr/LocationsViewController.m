@@ -8,29 +8,27 @@
 
 #import "LocationsViewController.h"
 #import "LocationCell.h"
-#import "GUIUtils.h"
 #import "Library.h"
-#import "BookListFetcher.h"
 #import "LibraryInfoViewController.h"
 
 #define METERS_PER_MILE 1609.344
 
 @interface LocationsViewController ()
 
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, weak) IBOutlet MKMapView *mapView;
+@property (weak) IBOutlet UITableView *tableView;
+@property (weak) IBOutlet MKMapView *mapView;
 
-@property (nonatomic, strong) NSDictionary *placesFetched;
-@property (nonatomic, strong) NSArray *tableData;
+@property NSDictionary *placesFetched;
+@property NSArray *tableData;
 
 @end
 
 @implementation LocationsViewController
 
-- (id) initWithPlaces:(NSDictionary*)arr AndTableData:(NSArray *) data {
-    self = [super initWithNibName:@"LocationsViewController" bundle:nil];
+- (id) initWithPlaces:(NSDictionary*)fetched AndTableData:(NSArray *) data {
+    self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
-        self.placesFetched = arr;
+        self.placesFetched = fetched;
         self.tableData = data;
     }
     return self;
@@ -56,18 +54,17 @@
     MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:viewRegion];
     // 4
     [self.mapView setRegion:adjustedRegion animated:YES];
-    
-    
-    [self.mapView removeAnnotations:[self.placesFetched allValues]];
     [self.mapView addAnnotations:[self.placesFetched allValues]];
+    
     self.mapView.showsUserLocation = YES;
+    self.tableView.tableHeaderView = self.mapView;
     
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+////////////////////////////////////////////////////////
+#pragma mark - TableView Delegate & DataSource
+////////////////////////////////////////////////////////
 
-}
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.tableData.count;
@@ -82,14 +79,9 @@
 
     NSString * uniq = self.tableData[indexPath.row];
     Library * lib = ((Library *)[self.placesFetched valueForKey:uniq]);
-    NSString *placeName = lib.shorttitle;
-    cell.placeName.text = [NSString stringWithFormat:@"w %@",placeName];
-    NSNumber *number = lib.available;
-    cell.availability.text = [NSString stringWithFormat:@"%d",number.intValue];
-    cell.ending.text = number.intValue > 1 ? @"sztuki" : number.intValue == 1 ? @"sztuka" : @"sztuk";
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-
+    
+    [cell setLibrary:lib];
+    
     return cell;
 }
 
@@ -105,29 +97,13 @@
     NSString * uniq = self.tableData[indexPath.row];
     [self showLibraryInfoWithName:uniq];
 }
-/*
- - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    
-    static NSString *identifier = @"LibraryAnnotation";
-        annotation = (Library *) annotation;
-        MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier]; 
-        if (annotationView == nil) {
-            annotationView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
-            UIButton* rightButton = [UIButton buttonWithType:
-                                     UIButtonTypeDetailDisclosure];
-            
-            annotationView.rightCalloutAccessoryView = rightButton;
-            annotationView.annotation = annotation;
-        }
-        annotationView.annotation = annotation;
-        annotationView.enabled = YES;
-        annotationView.canShowCallout = YES;
-        return annotationView;
-}
-*/
-- (MKAnnotationView *) mapView:(MKMapView *)thisMapView
-              viewForAnnotation:(Library *)annotation
-{
+
+////////////////////////////////////////////////////////
+#pragma mark - MapView Delegate & DataSource
+////////////////////////////////////////////////////////
+
+
+- (MKAnnotationView *) mapView:(MKMapView *)thisMapView viewForAnnotation:(Library *)annotation{
 	
 	static NSString *identifier = @"LibraryAnnotation";
     
@@ -146,28 +122,24 @@
     
     return annotationView;
 }
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)aView
-{
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)aView{
     Library * annotation = aView.annotation;
     int index = [self.tableData indexOfObject:annotation.uniq];
     
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 }
--(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
     Library * annotation = view.annotation;
     [self showLibraryInfoWithName:annotation.uniq];
 }
 
-- (void) showLibraryInfoWithName: (NSString *) uniq
-{
+- (void) showLibraryInfoWithName:(NSString *) uniq{
+    
     Library * lib = [self.placesFetched objectForKey:uniq];
     LibraryInfoViewController *libraryInfo = [[LibraryInfoViewController alloc] initWithLibrary:lib];
     [self.navigationController pushViewController:libraryInfo animated:YES];
 }
-- (void)dealloc
-{
-    self.mapView = nil;
-    self.tableView = nil;
-}
+
 @end

@@ -6,12 +6,14 @@
 //  Copyright (c) 2013 tetek. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-//#import "MBProgressHUD.h"
-#import "M13ProgressHUD.h"
+@class M13ProgressHUD;
 
 @interface AbstractViewController : UIViewController <MFMailComposeViewControllerDelegate>
+
 @property (nonatomic, strong) M13ProgressHUD *HUD;
 
++ (instancetype)newFromNib;
+
 - (void)openWebsiteForURL:(NSURL*)url;
+
 @end

@@ -6,9 +6,8 @@
 //  Copyright (c) 2012 tetek. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface BookListFetcher : NSObject
 
 + (NSArray*)fetchBooksForQuery:(NSString*)query;
+
 @end

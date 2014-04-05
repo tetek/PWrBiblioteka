@@ -7,12 +7,8 @@
 //
 
 #import "MainViewController.h"
-#import "HTMLParser.h"
 #import "BookListFetcher.h"
-#import "Book.h"
-#import "GUIUtils.h"
 #import "BookListViewController.h"
-#import "PBWebViewController.h"
 
 @interface MainViewController ()
 
@@ -191,9 +187,8 @@
 
 
 - (void) searchForBookWithQuery:(NSString*)query{
-    [self.HUD show:YES];
+//    [self.HUD show:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
         [self searchForBookWithQueryNoThread:query];
     });
 }
@@ -207,13 +202,13 @@
     }
     
     @catch (NSException *exception) {
-        [self.HUD hide:YES];
+//        [self.HUD hide:YES];
         [[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
     
     dispatch_sync(dispatch_get_main_queue(), ^{
-        [self.HUD dismiss:YES];
+//        [self.HUD hide:YES];
         if (books.count > 0) {
             BookListViewController *bookList = [[BookListViewController alloc] initWithBooks:books];
             [self.navigationController pushViewController:bookList animated:YES];
@@ -225,9 +220,5 @@
     });
     
 }
-
-
-
-
 
 @end
