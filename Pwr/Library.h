@@ -10,7 +10,6 @@
 #import <MapKit/MapKit.h>
 
 @interface Library : NSObject <MKAnnotation>
-+library;
 
 @property (nonatomic, strong) NSString * uniq;
 @property (nonatomic, strong) NSString * name;
@@ -22,14 +21,11 @@
 @property (nonatomic, strong) NSArray * openHours;
 @property (nonatomic, strong) NSNumber * available;
 @property (nonatomic) CLLocationCoordinate2D cord;
+@property NSMutableArray *sections;
 
-- (Library *) initWithTitle: (NSString *) title coordinate: (CLLocationCoordinate2D)coordinate;
-- (Library *) initWithDictionaryData: (NSDictionary *) data;
-- (NSDictionary *) asDictionary;
-
-- (NSInteger)numberOfSections;
-- (NSInteger)numberOfItemsInSection:(NSInteger)section;
-- (NSDictionary *)dataForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (NSInteger)heightForHeaderInSection:(NSUInteger)section;
-- (NSString *)titleForHeaderInSection:(NSUInteger)section;
++ (instancetype)library;
+- (Library *)initWithTitle: (NSString *) title coordinate: (CLLocationCoordinate2D)coordinate;
+- (Library *)initWithDictionaryData: (NSDictionary *) data;
+- (NSDictionary *)asDictionary;
+- (void)setupTable;
 @end

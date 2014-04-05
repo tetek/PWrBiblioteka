@@ -148,7 +148,7 @@
     
     
     NSMutableArray *results = [NSMutableArray array];
-    [regex enumerateMatchesInString:valueToParse options:NULL range:NSMakeRange(0, valueToParse.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+    [regex enumerateMatchesInString:valueToParse options:NULL range:NSMakeRange(0, 12) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
         NSString *key = @"";
         NSString *value = @"";
         if(result.numberOfRanges>3) {

@@ -19,8 +19,7 @@
 @implementation LocationCell
 
 -(void)awakeFromNib{
-    self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-    self.selectionStyle = UITableViewCellSelectionStyleBlue;
+    self.accessoryType = UITableViewCellAccessoryDetailButton;
 }
 
 -(void)setLibrary:(Library *)library{

@@ -33,6 +33,7 @@
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
         self.library = library;
+        [self.library setupTable];
     }
     return self;
 }
@@ -41,6 +42,7 @@
 {
     [super viewDidLoad];
     self.title = self.library.uniq;
+    
     [self.tableView registerNib:[UINib nibWithNibName:InformationCellIndentifier bundle:nil] forCellReuseIdentifier:InformationCellIndentifier];
     [self.tableView registerNib:[UINib nibWithNibName:NameCellIndentifier bundle:nil] forCellReuseIdentifier:NameCellIndentifier];
     [self.tableView registerNib:[UINib nibWithNibName:MapCellIndentifier bundle:nil] forCellReuseIdentifier:MapCellIndentifier];
@@ -60,19 +62,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.library numberOfSections];
+    return self.library.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.library numberOfItemsInSection:section];
+    NSDictionary *dict = self.library.sections[section];
+    return ((NSArray*)dict.allValues[0]).count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NameCellIndentifier];
     
-    NSDictionary *rowData = [self.library dataForRowAtIndexPath:indexPath];
+    NSDictionary *dict = self.library.sections[indexPath.section];
+    NSArray *rows =  ((NSArray*)dict.allValues[0]);
+    
+    NSDictionary *rowData = rows[indexPath.row];
+    
     NSString *cellType = rowData[@"cellType"];
 
     if([cellType isEqualToString:@"name"]) {
@@ -112,11 +119,15 @@
 //}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [self.library titleForHeaderInSection:section].uppercaseString;
+    NSString *key = ((NSDictionary*)self.library.sections[section]).allKeys[0];
+    return key;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *rowData = [self.library dataForRowAtIndexPath:indexPath];
+    NSDictionary *dict = self.library.sections[indexPath.section];
+    NSArray *rows =  ((NSArray*)dict.allValues[0]);
+    
+    NSDictionary *rowData = rows[indexPath.row];
     NSNumber *height = rowData[@"height"];
     return [height floatValue];
 }

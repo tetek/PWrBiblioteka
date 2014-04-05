@@ -10,28 +10,8 @@
 
 @implementation Library
 
-+(Library*)library{
++(instancetype)library{
     return [[Library alloc] init];
-}
-
-- (NSInteger)numberOfSections {
-    return 5;
-}
-
-- (NSInteger)numberOfItemsInSection:(NSInteger)section {
-    NSInteger numberOfItems = 0;
-    if(section==0) {
-        numberOfItems = 2; //name, map
-    } else if (section==1) {
-        numberOfItems = self.emails.count;
-    } else if(section==2) {
-        numberOfItems = self.phones.count;
-    } else if(section==3) {
-        numberOfItems = self.openHours.count;
-    } else if(section==4) {
-        numberOfItems = 1;
-    }
-    return numberOfItems;
 }
 
 - (Library *) initWithTitle: (NSString *) title coordinate: (CLLocationCoordinate2D)coordinate
@@ -44,35 +24,7 @@
     }
     return self;
 }
-- (CLLocationCoordinate2D) coordinate
-{
-    return self.cord;
-}
--(NSString *)title{
-    return self.name;
-}
-- (NSString*)description{
-    //return [NSString stringWithFormat:@"Library: %@", self.uniq];
-    return [NSString stringWithFormat:@"uniq: %@ \n title: %@ \n shorttitle: %@ \n phone: %@ \n email: %@ \n adress: %@ \n open: %@ \n notes: %@ \n  --------- \n ", self.uniq, self.name, self.shorttitle, self.phones, self.emails, self.adress, self.openHours, self.notes];
-}
-- (NSDictionary*)asDictionary{
-    //Nie może być nic nil bo nam się dictionary nie stworzy :(
-    if(!self.name) { self.name = @""; }
-    if(!self.shorttitle) { self.shorttitle = @""; }
-    if(!self.phones) { self.phones = @[]; }
-    if(!self.emails) { self.emails = @[]; }
-    if(!self.adress) { self.adress = @""; }
-    if(!self.openHours) { self.openHours = @[]; }
-    if(!self.notes) { self.notes = @""; }
-    
-    
-    NSNumber * cord1 = [NSNumber numberWithDouble:self.cord.latitude];
-    NSNumber * cord2 = [NSNumber numberWithDouble:self.cord.longitude];
-    
-    NSArray * keys = [NSArray arrayWithObjects:@"uniq", @"title", @"shorttitle", @"phones", @"emails", @"adress", @"openHours", @"notes", @"cord1", @"cord2", nil];
-    NSArray * values = [NSArray arrayWithObjects:self.uniq, self.name, self.shorttitle, self.phones, self.emails, self.adress, self.openHours, self.notes, cord1, cord2, nil];
-    return [NSDictionary dictionaryWithObjects:values forKeys:keys];
-}
+
 - (Library *) initWithDictionaryData: (NSDictionary *) data
 {
     self = [super init];
@@ -91,64 +43,100 @@
         self.openHours = [data objectForKey:@"openHours"];
         self.notes = [data objectForKey:@"notes"];
         self.cord = cords;
+        
+        [self setupTable];
     }
     return self;
 }
 
-- (NSDictionary *)dataForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *data;
-    if(indexPath.section==0) {
-        data = [self dataForGeneralSectionForRow:indexPath.row];
+
+- (CLLocationCoordinate2D) coordinate
+{
+    return self.cord;
+}
+-(NSString *)title{
+    return self.name;
+}
+- (NSString*)description{
+    //return [NSString stringWithFormat:@"Library: %@", self.uniq];
+    return [NSString stringWithFormat:@"uniq: %@ \n title: %@ \n shorttitle: %@ \n phone: %@ \n email: %@ \n adress: %@ \n open: %@ \n notes: %@ \n  --------- \n ", self.uniq, self.name, self.shorttitle, self.phones, self.emails, self.adress, self.openHours, self.notes];
+}
+
+- (NSDictionary*)asDictionary{
+    //Nie może być nic nil bo nam się dictionary nie stworzy :(
+    if(!self.name) { self.name = @""; }
+    if(!self.shorttitle) { self.shorttitle = @""; }
+    if(!self.phones) { self.phones = @[]; }
+    if(!self.emails) { self.emails = @[]; }
+    if(!self.adress) { self.adress = @""; }
+    if(!self.openHours) { self.openHours = @[]; }
+    if(!self.notes) { self.notes = @""; }
+    
+    
+    NSNumber * cord1 = [NSNumber numberWithDouble:self.cord.latitude];
+    NSNumber * cord2 = [NSNumber numberWithDouble:self.cord.longitude];
+    
+    NSArray * keys = [NSArray arrayWithObjects:@"uniq", @"title", @"shorttitle", @"phones", @"emails", @"adress", @"openHours", @"notes", @"cord1", @"cord2", nil];
+    NSArray * values = [NSArray arrayWithObjects:self.uniq, self.name, self.shorttitle, self.phones, self.emails, self.adress, self.openHours, self.notes, cord1, cord2, nil];
+    return [NSDictionary dictionaryWithObjects:values forKeys:keys];
+}
+
+
+
+- (void)setupTable{
+    
+    NSMutableArray *sections = [NSMutableArray array];
+    
+    NSMutableArray *section1 = [NSMutableArray array];
+    
+    if ([self titleRow]) {
+        [section1 addObject:[self titleRow]];
     }
-    if(indexPath.section==1) {
-        data = [self dataForEmailsSectionForRow:indexPath.row];
-    }
-    if(indexPath.section==2) {
-        data = [self dataForPhonesSectionForRow:indexPath.row];
-    }
-    if(indexPath.section==3) {
-        data = [self dataForOpenHoursSectionForRow:indexPath.row];
-    }
-    if(indexPath.section==4) {
-        data = [self dataForNoteSectionForRow:indexPath.row];
+    if ([self mapRow]) {
+        [section1 addObject:[self mapRow]];
     }
     
-    return data;
-}
+    [sections addObject:@{@"":section1}];
+    
+    if (self.emails.count > 0) {
+        NSMutableArray *section2 = [NSMutableArray array];
+        for (int i = 0; i < self.emails.count; i++) {
+            if ([self emailRowForRow:i]) {
+                [section2 addObject:[self emailRowForRow:i]];                
+            }
 
-- (NSInteger)heightForHeaderInSection:(NSUInteger)section {
-    NSInteger height = 0;
-    if([self numberOfItemsInSection:section]>0 && section>0) {
-        height = 40;
+        }
+        [sections addObject:@{@"email": section2}];
     }
-    return height;
-}
-
-- (NSString *)titleForHeaderInSection:(NSUInteger)section {
-    NSString *title = @"";
-    switch (section) {
-        case 0:
-            break;
-        case 1:
-            title = @"Email";
-            break;
-        case 2:
-            title = @"Telefon";
-            break;
-        case 3:
-            title = @"Godziny otwarcia";
-            break;
-        case 4:
-            title = @"Notatka";
-            break;
-        default:
-            break;
+    
+    if (self.phones.count > 0) {
+        NSMutableArray *section3 = [NSMutableArray array];
+        for (int i = 0; i < self.phones.count; i++) {
+            if ([self phoneRowForRow:i]) {
+                [section3 addObject:[self phoneRowForRow:i]];
+            }
+        }
+        [sections addObject:@{@"telefon": section3}];
     }
-    return title;
+    
+    if (self.openHours.count > 0) {
+        NSMutableArray *section4 = [NSMutableArray array];
+        for (int i = 0; i < self.openHours.count; i++) {
+            [section4 addObject:[self openHourRowForRow:i]];
+        }
+        [sections addObject:@{@"Godziny Otwarcia": section4}];
+    }
+    
+    
+    if (self.notes.length > 0) {
+        NSMutableArray *section5 = [NSMutableArray array];
+        [section5 addObject:[self noteRow]];
+        [sections addObject:@{@"notatka": section5}];
+    }
+    self.sections = sections;
 }
 
-
-- (NSDictionary *)dataForOpenHoursSectionForRow:(NSInteger)row {
+- (NSDictionary *)openHourRowForRow:(NSInteger)row {
     NSDictionary *data;
     NSString *openHourKey = self.openHours[row][@"key"];
     NSString *openHourValue = self.openHours[row][@"value"];
@@ -162,9 +150,11 @@
     return data;
 }
 
-- (NSDictionary *)dataForNoteSectionForRow:(NSInteger)row {
+- (NSDictionary *)noteRow {
     NSDictionary *data;
-    
+    if (self.notes.length == 0) {
+        return nil;
+    }
     data = @{
              @"cellType": @"longinfo",
              @"value": self.notes,
@@ -173,13 +163,13 @@
     return data;
 }
 
-
-
-- (NSDictionary *)dataForEmailsSectionForRow:(NSInteger)row {
+- (NSDictionary *)emailRowForRow:(NSInteger)row {
     NSDictionary *data;
     NSString *emailKey = self.emails[row][@"key"];
     NSString *emailValue = self.emails[row][@"value"];
-    
+    if (emailValue.length == 0) {
+        return nil;
+    }
     data = @{
              @"cellType": @"info",
              @"key": emailKey,
@@ -189,11 +179,13 @@
     return data;
 }
 
-- (NSDictionary *)dataForPhonesSectionForRow:(NSInteger)row {
+- (NSDictionary *)phoneRowForRow:(NSInteger)row {
     NSDictionary *data;
     NSString *phoneKey = self.phones[row][@"key"];
     NSString *phoneValue = self.phones[row][@"value"];
-    
+    if (phoneValue.length == 0) {
+        return nil;
+    }
     data = @{
              @"cellType": @"info",
              @"key": phoneKey,
@@ -203,29 +195,35 @@
     return data;
 }
 
-- (NSDictionary *)dataForGeneralSectionForRow:(NSInteger)row {
-    NSDictionary *data;
-    if(row==0) {
-        NSString *title = @"";
-        if(self.name) {
-            title = self.name;
-        }
-        data = @{
-                 @"cellType": @"name",
-                 @"data": title,
-                 @"height": [self calculateTextHeight:self.name forWidth:280.0 forFont:[GUIUtils fontWithSize:20.0]]
-                 };
-    } else if(row==1) {
-        data = @{
-                 @"cellType": @"map",
-                 @"lat": @(self.coordinate.latitude),
-                 @"lng": @(self.coordinate.longitude),
-                 @"height": @(150)
-                 };
+- (NSDictionary *)titleRow{
+
+
+    NSString *title = @"";
+    if(self.name.length == 0) {
+        return nil;
     }
+        
+    NSDictionary *data = @{
+             @"cellType": @"name",
+             @"data": title,
+             @"height": [self calculateTextHeight:self.name forWidth:280.0 forFont:[GUIUtils fontWithSize:20.0]]
+             };
+    
+    return data;
+        
+}
+    
+- (NSDictionary*)mapRow{
+    NSDictionary *data;
+    data = @{
+             @"cellType": @"map",
+             @"lat": @(self.coordinate.latitude),
+             @"lng": @(self.coordinate.longitude),
+             @"height": @(150)
+             };
+
     return data;
 }
-
 
 - (NSNumber *)calculateTextHeight: (NSString *)string forWidth:(float)width{
     
