@@ -110,6 +110,7 @@
         [[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
+    
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self.HUD hide:YES];
         if (places) {
@@ -121,4 +122,6 @@
         }
     });
 }
+
+
 @end

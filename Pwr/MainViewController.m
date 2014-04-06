@@ -45,8 +45,12 @@
     
     self.infoView.backgroundColor = [GUIUtils blueColor];
     
+    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)]];
 }
+- (void)tap{
+    [self hideTextField];
 
+}
 - (void) viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -104,6 +108,15 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)hideInfo{
+    CGRect rect = self.infoView.frame;
+    rect.origin.y = self.view.frame.size.height - 60;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.infoButton.transform = CGAffineTransformMakeRotation(self.isInfoPresented ? 0 : M_PI);
+        self.infoView.frame = rect;
+    }];
+}
 
 ////////////////////////////////////////////////////////
 #pragma mark - Actions
