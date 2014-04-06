@@ -198,11 +198,11 @@
 - (NSDictionary *)titleRow{
 
 
-    NSString *title = @"";
     if(self.name.length == 0) {
         return nil;
     }
-        
+    NSString *title = self.name;
+    
     NSDictionary *data = @{
              @"cellType": @"name",
              @"data": title,

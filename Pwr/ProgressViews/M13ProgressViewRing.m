@@ -84,14 +84,14 @@
     self.backgroundColor = [UIColor clearColor];
     
     //Set defaut sizes
-    _backgroundRingWidth = fmaxf(self.bounds.size.width * .025, 1.0);
+    _backgroundRingWidth = fmaxf(self.bounds.size.width * .025, 3.0);
     _progressRingWidth = 3 * _backgroundRingWidth;
     _progressRingWidthOverriden = NO;
     _backgroundRingWidthOverriden = NO;
     self.animationDuration = .3;
     
     //Set default colors
-    self.primaryColor = [GUIUtils redColor];// [UIColor colorWithRed:0 green:122/255.0 blue:1.0 alpha:1.0];
+    self.primaryColor = [GUIUtils orangeColor];// [UIColor colorWithRed:0 green:122/255.0 blue:1.0 alpha:1.0];
     self.secondaryColor = self.primaryColor;
     
     //Set up the number formatter

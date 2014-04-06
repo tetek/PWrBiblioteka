@@ -91,7 +91,7 @@
     _statusFont = [UIFont systemFontOfSize:20.0];
     _minimumSize = CGSizeMake(150, 150);
     _dismissAfterAction = NO;
-    _hudBackgroundColor = [UIColor colorWithWhite:1 alpha:.7];
+    _hudBackgroundColor = [GUIUtils blueColor];//[UIColor colorWithWhite:1 alpha:.7];
     //Add the proper views
     maskView = [[UIView alloc] init];
     [self addSubview:maskView];

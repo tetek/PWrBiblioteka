@@ -72,7 +72,7 @@
 
 
 - (void) searchForLibraryWithName:(Book*)book{
-//    [self.HUD show:YES];
+    [self.HUD show:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
         [self searchForLibraryWithNameNoThread:book];
@@ -106,12 +106,12 @@
         [libraryCache saveLibraries:placesFetched];
     }
     @catch (NSException *exception) {
-//        [self.HUD hide:YES];
+        [self.HUD hide:YES];
         [[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
     dispatch_sync(dispatch_get_main_queue(), ^{
-//        [self.HUD hide:YES];
+        [self.HUD hide:YES];
         if (places) {
             LocationsViewController *locations = [[LocationsViewController alloc] initWithPlaces:placesFetched AndTableData:places];
             [self.navigationController pushViewController:locations animated:YES];

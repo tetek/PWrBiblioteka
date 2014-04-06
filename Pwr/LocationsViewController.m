@@ -85,15 +85,14 @@
     return cell;
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString * uniq = self.tableData[indexPath.row];
     [self.mapView selectAnnotation:[self.placesFetched valueForKey:uniq] animated:YES];
     
     
 }
-- (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
+- (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    [self.HUD show:YES];
     NSString * uniq = self.tableData[indexPath.row];
     [self showLibraryInfoWithName:uniq];
 }
@@ -136,7 +135,7 @@
 }
 
 - (void) showLibraryInfoWithName:(NSString *) uniq{
-    
+    [self.HUD hide:YES];
     Library * lib = [self.placesFetched objectForKey:uniq];
     LibraryInfoViewController *libraryInfo = [[LibraryInfoViewController alloc] initWithLibrary:lib];
     [self.navigationController pushViewController:libraryInfo animated:YES];

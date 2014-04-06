@@ -10,6 +10,7 @@
 		7D494B85180D567E0028E017 /* AbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D494B84180D567D0028E017 /* AbstractViewController.m */; };
 		7D494B86180D5C460028E017 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AC78733517086DF400523B33 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7D7A6F2018EE15970057BC67 /* FuturaLT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D7A6F1F18EE15970057BC67 /* FuturaLT.ttf */; };
+		7DA88C4418F1D66A007D1858 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DA88C4318F1D66A007D1858 /* Images.xcassets */; };
 		7DAA810318A3A33A00BC0D65 /* M13ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA810018A3A33A00BC0D65 /* M13ProgressHUD.m */; };
 		7DAA810418A3A33A00BC0D65 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA810218A3A33A00BC0D65 /* UIImage+ImageEffects.m */; };
 		7DAA813918A3A35F00BC0D65 /* M13ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA812618A3A35F00BC0D65 /* M13ProgressView.m */; };
@@ -23,7 +24,6 @@
 		7DAA814118A3A35F00BC0D65 /* M13ProgressViewSegmentedRing.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA813618A3A35F00BC0D65 /* M13ProgressViewSegmentedRing.m */; };
 		7DAA814218A3A35F00BC0D65 /* M13ProgressViewStripedBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DAA813818A3A35F00BC0D65 /* M13ProgressViewStripedBar.m */; };
 		7DC186C318EECF43001AA8C8 /* PBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC186C218EECF43001AA8C8 /* PBWebViewController.m */; };
-		7DC186CD18F030F2001AA8C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DC186CC18F030F2001AA8C8 /* Images.xcassets */; };
 		7DC96C4F167E056F006E9EA7 /* BookListFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC96C4E167E056F006E9EA7 /* BookListFetcher.m */; };
 		7DCF6409167C7DCC00B22C57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF6408167C7DCC00B22C57 /* UIKit.framework */; };
 		7DCF640B167C7DCC00B22C57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DCF640A167C7DCC00B22C57 /* Foundation.framework */; };
@@ -81,6 +81,7 @@
 		7D494B84180D567D0028E017 /* AbstractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractViewController.m; sourceTree = "<group>"; };
 		7D7A6F1F18EE15970057BC67 /* FuturaLT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaLT.ttf; sourceTree = "<group>"; };
 		7D7A6F2118EE18C10057BC67 /* WMMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMMacros.h; sourceTree = "<group>"; };
+		7DA88C4318F1D66A007D1858 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PWrBiblioteka/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		7DAA80FF18A3A33A00BC0D65 /* M13ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13ProgressHUD.h; sourceTree = "<group>"; };
 		7DAA810018A3A33A00BC0D65 /* M13ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressHUD.m; sourceTree = "<group>"; };
 		7DAA810118A3A33A00BC0D65 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -107,7 +108,6 @@
 		7DAA813818A3A35F00BC0D65 /* M13ProgressViewStripedBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13ProgressViewStripedBar.m; sourceTree = "<group>"; };
 		7DC186C118EECF43001AA8C8 /* PBWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBWebViewController.h; sourceTree = "<group>"; };
 		7DC186C218EECF43001AA8C8 /* PBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBWebViewController.m; sourceTree = "<group>"; };
-		7DC186CC18F030F2001AA8C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../PWrBiblioteka/Images.xcassets; sourceTree = "<group>"; };
 		7DC96C4D167E056F006E9EA7 /* BookListFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookListFetcher.h; sourceTree = "<group>"; };
 		7DC96C4E167E056F006E9EA7 /* BookListFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListFetcher.m; sourceTree = "<group>"; };
 		7DCF6404167C7DCC00B22C57 /* PWrBiblioteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PWrBiblioteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,7 +280,7 @@
 		7DC96C2E167E0557006E9EA7 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				7DC186CC18F030F2001AA8C8 /* Images.xcassets */,
+				7DA88C4318F1D66A007D1858 /* Images.xcassets */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -567,10 +567,10 @@
 				7DCF6497167CB9E300B22C57 /* BookListViewController.xib in Resources */,
 				7DCF649D167CBAD600B22C57 /* BookCell.xib in Resources */,
 				7DCF64AB167CCD0B00B22C57 /* LocationsViewController.xib in Resources */,
+				7DA88C4418F1D66A007D1858 /* Images.xcassets in Resources */,
 				7DCF64B2167CD50900B22C57 /* LocationCell.xib in Resources */,
 				7D7A6F2018EE15970057BC67 /* FuturaLT.ttf in Resources */,
 				AC912212169C4A9700F06E6B /* LibraryInfoViewController.xib in Resources */,
-				7DC186CD18F030F2001AA8C8 /* Images.xcassets in Resources */,
 				AC78732917084A4200523B33 /* InformationCell.xib in Resources */,
 				AC78732E1708509C00523B33 /* NameCell.xib in Resources */,
 				AC7873301708529600523B33 /* MapCell.xib in Resources */,

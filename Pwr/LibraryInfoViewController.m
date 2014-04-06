@@ -120,7 +120,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *key = ((NSDictionary*)self.library.sections[section]).allKeys[0];
-    return key;
+    return key.uppercaseString;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

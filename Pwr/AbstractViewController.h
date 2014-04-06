@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 tetek. All rights reserved.
 //
 
+#import "M13ProgressHUD.h"
+
 @class M13ProgressHUD;
 
 @interface AbstractViewController : UIViewController <MFMailComposeViewControllerDelegate>
