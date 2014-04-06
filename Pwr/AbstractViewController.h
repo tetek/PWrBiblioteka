@@ -17,5 +17,6 @@
 + (instancetype)newFromNib;
 
 - (void)openWebsiteForURL:(NSURL*)url;
-
+- (void)call:(NSString*)phoneNumber;
+- (void)sendEmailTo:(NSString*)email;
 @end

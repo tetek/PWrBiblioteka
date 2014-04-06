@@ -114,10 +114,20 @@
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return [self.library heightForHeaderInSection:section];
-//}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    NSString *key = ((NSDictionary*)self.library.sections[indexPath.section]).allKeys[0];
+    NSDictionary *dict = self.library.sections[indexPath.section];
+    NSArray *rows =  ((NSArray*)dict.allValues[0]);
+    
+    NSDictionary *rowData = rows[indexPath.row];
+    if ([key isEqualToString:@"email"]) {
+        [self sendEmailTo:rowData[@"value"]];
+    }
+    else if ([key isEqualToString:@"telefon"]){
+        [self call:rowData[@"value"]];
+    }
+}
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *key = ((NSDictionary*)self.library.sections[section]).allKeys[0];
     return key.uppercaseString;

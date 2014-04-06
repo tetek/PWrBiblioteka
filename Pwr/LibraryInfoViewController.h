@@ -10,7 +10,7 @@
 #import "Library.h"
 #import "AbstractViewController.h"
 
-@interface LibraryInfoViewController : AbstractViewController
+@interface LibraryInfoViewController : AbstractViewController <UITableViewDelegate>
 
 - (id) initWithLibrary:(Library *)library;
 
