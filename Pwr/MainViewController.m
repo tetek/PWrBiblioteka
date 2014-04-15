@@ -140,7 +140,7 @@
 }
 
 - (IBAction)openAuthor:(id)sender{
-    [self openWebsiteForURL:[NSURL URLWithString:@"http://tetek.wordpress.com"]];    
+    [self openWebsiteForURL:[NSURL URLWithString:@"http://github.com/tetek"]];
 }
 
 - (IBAction)openContributors:(id)sender{
@@ -215,8 +215,10 @@
     }
     
     @catch (NSException *exception) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
         [self.HUD hide:YES];
-        [[[UIAlertView alloc] initWithTitle:exception.name message:exception.reason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+         [[[UIAlertView alloc] initWithTitle:@"Brak Wyników" message:@"Nie znaleziono pozycji w bibliotece" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        });
         return;
     }
     

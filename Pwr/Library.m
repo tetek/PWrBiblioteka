@@ -157,7 +157,7 @@
     }
     data = @{
              @"cellType": @"longinfo",
-             @"value": self.notes,
+             @"value": [self.notes stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
              @"height": [self calculateTextHeight:self.notes forWidth:280.0]
              };
     return data;

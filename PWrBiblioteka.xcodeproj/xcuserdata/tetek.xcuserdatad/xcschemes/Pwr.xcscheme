@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7DCF6403167C7DCC00B22C57"
-               BuildableName = "PWrBiblioteka.app"
+               BuildableName = "biblioteka.app"
                BlueprintName = "PWrBiblioteka"
                ReferencedContainer = "container:PWrBiblioteka.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7DCF6403167C7DCC00B22C57"
-            BuildableName = "PWrBiblioteka.app"
+            BuildableName = "biblioteka.app"
             BlueprintName = "PWrBiblioteka"
             ReferencedContainer = "container:PWrBiblioteka.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7DCF6403167C7DCC00B22C57"
-            BuildableName = "PWrBiblioteka.app"
+            BuildableName = "biblioteka.app"
             BlueprintName = "PWrBiblioteka"
             ReferencedContainer = "container:PWrBiblioteka.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7DCF6403167C7DCC00B22C57"
-            BuildableName = "PWrBiblioteka.app"
+            BuildableName = "biblioteka.app"
             BlueprintName = "PWrBiblioteka"
             ReferencedContainer = "container:PWrBiblioteka.xcodeproj">
          </BuildableReference>

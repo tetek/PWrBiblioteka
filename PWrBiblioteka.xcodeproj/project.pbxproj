@@ -110,7 +110,7 @@
 		7DC186C218EECF43001AA8C8 /* PBWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBWebViewController.m; sourceTree = "<group>"; };
 		7DC96C4D167E056F006E9EA7 /* BookListFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookListFetcher.h; sourceTree = "<group>"; };
 		7DC96C4E167E056F006E9EA7 /* BookListFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListFetcher.m; sourceTree = "<group>"; };
-		7DCF6404167C7DCC00B22C57 /* PWrBiblioteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PWrBiblioteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DCF6404167C7DCC00B22C57 /* biblioteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = biblioteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DCF6408167C7DCC00B22C57 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7DCF640A167C7DCC00B22C57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7DCF640C167C7DCC00B22C57 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -297,7 +297,7 @@
 		7DCF6405167C7DCC00B22C57 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7DCF6404167C7DCC00B22C57 /* PWrBiblioteka.app */,
+				7DCF6404167C7DCC00B22C57 /* biblioteka.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -524,7 +524,7 @@
 			);
 			name = PWrBiblioteka;
 			productName = Pwr;
-			productReference = 7DCF6404167C7DCC00B22C57 /* PWrBiblioteka.app */;
+			productReference = 7DCF6404167C7DCC00B22C57 /* biblioteka.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -535,6 +535,11 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = tetek;
+				TargetAttributes = {
+					7DCF6403167C7DCC00B22C57 = {
+						DevelopmentTeam = LVE8644388;
+					};
+				};
 			};
 			buildConfigurationList = 7DCF63FE167C7DCC00B22C57 /* Build configuration list for PBXProject "PWrBiblioteka" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -702,6 +707,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -720,7 +726,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = PWrBiblioteka;
+				PRODUCT_NAME = biblioteka;
+				PROVISIONING_PROFILE = "C30B8FB7-DC5E-4230-9021-0C733F615C03";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -734,6 +741,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Wojciech Mandrysz (LVE8644388)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -751,7 +759,8 @@
 					"\"$(SRCROOT)/Pwr/ZBarSDK\"",
 					"\"$(SRCROOT)\"",
 				);
-				PRODUCT_NAME = PWrBiblioteka;
+				PRODUCT_NAME = biblioteka;
+				PROVISIONING_PROFILE = "C30B8FB7-DC5E-4230-9021-0C733F615C03";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
