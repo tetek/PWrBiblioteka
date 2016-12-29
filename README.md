@@ -1,6 +1,5 @@
 PWrBiblioteka
 =============
 
-Prosty klient do biblioteki Politechniki Wrocławskiej. Napisany w 8h na konkurs BIT fest.
-
-Do pobrania na http://appstore.com/BibliotekaPWr
+Client for PWr University library, originally written in 8h during a BIT competition. The project won first place.
+Available on the App Store -> http://appstore.com/BibliotekaPWr
